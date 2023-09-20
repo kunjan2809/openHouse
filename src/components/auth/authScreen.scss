@@ -1,0 +1,209 @@
+@import '../../assets/scss/mixins.scss';
+@import '../../assets/scss/variables.scss';
+
+.auth-container {
+    height: calc(100vh + 0px);
+    min-height: 650px;
+    max-height: 700px;
+
+    .container {
+        height: 100%;
+
+        .home-img {
+            overflow: hidden;
+            height: 93vh;
+            width: 100%;
+
+            img {
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+            }
+        }
+    }
+
+    .fields {
+        height: 100%;
+        width: 100%;
+        @include flexPosition();
+
+        .fields-container {
+            min-width: 450px;
+            width: 65%;
+
+            .header {
+
+                span {
+                    color: black;
+                    font-weight: 600;
+                    font-size: medium;
+                }
+
+                h1,
+                h2 {
+                    color: #008080;
+                    margin: 0;
+                }
+
+            }
+
+            .auth-form {
+                margin-top: 1.5rem;
+
+                form {
+                    .input-label {
+                        font-weight: 600;
+                        margin: 0.7rem auto 0.1rem auto;
+                    }
+
+                    .input-field {
+                        padding: 10px;
+
+                        &:hover {
+                            border-color: $colorLevel6;
+                        }
+
+                        &:focus {
+                            border-color: $colorLevel6;
+                        }
+                    }
+
+                    .input-field-labeled {
+
+                        span.ant-input-group-addon {
+                            width: auto;
+                        }
+
+                        input {
+                            padding: 10px;
+
+                            &:hover {
+                                border-color: $colorLevel6;
+                            }
+
+                            &:focus {
+                                border-color: $colorLevel6;
+                            }
+                        }
+                    }
+
+                    .signin-btn {
+                        @include buttonPrimary();
+                        width: 100%;
+                        background-color: $colorLevel6;
+                        margin-top: 1.5rem;
+                        height: auto;
+                        padding-block: 8px;
+
+                        &:hover {
+                            background-color: $colorLevel5 ;
+                        }
+                    }
+                }
+
+                .forgot-password-title {
+                    color: $colorLevel6;
+                    text-decoration: underline;
+                    text-align: right;
+                    font-weight: 600;
+                    margin-top: 0.5rem;
+                }
+            }
+
+            .footer {
+                margin-top: 1rem;
+
+                p {
+                    font-weight: 500;
+                    text-align: center;
+
+                    a {
+                        font-weight: 700;
+                        color: inherit;
+                    }
+                }
+            }
+
+            .email-sent-message {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+
+                img {
+                    height: 50px;
+                    width: auto;
+                }
+
+                h2 {
+                    color: $colorLevel6;
+                    text-align: center;
+                    text-align-last: center;
+                }
+            }
+
+            .otp-container {
+                .header {
+                    p {
+                        margin-block: 0.5rem;
+                    }
+                }
+
+                .otp-verification {
+                    margin-top: 5rem;
+                    display: flex;
+                    flex-direction: column;
+
+                    p {
+                        text-align: center;
+                        margin: 0.2rem;
+                    }
+
+                    p.title {
+                        font-weight: 700;
+                        color: $colorLevel5;
+                    }
+
+                    p.timer {
+                        font-weight: 600;
+                        color: $colorLevel3;
+                    }
+
+                    .otp-fields {
+                        margin-top: 1rem;
+                        @include flexPosition();
+
+                        .ant-input-number {
+                            border-radius: 0px;
+                            border-bottom: 2px solid $colorLevel4 ;
+                            width: 40px;
+                            font-size: large;
+                            margin-inline: 5px;
+
+                            input {
+                                padding: 3px;
+                                text-align: center;
+                            }
+                        }
+                    }
+
+                    .verify-otp-btn {
+                        margin-top: 4rem;
+                        margin-inline: auto;
+                        @include buttonPrimary();
+                        height: auto;
+                        padding: 10px 50px;
+                    }
+
+                    .resend-otp {
+                        margin-top: 1rem;
+                        text-decoration: underline;
+                        text-align: center;
+                        font-weight: 600;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+}

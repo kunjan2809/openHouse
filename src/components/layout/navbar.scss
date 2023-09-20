@@ -1,0 +1,40 @@
+@import "../../assets/scss/mixins.scss";
+
+.navbar {
+    border-bottom: 1px solid #E2E2E2;
+
+    .nabvar-row {
+        padding: 10px;
+
+        .logo {
+            margin-left: 20px;
+        }
+
+        .links {
+            display: flex;
+
+            li {
+                list-style-type: none;
+                display: block;
+                margin-inline: 20px;
+                font-size: larger;
+                font-weight: 500;
+                cursor: pointer;
+                transition: all 0.1s linear 0s;
+
+                &:hover {
+                    color: #55AAAA
+                }
+            }
+        }
+
+        .primary-button {
+            @include buttonPrimary();
+            border: none;
+            border-radius: 100px;
+            padding-inline: 20px;
+            min-width: 120px;
+        }
+
+    }
+}
