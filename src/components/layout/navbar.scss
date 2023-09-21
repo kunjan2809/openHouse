@@ -1,4 +1,5 @@
 @import "../../assets/scss/mixins.scss";
+@import "../../assets/scss/variables.scss";
 
 .navbar {
     border-bottom: 1px solid #E2E2E2;
@@ -23,7 +24,11 @@
                 transition: all 0.1s linear 0s;
 
                 &:hover {
-                    color: #55AAAA
+                    color: $colorLevel4
+                }
+
+                &:visited {
+                    color: $colorLevel4
                 }
             }
         }
