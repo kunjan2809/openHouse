@@ -22,7 +22,9 @@ const Navbar = () => {
                             </ul>
                         </Col>
                         <Col span={6}>
-                            <Button type="primary" className='primary-button'>Sign in</Button>
+                            <Link to='/login'>
+                                <Button type="primary" className='primary-button'>Sign in</Button>
+                            </Link>
                         </Col>
                     </Row>
                 </Col>

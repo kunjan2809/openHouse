@@ -12,12 +12,12 @@ const AuthScreen = (props) => {
             <Navbar />
             <div className="auth-container">
                 <Row className="container">
-                    <Col span={13}>
+                    <Col span={12}>
                         <div className="home-img">
                             <img src={HOMEIMG} alt="Home"/>
                         </div>
                     </Col>
-                    <Col span={11}>
+                    <Col span={12}>
                         {children}
                     </Col>
                 </Row>

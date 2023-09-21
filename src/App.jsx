@@ -4,6 +4,8 @@ import Signup from './pages/auth/Signup'
 import ForgotPassword from './pages/auth/ForgotPassword'
 import Login from './pages/auth/Login'
 import ResetPassword from './pages/auth/ResetPassword'
+import Home from './pages/home/Home'
+import Layout from './components/layout/Layout'
 // import Layout from './components/layout/Layout'
 // import AuthRoute from './components/authRoute/AuthRoute'
 
@@ -19,7 +21,7 @@ const App = () => {
           <Route path="/forget-password" element={<ForgotPassword />} />
           <Route path="/reset-password/:token" element={<ResetPassword />} />
 
-          <Route path="/" element={<Login />} />
+          <Route path="/" element={<Layout><Home /></Layout>} />
           <Route path="/" >
             {/* <Route path="/" element={<AuthRoute permissionType="ALLOW"><Dashboard /></AuthRoute>} /> */}
           </Route>

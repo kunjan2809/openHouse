@@ -4,15 +4,15 @@
 .auth-container {
     height: calc(100vh + 0px);
     min-height: 650px;
-    max-height: 700px;
+    max-height: 750px;
 
     .container {
         height: 100%;
 
         .home-img {
             overflow: hidden;
-            height: 93vh;
             width: 100%;
+            height: 100%;
 
             img {
                 height: 100%;
@@ -29,7 +29,7 @@
 
         .fields-container {
             min-width: 450px;
-            width: 65%;
+            width: 50%;
 
             .header {
 
@@ -71,7 +71,8 @@
                     .input-field-labeled {
 
                         span.ant-input-group-addon {
-                            width: auto;
+                            // width: auto;
+                            max-width: 5rem;
                         }
 
                         input {
@@ -83,6 +84,14 @@
 
                             &:focus {
                                 border-color: $colorLevel6;
+                            }
+                        }
+
+                        .select-country-code {
+                            margin: 0px;
+
+                            .ant-select-selection-item{
+                                color: black;
                             }
                         }
                     }
@@ -108,6 +117,7 @@
                     font-weight: 600;
                     margin-top: 0.5rem;
                 }
+
             }
 
             .footer {

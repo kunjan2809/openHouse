@@ -7,11 +7,11 @@ const { Option } = Select;
 const Signup = () => {
 
     const selectBefore = (
-        <Select defaultValue="+1">
-          <Option value="+1">+1</Option>
-          <Option value="+91">+91</Option>
+        <Select defaultValue="+1" className="select-country-code">
+            <Option value="+1">+1</Option>
+            <Option value="+91">+91</Option>
         </Select>
-      );
+    );
 
     return (
         <>
@@ -44,7 +44,7 @@ const Signup = () => {
                                         <p className="input-label">Company</p>
                                         <Input
                                             className="input-field"
-                                            placeholder="Enter Company’s name"
+                                            placeholder="Enter Company’s Name"
                                         />
                                         <p className="input-label">Phone Number</p>
                                         <Input
@@ -52,8 +52,13 @@ const Signup = () => {
                                             placeholder=" "
                                             addonBefore={selectBefore}
                                         />
-                                        <p className="input-label">Password</p>
+                                         <p className="input-label">Email</p>
                                         <Input
+                                            className="input-field"
+                                            placeholder="Enter Email"
+                                        />
+                                        <p className="input-label">Password</p>
+                                        <Input.Password
                                             className="input-field"
                                             placeholder="Enter password"
                                         />
