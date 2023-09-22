@@ -1,6 +1,7 @@
 import Navbar from "./Navbar"
 import Footer from "./Footer"
-import PropTypes from "prop-types";
+import PropTypes from "prop-types"
+import './layout.scss'
 
 
 const Layout = (props) => {
@@ -9,7 +10,9 @@ const Layout = (props) => {
     return (
         <>
             <Navbar />
-            {children}
+            <div className="layout-child">
+                {children}
+            </div>
             <Footer />
         </>
     )

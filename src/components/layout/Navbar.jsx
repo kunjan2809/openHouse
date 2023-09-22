@@ -1,6 +1,7 @@
 
-import { Button, Col, Row } from 'antd'
+import { Avatar, Button, Col, Row } from 'antd'
 import logo from '../../assets/logo.svg'
+import profile from '../../assets/images/dummy-profile.jpg'                                                                                                                                                                                                                                                                                                                                                                                                                                   
 import './navbar.scss'
 import { Link } from 'react-router-dom'
 
@@ -23,7 +24,7 @@ const Navbar = () => {
                         </Col>
                         <Col span={6}>
                             <Link to='/login'>
-                                <Button type="primary" className='primary-button'>Sign in</Button>
+                                {true ?  <Avatar src={<img src={profile} alt="avatar" />} /> : <Button type="primary" className='primary-button'>Sign in</Button>}
                             </Link>
                         </Col>
                     </Row>
