@@ -20,7 +20,12 @@ const PropetyCard = (props) => {
             <div className="cardContent">
                 <h3>${price}</h3>
                 <p>{address}</p>
+                <div className="date-time">
+                    <div className="dtc"><img alt='' src={calender} /><span>{date}</span></div>
+                    <div className="dtc"><img alt='' src={watch} /><span>{time}</span></div>
+                </div>
 
+                
                 {isSold && <div className={`sold-tag`}>
                     <img className="clip-shape" alt=' ' src={soldSVG} />
                     <div className="sold-txt">Sold</div>
@@ -28,11 +33,6 @@ const PropetyCard = (props) => {
                 {isLikeable && <div className={`like-btn ${isLiked ? 'active' : ''}`}>
                     <HeartSVG />
                 </div>}
-
-                <div className="date-time">
-                    <div className="dtc"><img alt='' src={calender} /><span>{date}</span></div>
-                    <div className="dtc"><img alt='' src={watch} /><span>{time}</span></div>
-                </div>
             </div>
         </Card >
     )

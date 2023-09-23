@@ -4,7 +4,6 @@ import './home.scss'
 import PropetyCard from '../../components/card/propetyCard'
 import cardImg from '../../assets/images/property.png'
 import cardImg2 from '../../assets/images/preperty-thumb-2.png'
-import FeaturedText from './components/FeaturedText'
 import Feature from './components/Feature'
 import dealsSVG from '../../assets/svgs/deals.svg'
 import hostSVG from '../../assets/svgs/host.svg'
@@ -36,10 +35,11 @@ const Home = () => {
                 <div className='featured-home-container'>
                     <div className='featured-label'>Discover</div>
                     <div className='header-wrapper'>
-                        <FeaturedText
-                            decorated={'Feat'}
-                            text={'ured Properties Near You'}
-                        />
+                        <div className='underlined-heading'>
+                            <h1 className='heading'>Featured Listings Near You</h1>
+                            <div className='line'></div>
+                        </div>
+
                         <div className='header-filter-container'>
                             <Select
                                 className='filter-dropdown'
@@ -68,7 +68,7 @@ const Home = () => {
                         </div>
                     </div>
                     <div className='featured-property-wrapper'>
-                        <Row>
+                        <Row gutter={[24, 24]}>
                             {arr.map((val, i) => {
                                 return <Col span={6} key={val}>
                                     {
@@ -101,14 +101,13 @@ const Home = () => {
                         <div className='home-pagination'><Pagination defaultCurrent={1} total={50} /></div>
                     </div>
                 </div>
-                <div className='featured-home-container'>
+                <div className='featured-looking-container'>
                     <div className='featured-label'>Learn more</div>
-                    <div className='header-wrapper'>
-                        <FeaturedText
-                            decorated={'Feat'}
-                            text={'ures You\'re Looking For'}
-                        />
+                    <div className='underlined-heading'>
+                        <h1 className='heading'>{"Features You're Looking For"}</h1>
+                        <div className='line'></div>
                     </div>
+
                     <div className='features-wrapper'>
                         <Row align="middle" justify="space-evenly">
                             <Col span={8}>
@@ -141,7 +140,6 @@ const Home = () => {
                             <Button type="primary" className="list-property-btn">List Your Property</Button>
                         </div>
                     </div>
-
                 </div>
             </div>
         </>

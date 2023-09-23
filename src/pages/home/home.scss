@@ -6,7 +6,7 @@
     .header-container {
         max-height: 85vh;
         min-height: 600px;
-        background-image: url('../../../public/images/homePageHeader.png');
+        background-image: url('../../assets/images/homePageHeader.png');
         background-repeat: no-repeat;
         background-clip: border-box;
         background-size: cover;
@@ -86,34 +86,40 @@
             color: $colorLevel4;
             text-transform: uppercase;
             font-weight: 600;
-            padding-inline: 15px;
         }
 
         .header-wrapper {
             @include flexPosition();
             justify-content: space-between;
             align-items: center;
-            padding-inline: 15px;
-
-            .heading {
-                font-size: 3rem;
-                font-weight: 600;
-                color: $colorLevel10;
-
-                .featured-text {
-                    border-bottom: 3px solid $colorLevel6;
-                    padding-bottom: 2px;
-                }
-            }
 
             .header-filter-container {
-                display: flex;
-                gap: 12px;
+                @include flexPosition();
+                justify-content: space-between;
+                gap: 20px;
 
                 .filter-dropdown {
                     background: $colorLevel1;
                     border-radius: 5px;
-                    padding: 20px 5px;
+                    width: 150px;
+                    min-height: 40px;
+
+                    .ant-select-selector {
+                        .ant-select-selection-item {
+                            color: $colorLevel6;
+                            font-weight: 500;
+                        }
+                    }
+
+                    .ant-select-arrow {
+                        .anticon-down {
+                            svg {
+                                path {
+                                    fill: $colorLevel5;
+                                }
+                            }
+                        }
+                    }
                 }
             }
 
@@ -126,7 +132,6 @@
             .ant-row {
                 @include flexPosition();
                 justify-content: flex-start;
-                row-gap: 30px;
 
                 .ant-col {
                     @include flexPosition();
@@ -144,7 +149,7 @@
                         border-radius: 50%;
 
                         a {
-                            color: $colorGrey;
+                            color: $colorGray;
                             font-weight: 500;
                         }
 
@@ -164,13 +169,26 @@
                             border-radius: 50%;
 
                             svg {
-                                color: $colorGrey;
+                                color: $colorGray;
                                 font-weight: 500;
                             }
                         }
                     }
                 }
             }
+        }
+
+
+    }
+
+    .featured-looking-container {
+        padding: calc(2rem);
+        margin-top: 40px;
+
+        .featured-label {
+            color: $colorLevel4;
+            text-transform: uppercase;
+            font-weight: 600;
         }
 
         .features-wrapper {
@@ -268,16 +286,37 @@
             }
         }
     }
+
+    .underlined-heading {
+        .heading {
+            color: $colorLevel10;
+            margin-block: 0.3rem;
+            font-size: 2.5rem;
+        }
+
+        .line {
+            width: 100px;
+            border: 2px solid $colorLevel5;
+        }
+    }
 }
 
 
 
 .property-filter-select {
+    border: 1px solid lightgray;
+    font-family: Poppins;
+
+    .ant-select-item {
+        color: $colorGray;
+    }
+
     .ant-select-item.ant-select-item-option-selected {
         background-color: transparent;
         border-radius: 0px;
         position: relative;
         color: $colorLevel6;
+
 
         &::before {
             content: '';

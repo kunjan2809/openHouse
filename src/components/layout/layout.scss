@@ -1,5 +1,7 @@
+@import '../../assets/scss/variables.scss';
+
 .layout-child {
     width: 100%;
     min-height: 100vh;
-    background-color: #f3f3f3;
+    background-color: $colorGrayBg ;
 }
