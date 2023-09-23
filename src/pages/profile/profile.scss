@@ -26,7 +26,6 @@
                 color: black;
             }
 
-
             .add-listing-btn {
                 @include buttonPrimary();
                 height: auto;
@@ -35,15 +34,15 @@
             }
         }
 
-
         .ant-row {
             @include flexPosition();
+            justify-content: flex-start;
             row-gap: 30px;
 
             .ant-col {
                 @include flexPosition();
                 justify-content: center;
-                align-items: center // margin-bottom: 2rem;
+                align-items: center;
             }
         }
 

@@ -2,6 +2,8 @@
 @import '../../assets/scss/variables.scss';
 
 .home-page-container {
+    background: #EEEEEE;
+
     .header-container {
         max-height: 85vh;
         min-height: 600px;
@@ -67,6 +69,66 @@
                         right: 0px;
                         top: 0px;
                     }
+                }
+            }
+        }
+
+    }
+
+    .featured-home-container {
+        padding: 2rem;
+        margin-top: 40px;
+
+        .featured-label {
+            color: $colorLevel4;
+            text-transform: uppercase;
+            font-weight: 600;
+            padding-inline: 15px;
+        }
+
+        .header-wrapper {
+            @include flexPosition();
+            justify-content: space-between;
+            align-items: center;
+            padding-inline: 15px;
+
+            .heading {
+                font-size: 3rem;
+                font-weight: 600;
+                color: $colorLevel10;
+
+                .featured-text {
+                    border-bottom: 3px solid $colorLevel6;
+                    padding-bottom: 2px;
+                }
+            }
+
+            .header-filter-container {
+                display: flex;
+                gap: 12px;
+
+                .filter-dropdown {
+                    background: $colorLevel1;
+                    border-radius: 5px;
+                    padding: 20px 5px;
+                }
+            }
+
+        }
+
+        .featured-property-wrapper {
+            width: 100%;
+            margin-top: 50px;
+
+            .ant-row {
+                @include flexPosition();
+                justify-content: flex-start;
+                row-gap: 30px;
+
+                .ant-col {
+                    @include flexPosition();
+                    justify-content: center;
+                    align-items: center;
                 }
             }
         }
