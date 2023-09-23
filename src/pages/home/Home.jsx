@@ -41,11 +41,12 @@ const Home = () => {
                             text={'ured Properties Near You'}
                         />
                         <div className='header-filter-container'>
-                            {/* <Select
+                            <Select
                                 className='filter-dropdown'
                                 defaultValue="any"
                                 bordered={false}
                                 onChange={handleChange}
+                                popupClassName={'property-filter-select'}
                                 options={[
                                     { value: 'any', label: 'Any Price' },
                                     { value: '<100000', label: '<$100000' },
@@ -57,12 +58,13 @@ const Home = () => {
                                 defaultValue="any"
                                 bordered={false}
                                 onChange={handleChange}
+                                popupClassName={'property-filter-select'}
                                 options={[
                                     { value: 'any', label: 'Any Type' },
                                     { value: 'basement', label: 'Basement' },
                                     { value: 'apartment', label: 'Apartment' },
                                 ]}
-                            /> */}
+                            />
                         </div>
                     </div>
                     <div className='featured-property-wrapper'>
