@@ -13,7 +13,7 @@ const ForgotPassword = () => {
                             true ? (<>
                                 <div className="header">
                                     <span>Forgot Your Password?</span>
-                                    <h2>Don’t worry, We’ve got you back!</h2>
+                                    <h2>Don’t worry, We’ve got your back!</h2>
                                 </div>
                                 <div className="auth-form">
                                     <form>
@@ -32,7 +32,7 @@ const ForgotPassword = () => {
                                 <>
                                     <div className="email-sent-message">
                                         <img src={TICK} alt="Tick" />
-                                        <h2>{`We've sent you an email with instructions to reset your password`}.</h2>
+                                        <h2>{`We've sent you an email with instructions to reset your password.`}</h2>
                                     </div>
                                 </>
                             )

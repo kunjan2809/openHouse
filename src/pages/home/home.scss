@@ -2,7 +2,6 @@
 @import '../../assets/scss/variables.scss';
 
 .home-page-container {
-    background: #EEEEEE;
 
     .header-container {
         max-height: 85vh;
@@ -44,30 +43,34 @@
 
             .search-box {
                 margin: 1rem;
-                width: 30%;
+                width: 32%;
                 min-width: 300px;
 
                 .ant-input-search {
-                    position: relative;
+                    .ant-input-wrapper {
+                        position: relative;
 
-                    input {
-                        padding: 10px;
-                        padding-left: 15px;
-                        border-radius: 20px;
-
-                        &:hover {
-                            border-color: $colorLevel6;
+                        input {
+                            padding: 11px;
+                            padding-left: 15px;
+                            border-radius: 20px;
+                            box-sizing: border-box;
+                            border: none;
                         }
 
-                        &:focus {
-                            border-color: $colorLevel6;
-                        }
-                    }
+                        .ant-input-group-addon {
+                            button.ant-btn.ant-input-search-button {
+                                position: absolute;
+                                right: 6px;
+                                top: 6px;
+                                border-radius: 20px !important;
+                                display: block;
+                                z-index: 2;
+                                padding-inline: 13px;
 
-                    .ant-input-group-addon {
-                        position: absolute;
-                        right: 0px;
-                        top: 0px;
+                                @include buttonPrimary();
+                            }
+                        }
                     }
                 }
             }
@@ -118,7 +121,7 @@
 
         .featured-property-wrapper {
             width: 100%;
-            margin-top: 50px;
+            margin-top: 3rem;
 
             .ant-row {
                 @include flexPosition();
@@ -131,7 +134,138 @@
                     align-items: center;
                 }
             }
+
+            .home-pagination {
+                margin-top: 2rem;
+                @include flexPosition();
+
+                .ant-pagination {
+                    .ant-pagination-item {
+                        border-radius: 50%;
+
+                        a {
+                            color: $colorGrey;
+                            font-weight: 500;
+                        }
+
+                        &.ant-pagination-item-active {
+                            border: none;
+                            background-color: $colorLevel2;
+
+                            a {
+                                color: $colorLevel6;
+                            }
+                        }
+                    }
+
+                    .ant-pagination-prev,
+                    .ant-pagination-next {
+                        button {
+                            border-radius: 50%;
+
+                            svg {
+                                color: $colorGrey;
+                                font-weight: 500;
+                            }
+                        }
+                    }
+                }
+            }
         }
 
+        .features-wrapper {
+            background-color: $colorLevel1;
+            border-radius: 15px;
+            width: 100%;
+            height: 300px;
+            margin-top: 3rem;
+
+            .ant-row {
+                height: 100%;
+
+                .ant-col {
+                    @include flexPosition();
+
+                    .feature-container {
+                        height: 200px;
+                        width: 200px;
+
+                        .circle {
+                            height: 100%;
+                            width: 100%;
+                            border-radius: 50%;
+                            background-color: white;
+
+                            @include flexPosition();
+                            flex-direction: column;
+                            gap: 10px;
+
+                            img {
+                                width: 90px;
+                                height: auto;
+                                max-height: 70px;
+                            }
+
+                            span {
+                                width: 100%;
+                                overflow-wrap: break-word;
+                                word-spacing: 90px;
+                                color: $colorLevel6;
+                                font-weight: 700;
+                                font-size: larger;
+                                text-align: center;
+                                text-align-last: center;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .list-your-property {
+        height: 520px;
+        width: 100%;
+        margin-top: 3rem;
+        background-image: url('../../../public/images/house-listing.png');
+        background-repeat: no-repeat;
+        background-clip: border-box;
+        background-size: cover;
+        position: relative;
+
+        .list-your-property-inner {
+            height: 100%;
+            width: 100%;
+            max-width: 100%;
+            margin: 0px;
+            padding: 0px;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: linear-gradient(to right, rgb(0 0 0 / 68%) 0%, #ffffff00 100%);
+            padding-left: 100px;
+            box-sizing: border-box;
+
+            .list-your-property-header {
+                width: 550px;
+
+                h1 {
+                    color: white;
+                    font-size: 3rem;
+                }
+            }
+
+            .list-property-btn-container {
+                .list-property-btn {
+                    @include buttonPrimary();
+                    height: auto;
+                    padding: 10px 30px;
+                    border-radius: 20px;
+                }
+            }
+        }
     }
 }

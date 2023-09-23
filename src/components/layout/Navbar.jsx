@@ -1,7 +1,7 @@
 
 import { Avatar, Button, Col, Row } from 'antd'
 import logo from '../../assets/logo.svg'
-import profile from '../../assets/images/dummy-profile.jpg'                                                                                                                                                                                                                                                                                                                                                                                                                                   
+import profile from '../../assets/images/avatar-demo.png'
 import './navbar.scss'
 import { Link } from 'react-router-dom'
 
@@ -16,15 +16,15 @@ const Navbar = () => {
                     <Row align="middle" gutter={2}>
                         <Col span={18}>
                             <ul className='links'>
-                                <li>Home</li>
-                                <li>About</li>
-                                <li>Blog</li>
-                                <li>Contact Us</li>
+                                <li><Link to='/'>Home</Link></li>
+                                <li><Link to='/'>About</Link></li>
+                                <li><Link to='/'>Blog</Link></li>
+                                <li><Link to='/'>Contact Us</Link></li>
                             </ul>
                         </Col>
                         <Col span={6}>
                             <Link to='/login'>
-                                {true ?  <Avatar src={<img src={profile} alt="avatar" />} /> : <Button type="primary" className='primary-button'>Sign in</Button>}
+                                {true ? <Avatar src={<img src={profile} alt="avatar" />} /> : <Button type="primary" className='primary-button'>Sign in</Button>}
                             </Link>
                         </Col>
                     </Row>

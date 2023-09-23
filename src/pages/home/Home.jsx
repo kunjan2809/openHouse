@@ -1,13 +1,21 @@
-// import { Input } from 'antd';
-import { Col, DatePicker, Row, Select } from 'antd'
+import { Input } from 'antd';
+import { Button, Col, Row, Select } from 'antd'
 import './home.scss'
 import PropetyCard from '../../components/card/propetyCard'
 import cardImg from '../../assets/images/property.png'
+import cardImg2 from '../../assets/images/preperty-thumb-2.png'
+import FeaturedText from './components/FeaturedText'
+import Feature from './components/Feature'
+import dealsSVG from '../../assets/svgs/deals.svg'
+import hostSVG from '../../assets/svgs/host.svg'
+import quickSVG from '../../assets/svgs/quick.svg'
+import { Pagination } from 'antd';
+
 
 const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
 const Home = () => {
-    // const { Search } = Input;
+    const { Search } = Input;
 
     const handleChange = (value) => {
         console.log(`selected ${value}`);
@@ -21,18 +29,19 @@ const Home = () => {
                         <h1>Let’s Find you a Place of dream. </h1>
                         <h4>A BASE FOR GOOD LIFE.</h4>
                         <div className='search-box'>
-                            {/* <Search placeholder="Search by location" enterButton /> */}
+                            <Search placeholder="Search by location" enterButton />
                         </div>
                     </div>
                 </div>
                 <div className='featured-home-container'>
                     <div className='featured-label'>Discover</div>
                     <div className='header-wrapper'>
-                        <div className='heading'>
-                            <span className='featured-text'>Feat</span>ured Listings Near You
-                        </div>
+                        <FeaturedText
+                            decorated={'Feat'}
+                            text={'ured Properties Near You'}
+                        />
                         <div className='header-filter-container'>
-                            <Select
+                            {/* <Select
                                 className='filter-dropdown'
                                 defaultValue="any"
                                 bordered={false}
@@ -50,29 +59,87 @@ const Home = () => {
                                 onChange={handleChange}
                                 options={[
                                     { value: 'any', label: 'Any Type' },
-                                    { value: 'basement', label: 'basement' },
+                                    { value: 'basement', label: 'Basement' },
                                     { value: 'apartment', label: 'Apartment' },
                                 ]}
-                            />
+                            /> */}
                         </div>
                     </div>
                     <div className='featured-property-wrapper'>
                         <Row>
-                            {arr.map((val) => {
+                            {arr.map((val, i) => {
                                 return <Col span={6} key={val}>
-                                    <PropetyCard
-                                        image={cardImg}
-                                        price='3,75,000'
-                                        date='15th Feb’2023'
-                                        time='10:30 p.m.'
-                                        address='603, Borinson street, Texas, USA'
-                                        isSold={false}
-                                    />
+                                    {
+                                        (i % 2 === 1) ? (
+                                            <PropetyCard
+                                                image={cardImg2}
+                                                price='3,75,000'
+                                                date='15th Feb’2023'
+                                                time='10:30 p.m.'
+                                                address='603, Borinson street, Texas, USA'
+                                                isSold={false}
+                                                isLikeable={true}
+                                                isLiked={false}
+                                            />) : (<PropetyCard
+                                                image={cardImg}
+                                                price='3,75,000'
+                                                date='15th Feb’2023'
+                                                time='10:30 p.m.'
+                                                address='603, Borinson street, Texas, USA'
+                                                isSold={false}
+                                                isLikeable={true}
+                                                isLiked={true}
+                                            />)
+                                    }
+
                                 </Col>
                             })}
 
                         </Row>
+                        <div className='home-pagination'><Pagination defaultCurrent={1} total={50} /></div>
                     </div>
+                </div>
+                <div className='featured-home-container'>
+                    <div className='featured-label'>Learn more</div>
+                    <div className='header-wrapper'>
+                        <FeaturedText
+                            decorated={'Feat'}
+                            text={'ures You\'re Looking For'}
+                        />
+                    </div>
+                    <div className='features-wrapper'>
+                        <Row align="middle" justify="space-evenly">
+                            <Col span={8}>
+                                <Feature
+                                    svgPath={dealsSVG}
+                                    title='EXCELENT DEALS'
+                                />
+                            </Col>
+                            <Col span={8}>
+                                <Feature
+                                    svgPath={hostSVG}
+                                    title='FRENDLY HOST'
+                                />
+                            </Col>
+                            <Col span={8}>
+                                <Feature
+                                    svgPath={quickSVG}
+                                    title='QUICK PROCESS'
+                                />
+                            </Col>
+                        </Row>
+                    </div>
+                </div>
+                <div className='list-your-property'>
+                    <div className='list-your-property-inner'>
+                        <div className='list-your-property-header'>
+                            <h1>Register your property Free today.</h1>
+                        </div>
+                        <div className='list-property-btn-container'>
+                            <Button type="primary" className="list-property-btn">List Your Property</Button>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </>

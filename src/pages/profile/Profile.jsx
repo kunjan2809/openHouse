@@ -38,7 +38,7 @@ const Profile = () => {
                                         date='15th Feb’2023'
                                         time='10:30 p.m.'
                                         address='603, Borinson street, Texas, USA'
-                                        isSold={false}
+                                        isSold={true}
                                     />
                                 </Col>
                                 <Col span={8}>
@@ -58,7 +58,7 @@ const Profile = () => {
                                         date='15th Feb’2023'
                                         time='10:30 p.m.'
                                         address='603, Borinson street, Texas, USA'
-                                        isSold={false}
+                                        isSold={true}
                                     />
                                 </Col>
                                 <Col span={8}>
@@ -68,7 +68,7 @@ const Profile = () => {
                                         date='15th Feb’2023'
                                         time='10:30 p.m.'
                                         address='603, Borinson street, Texas, USA'
-                                        isSold={false}
+                                        isSold={true}
                                     />
                                 </Col>
                             </Row>

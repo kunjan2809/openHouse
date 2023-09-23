@@ -23,12 +23,13 @@
                 cursor: pointer;
                 transition: all 0.1s linear 0s;
 
-                &:hover {
-                    color: $colorLevel4
-                }
+                a {
+                    color: $colorGrey;
+                    transition: all 0.1s linear 0s;
 
-                &:visited {
-                    color: $colorLevel4
+                    &:hover {
+                        color: $colorLevel4
+                    }
                 }
             }
         }
