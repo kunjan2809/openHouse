@@ -268,11 +268,12 @@
             box-sizing: border-box;
 
             .list-your-property-header {
-                width: 550px;
+                width: 520px;
 
                 h1 {
                     color: white;
                     font-size: 3rem;
+                    font-weight: 500
                 }
             }
 
@@ -292,6 +293,7 @@
             color: $colorLevel10;
             margin-block: 0.3rem;
             font-size: 2.5rem;
+            font-weight: 600;
         }
 
         .line {

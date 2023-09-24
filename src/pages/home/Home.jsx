@@ -1,7 +1,6 @@
 import { Input } from 'antd';
 import { Button, Col, Row, Select } from 'antd'
 import './home.scss'
-import PropetyCard from '../../components/card/propetyCard'
 import cardImg from '../../assets/images/property.png'
 import cardImg2 from '../../assets/images/preperty-thumb-2.png'
 import Feature from './components/Feature'
@@ -9,6 +8,7 @@ import dealsSVG from '../../assets/svgs/deals.svg'
 import hostSVG from '../../assets/svgs/host.svg'
 import quickSVG from '../../assets/svgs/quick.svg'
 import { Pagination } from 'antd';
+import PropertyCard from '../../components/card/propetyCard';
 
 
 const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
@@ -73,7 +73,7 @@ const Home = () => {
                                 return <Col span={6} key={val}>
                                     {
                                         (i % 2 === 1) ? (
-                                            <PropetyCard
+                                            <PropertyCard
                                                 image={cardImg2}
                                                 price='3,75,000'
                                                 date='15th Feb’2023'
@@ -82,7 +82,7 @@ const Home = () => {
                                                 isSold={false}
                                                 isLikeable={true}
                                                 isLiked={false}
-                                            />) : (<PropetyCard
+                                            />) : (<PropertyCard
                                                 image={cardImg}
                                                 price='3,75,000'
                                                 date='15th Feb’2023'

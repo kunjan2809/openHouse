@@ -18,7 +18,7 @@ const Blog = () => {
                 </div>
                 <div className='blogs-wrapper'>
                     <div className='underlined-heading'>
-                        <h1 className='heading'>{"Latest Blogs"}</h1>
+                        <h1 className='heading'>Latest Blogs</h1>
                         <div className='line'></div>
                     </div>
                     <div className='blogs-container'>

@@ -13,6 +13,10 @@
 
         .links {
             display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding-inline: 20px;
+
 
             li {
                 list-style-type: none;
@@ -29,6 +33,24 @@
 
                     &:hover {
                         color: $colorLevel4
+                    }
+
+                    &::after {
+                        content: '';
+                        display: block;
+                        border-bottom: 3px solid $colorLevel5;
+                        width: 0%;
+                    }
+
+                    &.active {
+                        color: $colorLevel5;
+
+                        &::after {
+                            transition: all 0.1s linear 0s;
+                            content: '';
+                            display: block;
+                            width: 100%;
+                        }
                     }
                 }
             }

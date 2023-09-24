@@ -26,8 +26,9 @@ const App = () => {
 
           <Route path="/" element={<Layout><Home /></Layout>} />
           <Route path="/profile" element={<Layout><Profile /></Layout>} />
+
           <Route path="/blog" element={<Layout><Blog /></Layout>} />
-          <Route path="/blog-details/:id" element={<Layout><BlogDetails /></Layout>} />
+          <Route path="/blog/:id" element={<Layout><BlogDetails /></Layout>} />
 
           <Route path="/" >
             {/* <Route path="/" element={<AuthRoute permissionType="ALLOW"><Dashboard /></AuthRoute>} /> */}

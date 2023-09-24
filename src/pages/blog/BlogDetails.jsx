@@ -1,6 +1,8 @@
 
-import profile from '../../assets/images/avatar-demo.png'
-import home from '../../assets/images/house-listing.png'
+import { Button, Input } from 'antd'
+import profileIMG from '../../assets/images/avatar-demo-2.png'
+import homeIMG from '../../assets/images/blog-thumb.png'
+import './blogdetails.scss'
 
 const BlogDetails = () => {
     return (
@@ -14,7 +16,7 @@ const BlogDetails = () => {
                     </div>
                     <div className="line-div"></div>
                     <div className="profile-card">
-                        <img src={profile} alt="" />
+                        <img src={profileIMG} alt="" />
                         <div className="profile-data">
                             <h4>Alina Sarkov</h4>
                             <span>May 21, 2023</span>
@@ -22,9 +24,24 @@ const BlogDetails = () => {
                     </div>
                 </div>
                 <div className="blog-content-wrapper">
-                    <img src={home} alt="" />
+                    <img src={homeIMG} alt="" />
                     <div className="blog-conent">
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sunt voluptates odio consequuntur commodi veniam id iste labore vitae numquam praesentium facere hic quia maxime sapiente dolore quidem atque illo molestiae quae, quis aspernatur harum maiores voluptate? Suscipit ipsum aperiam, vitae quam soluta dignissimos! Recusandae nisi porro iusto dolores soluta maiores, dignissimos neque impedit modi unde nostrum ullam veritatis eveniet officia? Eaque esse laudantium eveniet voluptatum est dicta, praesentium repellat, dolorem accusantium maiores quaerat illo provident nihil illum nisi cumque temporibus iure excepturi necessitatibus deserunt qui vero quod. Ex asperiores aliquam minima officia est, ratione aliquid! Molestiae doloribus, culpa aspernatur, nemo id earum tenetur fugit, dicta voluptas quam distinctio vitae cupiditate optio ad esse ullam blanditiis soluta quae. Hic veniam facere vel cumque aperiam consectetur ea et, numquam expedita repellat! Nesciunt alias ad porro quidem quod minima est voluptatibus, blanditiis et sed enim, dicta, ex impedit tenetur? Provident laboriosam nisi deleniti, corporis ratione eum, quibusdam nulla pariatur accusamus veritatis, dolorem adipisci ut numquam unde nihil necessitatibus. Officiis sit molestiae, soluta cumque saepe hic ex ab, nobis quibusdam velit ducimus quo debitis nostrum suscipit voluptatibus iure exercitationem dolor eum. Modi quis provident a explicabo veniam excepturi ullam omnis, amet alias eos ipsum mollitia? Suscipit rerum, itaque deserunt quidem consectetur aspernatur saepe? Minus, in error ducimus perferendis sed aspernatur expedita dolores laborum aut numquam, officiis dicta porro, laudantium assumenda voluptate maxime esse iure culpa quaerat ea? Consequatur repellendus dicta vitae praesentium quaerat magni commodi doloribus animi ullam laboriosam unde quos architecto ex aut cumque assumenda, voluptates sint! Earum explicabo natus eos. Velit iste excepturi alias delectus vitae nobis repudiandae similique voluptate libero necessitatibus vero deserunt a eligendi ex odio, ut tempora asperiores eveniet distinctio error quaerat, illo officia. Commodi sequi temporibus laboriosam tempora adipisci quam natus quia accusantium sunt totam labore ex ullam alias repudiandae, obcaecati a, eos assumenda, quisquam dignissimos nostrum eius minima? Enim, aliquid ad, velit aperiam cumque, dolore eligendi inventore pariatur molestiae labore temporibus numquam alias vero. Ad, iusto nostrum ipsam adipisci, hic magnam ea optio tenetur aut sequi eligendi commodi corrupti nobis eum. Corrupti ad illo temporibus, possimus odio asperiores ipsa deserunt sequi odit accusantium, tempore voluptas omnis consequuntur amet, consequatur sed vero sunt. Autem reiciendis officiis, perferendis nesciunt a porro ipsa blanditiis ullam illum quam voluptate quod, repellat quidem aperiam eos? Modi ea fugiat, quidem non nobis tenetur dolore quod corporis, rerum voluptatem assumenda reiciendis perspiciatis ab harum.
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis architecto quasi dolore voluptatem aliquid consequuntur quibusdam ratione explicabo similique tempora. Quasi, soluta praesentium aliquam ipsa nesciunt eum porro eius laborum ipsam obcaecati quas dolorem beatae odio dolores mollitia impedit saepe. Accusantium, fugit hic. A reprehenderit, vero ut iusto hic eius dicta voluptatem tempora pariatur, architecto laboriosam similique totam nulla. Nulla exercitationem nisi voluptas fugiat ipsam rem placeat doloribus rerum pariatur.</p>
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aut sunt unde amet et ratione. Eum veniam, veritatis voluptates ea quisquam cupiditate doloremque sunt blanditiis omnis voluptate beatae, nulla quasi laudantium? Impedit a natus consectetur iure cum voluptas, vitae nam molestiae adipisci minus beatae earum fugiat quis corporis consequatur et debitis recusandae nobis animi odio nemo maxime maiores. Odit atque nemo optio quos. Quae voluptas quas asperiores omnis distinctio adipisci illo iusto explicabo voluptate. Unde nihil illo similique dolore minus, est dolores nemo quae molestias voluptatem voluptas nobis mollitia aspernatur illum quia natus officiis, incidunt quo vero harum deserunt. Nisi, veritatis? Numquam cupiditate ut, recusandae eum laboriosam atque non blanditiis laborum voluptate ab! Vel inventore alias pariatur deserunt voluptatibus saepe, nisi velit delectus culpa fugit officia ut nam doloremque natus atque expedita amet cumque iste perferendis quo excepturi cupiditate quis. Ipsa, quam magnam! Minima, laudantium eligendi possimus ullam cupiditate voluptatibus nisi! Nobis nam at possimus sapiente ullam saepe, magni modi temporibus illo, rerum eos eius tempore. Inventore asperiores consequuntur non optio labore ipsum deserunt quia quisquam! Nostrum ut similique quos vitae, doloremque suscipit dolores aliquam tempore architecto delectus accusamus quas nisi.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo, beatae blanditiis. Pariatur, nisi ipsum! Incidunt voluptate neque tempora dolorum quaerat.</p>
+                    </div>
+                </div>
+                <div className='lead-gen-from'>
+                    <div className='description'>
+                        <h3>Submit your mail Id for Our Newsletter</h3>
+                        <span>Receive the latest news straight to your inbox.</span>
+                    </div>
+                    <div className='form'>
+                        <Input
+                            className="input-field"
+                            placeholder="Enter your Email Address"
+                        />
+                        <Button type="primary" className='submit-btn'>Submit</Button>
                     </div>
                 </div>
             </div>

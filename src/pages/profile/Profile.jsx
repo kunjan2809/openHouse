@@ -1,8 +1,8 @@
 import { Button, Col, Row } from "antd"
-import PropetyCard from "../../components/card/propetyCard"
 import cardImg from '../../assets/images/property.png'
 // import cardImg2 from '../../assets/images/home-auth.png'
 import './profile.scss'
+import PropertyCard from "../../components/card/propetyCard"
 
 const Profile = () => {
     return (
@@ -22,7 +22,7 @@ const Profile = () => {
                             </div>
                             <Row>
                                 <Col span={8}>
-                                    <PropetyCard
+                                    <PropertyCard
                                         image={cardImg}
                                         price='3,75,000'
                                         date='15th Feb’2023'
@@ -32,7 +32,7 @@ const Profile = () => {
                                     />
                                 </Col>
                                 <Col span={8}>
-                                    <PropetyCard
+                                    <PropertyCard
                                         image={cardImg}
                                         price='3,75,000'
                                         date='15th Feb’2023'
@@ -42,7 +42,7 @@ const Profile = () => {
                                     />
                                 </Col>
                                 <Col span={8}>
-                                    <PropetyCard
+                                    <PropertyCard
                                         image={cardImg}
                                         price='3,75,000'
                                         date='15th Feb’2023'
@@ -52,7 +52,7 @@ const Profile = () => {
                                     />
                                 </Col>
                                 <Col span={8}>
-                                    <PropetyCard
+                                    <PropertyCard
                                         image={cardImg}
                                         price='3,75,000'
                                         date='15th Feb’2023'
@@ -62,7 +62,7 @@ const Profile = () => {
                                     />
                                 </Col>
                                 <Col span={8}>
-                                    <PropetyCard
+                                    <PropertyCard
                                         image={cardImg}
                                         price='3,75,000'
                                         date='15th Feb’2023'
