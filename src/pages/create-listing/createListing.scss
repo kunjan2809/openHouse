@@ -1,0 +1,115 @@
+@import '../../assets/scss/variables.scss';
+@import '../../assets/scss/mixins.scss';
+
+.create-property-stepper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 2rem;
+    padding-top: 3rem;
+    background-color: rgb(255 255 255);
+
+    .page-heading {
+        margin: 0;
+        font-weight: 500;
+        color: $colorLevel10;
+    }
+
+    .stepper {
+        margin-top: 4rem;
+        width: 70%;
+
+        .ant-steps {
+            .ant-steps-item {
+                .ant-steps-item-container {
+                    .ant-steps-item-tail {
+                        &::after {
+                            background-color: $colorLevel2;
+                            height: 2px;
+                            width: 100%;
+                            margin-inline: 0px;
+                        }
+                    }
+
+                    .ant-steps-item-icon {
+                        .ant-steps-icon {
+
+                            .step-finish,
+                            .step-process {
+                                position: relative;
+                                bottom: 10px;
+                                right: 10px;
+                            }
+
+                            .step-wait {
+                                position: relative;
+                                bottom: 2px;
+                                right: 2px;
+                            }
+                        }
+                    }
+
+                    .ant-steps-item-content {
+                        .ant-steps-item-title {
+                            color: $colorLevel7;
+                        }
+                    }
+
+                    &:hover {
+                        .ant-steps-item-content {
+                            .ant-steps-item-title {
+                                color: $colorLevel9;
+                            }
+                        }
+                    }
+                }
+
+                &.ant-steps-item-finish {
+                    .ant-steps-item-container {
+                        .ant-steps-item-tail {
+                            &::after {
+                                background-color: $colorLevel5;
+                                height: 2px;
+                            }
+                        }
+                    }
+                }
+
+            }
+        }
+    }
+
+    .step-form-page {
+        width: 80%;
+        border: 1px solid lightgray;
+        margin-top: 5rem;
+        border-radius: 5px;
+        padding: 3rem;
+
+        .property-form {
+            .title{
+                margin: 0px;
+                margin-bottom: 2rem;
+                font-weight: 500;
+                text-transform:uppercase;
+            }
+        }
+
+
+
+        .page-ctrl {
+            @include flexPosition();
+            justify-content: space-between;
+
+            .btn {
+                @include buttonPrimary();
+                height: auto;
+                padding: 10px 40px;
+                border-radius: 30px;
+            }
+        }
+    }
+}

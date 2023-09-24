@@ -9,6 +9,7 @@ import Layout from './components/layout/Layout'
 import Profile from './pages/profile/Profile'
 import Blog from './pages/blog/Blog'
 import BlogDetails from './pages/blog/BlogDetails'
+import CreateListing from './pages/create-listing/CreateListing'
 // import Layout from './components/layout/Layout'
 // import AuthRoute from './components/authRoute/AuthRoute'
 
@@ -30,9 +31,7 @@ const App = () => {
           <Route path="/blog" element={<Layout><Blog /></Layout>} />
           <Route path="/blog/:id" element={<Layout><BlogDetails /></Layout>} />
 
-          <Route path="/" >
-            {/* <Route path="/" element={<AuthRoute permissionType="ALLOW"><Dashboard /></AuthRoute>} /> */}
-          </Route>
+          <Route path="/create-listing" element={<Layout><CreateListing /></Layout>} />
 
           {/* <Route path="*" element={<PageNotFound />} /> */}
         </Routes>
