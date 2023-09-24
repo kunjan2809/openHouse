@@ -10,6 +10,8 @@ import Profile from './pages/profile/Profile'
 import Blog from './pages/blog/Blog'
 import BlogDetails from './pages/blog/BlogDetails'
 import CreateListing from './pages/create-listing/CreateListing'
+import About from './pages/about/About'
+import Contact from './pages/contact/Contact'
 // import Layout from './components/layout/Layout'
 // import AuthRoute from './components/authRoute/AuthRoute'
 
@@ -32,6 +34,13 @@ const App = () => {
           <Route path="/blog/:id" element={<Layout><BlogDetails /></Layout>} />
 
           <Route path="/create-listing" element={<Layout><CreateListing /></Layout>} />
+          <Route path="/about" element={<Layout><About /></Layout>} />
+          <Route path="/contact" element={<Layout><Contact /></Layout>} />
+
+
+          <Route path="/" >
+            {/* <Route path="/" element={<AuthRoute permissionType="ALLOW"><Dashboard /></AuthRoute>} /> */}
+          </Route>
 
           {/* <Route path="*" element={<PageNotFound />} /> */}
         </Routes>
