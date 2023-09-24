@@ -1,6 +1,12 @@
 import { Button, Col, Row } from "antd"
 import cardImg from '../../assets/images/property.png'
-// import cardImg2 from '../../assets/images/home-auth.png'
+import profile_img from '../../assets/images/profile-img.png'
+import phone_svg from "../../assets/svgs/phone.svg"
+import mail_svg from "../../assets/svgs/email.svg"
+import instagram from "../../assets/svgs/instagram.svg"
+import facebook from "../../assets/svgs/facebook.svg"
+import twitter from "../../assets/svgs/twitter.svg"
+import edit_icon from "../../assets/svgs/edit-icon.svg"
 import './profile.scss'
 import PropertyCard from "../../components/card/propetyCard"
 
@@ -10,8 +16,30 @@ const Profile = () => {
             <div className="profile-container">
                 <Row gutter={30}>
                     <Col span={6}>
-                        <div className="use-profile">
-
+                        <div className="user-profile-wrapper">
+                            <div className="user-details-wrapper">
+                                <img src={profile_img} alt="" className="user-profile" />
+                                <div className="profile-description">
+                                    <h4>Prashant Vats</h4>
+                                    <span>With over a decade of experience and a passion for client satisfaction, John Smith is your go-to real estate professional.</span>
+                                </div>
+                                <div className="contact-info-wrapper">
+                                    <h5>Get in Touch:</h5>
+                                    <div className="contact-info">
+                                        <span><img src={phone_svg} alt="" /> +91 986476483</span>
+                                        <span><img src={mail_svg} alt="" /> prashant30@gmail.com</span>
+                                    </div>
+                                </div>
+                                <div className="follow-icons">
+                                    <h5>Follow me on:</h5>
+                                    <div className="icons">
+                                        <img src={instagram} alt="" />
+                                        <img src={facebook} alt="" />
+                                        <img src={twitter} alt="" />
+                                    </div>
+                                </div>
+                                <Button className="edit-profile"><span><img src={edit_icon} alt="" /> Edit Profile</span></Button>
+                            </div>
                         </div>
                     </Col>
                     <Col span={18}>
