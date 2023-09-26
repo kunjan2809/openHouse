@@ -9,6 +9,7 @@ import hostSVG from '../../assets/svgs/host.svg'
 import quickSVG from '../../assets/svgs/quick.svg'
 import { Pagination } from 'antd';
 import PropertyCard from '../../components/card/propetyCard';
+import { Link } from 'react-router-dom';
 
 
 const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
@@ -113,13 +114,13 @@ const Home = () => {
                             <Col span={8}>
                                 <Feature
                                     svgPath={dealsSVG}
-                                    title='EXCELENT DEALS'
+                                    title='EXCELLENT DEALS'
                                 />
                             </Col>
                             <Col span={8}>
                                 <Feature
                                     svgPath={hostSVG}
-                                    title='FRENDLY HOST'
+                                    title='FRIENDLY HOST'
                                 />
                             </Col>
                             <Col span={8}>
@@ -137,7 +138,11 @@ const Home = () => {
                             <h1>Register your property Free today.</h1>
                         </div>
                         <div className='list-property-btn-container'>
-                            <Button type="primary" className="list-property-btn">List Your Property</Button>
+                            <Button type="primary" className="list-property-btn">
+                                <Link to='/create-listing'>
+                                    List Your Property
+                                </Link>
+                            </Button>
                         </div>
                     </div>
                 </div>

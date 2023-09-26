@@ -12,6 +12,8 @@ import BlogDetails from './pages/blog/BlogDetails'
 import CreateListing from './pages/create-listing/CreateListing'
 import About from './pages/about/About'
 import Contact from './pages/contact/Contact'
+import PropertyDetails from './pages/propertyDetails/PropertyDetails'
+import ListingSuccess from './pages/create-listing/ListingSuccess'
 // import Layout from './components/layout/Layout'
 // import AuthRoute from './components/authRoute/AuthRoute'
 
@@ -34,8 +36,13 @@ const App = () => {
           <Route path="/blog/:id" element={<Layout><BlogDetails /></Layout>} />
 
           <Route path="/create-listing" element={<Layout><CreateListing /></Layout>} />
+          <Route path="/create-listing/submit" element={<Layout><ListingSuccess /></Layout>} />
+          <Route path="/property/:id" element={<Layout><PropertyDetails /></Layout>} />
+
           <Route path="/about" element={<Layout><About /></Layout>} />
           <Route path="/contact" element={<Layout><Contact /></Layout>} />
+
+
 
 
           <Route path="/" >

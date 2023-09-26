@@ -23,9 +23,13 @@ const Navbar = () => {
                             </ul>
                         </Col>
                         <Col span={4}>
+                            {true ?
+                                <Link to='/profile'>
+                                    <Avatar src={<img src={profile} alt="avatar" />} />
+                                </Link> :
                             <Link to='/login'>
-                                {true ? <Avatar src={<img src={profile} alt="avatar" />} /> : <Button type="primary" className='primary-button'>Sign in</Button>}
-                            </Link>
+                                <Button type="primary" className='primary-button'>Sign in</Button>
+                            </Link>}
                         </Col>
                     </Row>
                 </Col>

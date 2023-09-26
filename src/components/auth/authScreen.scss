@@ -57,44 +57,24 @@
                     }
 
                     .input-field {
-                        padding: 10px;
-
-                        &:hover {
-                            border-color: $colorLevel6;
-                        }
-
-                        &:focus {
-                            border-color: $colorLevel6;
-                        }
+                        @include inputConfig();
                     }
+                
+                    //select
 
                     .input-field-labeled {
-
-                        span.ant-input-group-addon {
-                            // width: auto;
-                            max-width: 5rem;
+                        @include addonBefore();
+                        
+                        .ant-input-group-addon {
+                            width: 100px
                         }
-
-                        input {
-                            padding: 10px;
-
-                            &:hover {
-                                border-color: $colorLevel6;
-                            }
-
-                            &:focus {
-                                border-color: $colorLevel6;
-                            }
-                        }
-
-                        .select-country-code {
-                            margin: 0px;
-
-                            .ant-select-selection-item{
-                                color: black;
-                            }
-                        }
+    
                     }
+
+                    .ant-input {
+                        @include inputConfig();
+                    }
+                    
 
                     .signin-btn {
                         @include buttonPrimary();
@@ -216,4 +196,8 @@
             }
         }
     }
+}
+
+.country-code-selector {
+    @include selectPopover();
 }

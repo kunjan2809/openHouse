@@ -1,15 +1,15 @@
 
 import './createListing.scss'
-import { Button, Popover, Steps } from 'antd';
+import {  Popover, Steps } from 'antd';
 import finishSVG from '../../assets/svgs/step-finish.svg'
 import processSVG from '../../assets/svgs/step-process.svg'
 import waitSVG from '../../assets/svgs/step-wait.svg'
-import PropertyDetails from './conponents/PropertyDetails';
-import Location from './conponents/Location';
-import Pricing from './conponents/Pricing';
-import DateAndTime from './conponents/DateAndTime';
-import UploadPictures from './conponents/UploadPictures';
+import Location from './components/Location';
+import Pricing from './components/Pricing';
+import DateAndTime from './components/DateAndTime';
+import UploadPictures from './components/UploadPictures';
 import { useState } from 'react';
+import PropertyInfo from './components/PropertyInfo';
 
 const STATUS = {
     finish: 'finish',
@@ -65,23 +65,23 @@ const CreateListing = () => {
     const STEPS = [
         {
             title: 'PROPERTY DETAILS',
-            Conponent: PropertyDetails
+            Component: PropertyInfo
         },
         {
             title: 'LOCATION',
-            Conponent: Location
+            Component: Location
         },
         {
             title: 'PRICING',
-            Conponent: Pricing
+            Component: Pricing
         },
         {
             title: 'DATE & TIME',
-            Conponent: DateAndTime
+            Component: DateAndTime
         },
         {
             title: 'UPLOAD PICTURES',
-            Conponent: UploadPictures
+            Component: UploadPictures
         },
     ]
 
@@ -102,7 +102,7 @@ const CreateListing = () => {
     return (
         <>
             <div className="create-property-stepper">
-                <h1 className='page-heading'>ADD YOUR LISTING</h1>
+                <h1 className='page-heading'>ADD YOUR PROPERTY</h1>
 
                 <div className='stepper'>
                     <Steps
@@ -116,17 +116,17 @@ const CreateListing = () => {
                 <div className='step-form-page'>
                     <div className='property-form'>
                         {
-                            STEPS.map(({ Conponent }, index) => {
+                            STEPS.map(({ Component }, index) => {
                                 if (current === index) {
-                                    return <Conponent key={index} />
+                                    return <Component
+                                        key={index}
+                                        handlePrev={handlePrev}
+                                        handleNext={handleNext}
+                                    />
                                 }
                                 return ''
                             })
                         }
-                    </div>
-                    <div className='page-ctrl'>
-                        <Button type="primary" className="btn" onClick={() => handlePrev()}>Prev</Button>
-                        <Button type="primary" className="btn" onClick={() => handleNext()}>Save & Next</Button>
                     </div>
                 </div>
             </div>

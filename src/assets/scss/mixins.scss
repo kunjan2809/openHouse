@@ -15,3 +15,98 @@
     justify-content: center;
     align-items: center;
 }
+
+@mixin selectPopover() {
+    border: 1px solid lightgray;
+    font-family: Poppins;
+    width: 200px;
+
+    .ant-select-item {
+        color: $colorGray;
+    }
+
+    .ant-select-item.ant-select-item-option-selected {
+        background-color: transparent;
+        border-radius: 0px;
+        position: relative;
+        color: $colorLevel6;
+
+
+        &::before {
+            content: '';
+            display: block;
+            height: 25px;
+            width: 4px;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            background-color: $colorLevel6;
+            border-radius: 2px;
+            margin-top: 5px;
+
+        }
+    }
+}
+
+@mixin selectLabel () {
+    width: 100%;
+    height: auto;
+
+    .ant-select-selector {
+        padding-block: 5px;
+    }
+
+    &.ant-select-focused {
+        .ant-select-selector {
+            border-color: $colorLevel5;
+        }
+    }
+
+    &:hover {
+        .ant-select-selector {
+            border-color: $colorLevel5;
+        }
+    }
+}
+
+@mixin inputConfig() {
+    padding: 10px;
+
+    &:hover {
+        border-color: $colorLevel6;
+    }
+
+    &:focus {
+        border-color: $colorLevel6;
+    }
+}
+
+@mixin addonBefore() {
+    .ant-select {
+        .ant-select-selector {
+            padding-block: 0px;
+            width: 100px;
+
+            .ant-select-selection-item {
+                color: $colorLevel6;
+                font-weight: 500;
+            }
+        }
+
+        &.ant-select-focused {
+            .ant-select-selector {
+                border: none;
+            }
+        }
+
+        &:hover {
+            .ant-select-selector {
+                border: none;
+            }
+        }
+    }
+
+    .ant-input-group-addon {
+        width: 100px
+    }
+}

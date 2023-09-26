@@ -90,19 +90,162 @@
         padding: 3rem;
 
         .property-form {
-            .title{
+            .title {
                 margin: 0px;
                 margin-bottom: 2rem;
                 font-weight: 500;
-                text-transform:uppercase;
+                text-transform: uppercase;
             }
+
+            label {
+                display: block;
+                margin-bottom: 0.2rem;
+                margin-top: 1.3rem;
+                font-weight: 500;
+            }
+
+            .property-details-form,
+            .location-form {
+
+                .ant-input {
+                    @include inputConfig();
+                }
+
+                .ant-select {
+                    @include selectLabel();
+                }
+
+                .ant-radio-group {
+                    display: flex;
+
+                    .ant-radio-wrapper {
+                        @include flexPosition();
+                        margin-top: 0.1rem;
+
+                        .ant-radio-checked .ant-radio-inner {
+                            border-color: $colorLevel6;
+                            background-color: $colorLevel5;
+                        }
+
+                        .ant-radio:hover .ant-radio-inner {
+                            border-color: $colorLevel6 ;
+                        }
+                    }
+                }
+            }
+
+            .pricing-form {
+
+                .input-field-labeled {
+                    @include addonBefore();
+                }
+
+                .ant-input {
+                    @include inputConfig();
+                }
+            }
+
+            .date-and-time-form {
+                .ant-picker {
+                    width: 100%;
+                    padding: 10px;
+
+                    &:hover {
+                        border-color: $colorLevel6;
+                    }
+
+                    &.ant-picker-focused {
+                        border-color: $colorLevel6;
+                    }
+
+                }
+
+                .ant-picker-range {
+                    .ant-picker-active-bar {
+                        background-color: $colorLevel6;
+                    }
+                }
+            }
+
+            .images-form {
+                width: 90%;
+
+                .custom-upload-box {
+                    @include flexPosition();
+                    margin: 0;
+                    border: 2px dashed #ccc;
+                    height: 100px;
+                    width: 100px;
+                    border-radius: 8px;
+                    text-align: center;
+                    cursor: pointer;
+
+                    .custom-upload-label {
+                        @include flexPosition();
+                        flex-direction: column;
+                        height: 100%;
+                        margin: 0;
+                        cursor: pointer;
+                    }
+
+                    .input-img {
+                        display: none;
+
+                        :disabled {
+                            background-color: lightgray
+                        }
+                    }
+                }
+
+                .img-group {
+                    @include flexPosition();
+                    justify-content: flex-start;
+
+                    .image-container {
+                        position: relative;
+                        display: inline-block;
+
+                        .preview-img {
+                            max-width: 100%;
+                            max-height: 100%;
+                            object-fit: cover;
+                            width: 100px;
+                            height: 100px;
+                            border-radius: 5px;
+                        }
+
+                        .delete-button {
+                            @include flexPosition();
+                            position: absolute;
+                            top: -5px;
+                            right: -5px;
+                            background-color: red;
+                            color: white;
+                            border-radius: 50%;
+                            cursor: pointer;
+                            width: 20px;
+                            height: 20px;
+                            padding: 0;
+
+                            .ant-btn-icon {
+                                svg {
+                                    font-size: 12px;
+                                    color: white;
+                                }
+                            }
+                        }
+                    }
+
+                }
+
+            }
+
         }
-
-
 
         .page-ctrl {
             @include flexPosition();
             justify-content: space-between;
+            margin-top: 2.5rem;
 
             .btn {
                 @include buttonPrimary();
@@ -111,5 +254,93 @@
                 border-radius: 30px;
             }
         }
+
     }
+}
+
+
+.step-select-opt {
+    @include selectPopover();
+}
+
+.ant-picker-dropdown {
+    .ant-picker-panel-container {
+        .ant-picker-panel-layout {
+            .ant-picker-header {
+                .ant-picker-header-view {
+                    button:hover {
+                        color: $colorLevel7;
+                    }
+                }
+            }
+
+            .ant-picker-body {
+                .ant-picker-content {
+                    td.ant-picker-cell-today {
+                        .ant-picker-cell-inner {
+                            background-color: rgba(211, 211, 211, 0.27);
+
+                            &::before {
+                                border: none;
+                            }
+                        }
+                    }
+
+                    td.ant-picker-cell-selected {
+                        .ant-picker-cell-inner {
+                            background-color: $colorLevel5;
+
+                            &::before {
+                                border: none;
+                            }
+                        }
+                    }
+
+                }
+            }
+
+            .ant-picker-footer {
+                a.ant-picker-today-btn {
+                    color: $colorLevel6;
+                    font-weight: 500;
+                }
+
+                .ant-picker-ranges {
+                    .ant-picker-ok {
+                        .ant-btn {
+                            background-color: $colorLevel5;
+                        }
+
+                        :disabled {
+                            background-color: lightgray;
+                        }
+                    }
+
+                }
+            }
+
+            .ant-picker-panels {
+                .ant-picker-time-panel {
+
+                    .ant-picker-content {
+                        .ant-picker-time-panel-column {
+                            .ant-picker-time-panel-cell {
+                                &.ant-picker-time-panel-cell-selected {
+                                    .ant-picker-time-panel-cell-inner {
+                                        background-color: $colorLevel5;
+                                        color: white;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+            }
+        }
+    }
+}
+
+.money-filter-select {
+    @include selectPopover();
 }

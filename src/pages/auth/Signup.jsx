@@ -6,13 +6,6 @@ const { Option } = Select;
 
 const Signup = () => {
 
-    const selectBefore = (
-        <Select defaultValue="+1" className="select-country-code">
-            <Option value="+1">+1</Option>
-            <Option value="+91">+91</Option>
-        </Select>
-    );
-
     return (
         <>
             <AuthScreen>
@@ -50,9 +43,18 @@ const Signup = () => {
                                         <Input
                                             className="input-field-labeled"
                                             placeholder=" "
-                                            addonBefore={selectBefore}
+                                            addonBefore={
+                                                <Select
+                                                    defaultValue="+1"
+                                                    className="select-country-code"
+                                                    popupClassName="country-code-selector"
+                                                    >
+                                                    <Option value="+1">+1</Option>
+                                                    <Option value="+91">+91</Option>
+                                                </Select>
+                                            }
                                         />
-                                         <p className="input-label">Email</p>
+                                        <p className="input-label">Email</p>
                                         <Input
                                             className="input-field"
                                             placeholder="Enter Email"
