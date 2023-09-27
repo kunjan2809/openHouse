@@ -19,12 +19,12 @@ const ResetPassword = () => {
                   <form>
                     <p className="input-label">New Password</p>
                     <Input.Password
-                      className="input-field"
+                      className="input-field input-field-password"
                       placeholder="Enter password"
                     />
                     <p className="input-label">Confirm Password</p>
                     <Input.Password
-                      className="input-field"
+                      className="input-field input-field-password"
                       placeholder="Enter password again"
                     />
                     <Button type="primary" className="signin-btn">Submit</Button>

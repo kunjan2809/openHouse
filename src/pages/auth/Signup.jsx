@@ -61,12 +61,12 @@ const Signup = () => {
                                         />
                                         <p className="input-label">Password</p>
                                         <Input.Password
-                                            className="input-field"
+                                            className="input-field input-field-password"
                                             placeholder="Enter password"
                                         />
                                         <p className="input-label">Confirm Password</p>
                                         <Input.Password
-                                            className="input-field"
+                                            className="input-field input-field-password"
                                             placeholder="Re-enter password"
                                         />
                                         <Button type="primary" className="signin-btn">Sign up</Button>

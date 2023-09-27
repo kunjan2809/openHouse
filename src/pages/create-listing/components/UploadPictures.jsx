@@ -1,4 +1,4 @@
-import { PlusOutlined, MinusOutlined  } from "@ant-design/icons";
+import { PlusOutlined, MinusOutlined } from "@ant-design/icons";
 import { Button, Col, Image, Row } from "antd"
 import PropTypes from "prop-types"
 import { useState } from "react";
@@ -15,13 +15,24 @@ const UploadPictures = ({ handleNext, handlePrev }) => {
         setFileList(updatedFileList);
     };
 
-    const getBase64 = (e) => {
-        const reader = new FileReader()
-        reader.readAsDataURL(e.target.files[0])
-        reader.onload = () => {
-            setFileList((prev) => [...prev, reader.result])
+    const handleFileChange = (e) => {
+        const files = e.target.files;
+        if (files && files.length > 0) {
+            // Calculate the number of new files that can be added
+            const remainingSlots = 12 - fileList.length;
+            const newFiles = Array.from(files).slice(0, remainingSlots);
+
+            setFileList((prev) => [...prev, ...newFiles]);
         }
-    }
+    };
+
+    // const getBase64 = (e) => {
+    //     const reader = new FileReader()
+    //     reader.readAsDataURL(e.target.files[0])
+    //     reader.onload = () => {
+    //         setFileList((prev) => [...prev, reader.result])
+    //     }
+    // }
 
     console.log('fileList :>> ', fileList);
 
@@ -46,9 +57,9 @@ const UploadPictures = ({ handleNext, handlePrev }) => {
                                         type="file"
                                         accept="image/*"
                                         id="imageInput"
-                                        onChange={getBase64}
+                                        onChange={handleFileChange}
                                         className="input-img"
-                                    // disabled={fileList?.length < 12 ? false : true}
+                                        multiple
                                     />
                                 </div>}
                                 <br />
@@ -63,7 +74,7 @@ const UploadPictures = ({ handleNext, handlePrev }) => {
                                             return <>
                                                 <Col span={4} key={index}>
                                                     <div className="image-container">
-                                                        <Image className="preview-img" src={img} />
+                                                        <Image className="preview-img" src={URL.createObjectURL(img)} />
                                                         <Button
                                                             type="link"
                                                             icon={<MinusOutlined />}

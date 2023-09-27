@@ -42,9 +42,6 @@ const App = () => {
           <Route path="/about" element={<Layout><About /></Layout>} />
           <Route path="/contact" element={<Layout><Contact /></Layout>} />
 
-
-
-
           <Route path="/" >
             {/* <Route path="/" element={<AuthRoute permissionType="ALLOW"><Dashboard /></AuthRoute>} /> */}
           </Route>

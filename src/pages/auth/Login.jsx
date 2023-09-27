@@ -21,7 +21,7 @@ const Login = () => {
                                 />
                                 <p className="input-label">Password</p>
                                 <Input.Password
-                                    className="input-field"
+                                    className="input-field input-field-password"
                                     placeholder="Enter password"
                                 />
                                 <Button type="primary" className="signin-btn">Sign in</Button>

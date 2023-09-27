@@ -86,6 +86,7 @@
         .ant-select-selector {
             padding-block: 0px;
             width: 100px;
+            transition: none;
 
             .ant-select-selection-item {
                 color: $colorLevel6;

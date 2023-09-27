@@ -58,23 +58,28 @@
 
                     .input-field {
                         @include inputConfig();
+
+                        &.input-field-password{
+                        &.ant-input-affix-wrapper-focused{
+                            border-color: $colorLevel6;
+                        }
+                        }
                     }
                 
                     //select
-
                     .input-field-labeled {
                         @include addonBefore();
                         
                         .ant-input-group-addon {
                             width: 100px
                         }
-    
-                    }
 
-                    .ant-input {
-                        @include inputConfig();
-                    }
-                    
+                        .ant-input {
+                            @include inputConfig();
+                        }
+                    }  
+
+
 
                     .signin-btn {
                         @include buttonPrimary();

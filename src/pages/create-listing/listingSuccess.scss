@@ -5,6 +5,9 @@
     @include flexPosition();
     flex-direction: column;
     min-height: 600px;
+    background-image: url('../../assets/images/property-success.png');
+    background-repeat: repeat;
+    background-position: center center;
 
     img {
         height: 70px;
