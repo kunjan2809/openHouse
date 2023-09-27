@@ -2,9 +2,11 @@
 import { Card } from "antd";
 import PropTypes from "prop-types";
 import './blogCard.scss'
+import { useNavigate } from "react-router-dom";
 
 const BlogCard = (props) => {
     const { heading, description, date, image, isTranding } = props
+    const navigate = useNavigate()
 
     return (
         <Card
@@ -13,6 +15,7 @@ const BlogCard = (props) => {
             bordered={false}
             style={{ width: 450 }}
             cover={<div className={isTranding ? 'blur-img' : ''}><div className="filter"></div><img alt=" " src={image} /></div>}
+            onClick={() => navigate('/blog/1')}
         >
             <div className="cardContent">
                 <h3>{heading}</h3>
@@ -22,7 +25,7 @@ const BlogCard = (props) => {
                     <div className="read-more">Read More</div>
                 </div>
 
-               {isTranding && <div className={`trending-tag`}>
+                {isTranding && <div className={`trending-tag`}>
                     Trending
                 </div>}
             </div>

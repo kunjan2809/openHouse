@@ -9,13 +9,13 @@ import hostSVG from '../../assets/svgs/host.svg'
 import quickSVG from '../../assets/svgs/quick.svg'
 import { Pagination } from 'antd';
 import PropertyCard from '../../components/card/propetyCard';
-import { Link } from 'react-router-dom';
-
+import { useNavigate } from 'react-router-dom';
+const { Search } = Input;
 
 const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
 const Home = () => {
-    const { Search } = Input;
+    const navigate = useNavigate()
 
     const handleChange = (value) => {
         console.log(`selected ${value}`);
@@ -69,7 +69,7 @@ const Home = () => {
                         </div>
                     </div>
                     <div className='featured-property-wrapper'>
-                        <Row gutter={[24, 24]}>
+                        <Row gutter={[0, 24]}>
                             {arr.map((val, i) => {
                                 return <Col span={6} key={val}>
                                     {
@@ -94,7 +94,6 @@ const Home = () => {
                                                 isLiked={true}
                                             />)
                                     }
-
                                 </Col>
                             })}
 
@@ -138,10 +137,8 @@ const Home = () => {
                             <h1>Register your property Free today.</h1>
                         </div>
                         <div className='list-property-btn-container'>
-                            <Button type="primary" className="list-property-btn">
-                                <Link to='/create-listing'>
-                                    List Your Property
-                                </Link>
+                            <Button type="primary" className="list-property-btn" onClick={() => navigate('/create-listing')}>
+                                List Your Property
                             </Button>
                         </div>
                     </div>

@@ -9,9 +9,10 @@ import twitter from "../../assets/svgs/twitter.svg"
 import edit_icon from "../../assets/svgs/edit-icon.svg"
 import './profile.scss'
 import PropertyCard from "../../components/card/propetyCard"
-import { Link } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 const Profile = () => {
+    const navigate = useNavigate()
     return (
         <>
             <div className="profile-container">
@@ -47,10 +48,8 @@ const Profile = () => {
                         <div className="my-listing">
                             <div className="heading">
                                 <h1 className="title">My Properties</h1>
-                                <Button type="primary" className='add-listing-btn'>
-                                    <Link to='/create-listing'>
+                                <Button type="primary" className='add-listing-btn' onClick={()=>navigate('/create-listing')}>
                                         + Add Property
-                                    </Link>
                                 </Button>
                             </div>
                             <Row>

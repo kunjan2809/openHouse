@@ -1,4 +1,4 @@
-import { PlusOutlined, MinusOutlined } from "@ant-design/icons";
+import { PlusOutlined, CloseOutlined } from "@ant-design/icons";
 import { Button, Col, Image, Row } from "antd"
 import PropTypes from "prop-types"
 import { useState } from "react";
@@ -18,32 +18,16 @@ const UploadPictures = ({ handleNext, handlePrev }) => {
     const handleFileChange = (e) => {
         const files = e.target.files;
         if (files && files.length > 0) {
-            // Calculate the number of new files that can be added
             const remainingSlots = 12 - fileList.length;
             const newFiles = Array.from(files).slice(0, remainingSlots);
-
             setFileList((prev) => [...prev, ...newFiles]);
         }
     };
 
-    // const getBase64 = (e) => {
-    //     const reader = new FileReader()
-    //     reader.readAsDataURL(e.target.files[0])
-    //     reader.onload = () => {
-    //         setFileList((prev) => [...prev, reader.result])
-    //     }
-    // }
-
-    console.log('fileList :>> ', fileList);
-
-
     return (
         <>
             <div className="images-form">
-
-                <h1 className='title'>UPLOAD UPTO 12 PHOTOS</h1 >
-
-
+                <h1 className='title'>UPLOAD</h1 >
                 <Row>
                     <Col span={18}>
                         <Row gutter={20}>
@@ -77,10 +61,10 @@ const UploadPictures = ({ handleNext, handlePrev }) => {
                                                         <Image className="preview-img" src={URL.createObjectURL(img)} />
                                                         <Button
                                                             type="link"
-                                                            icon={<MinusOutlined />}
+                                                            icon={<CloseOutlined />}
                                                             onClick={() => handleDelete(index)}
                                                             className="delete-button"
-                                                        />
+                                                        ></Button>
                                                     </div>
                                                 </Col>
 
