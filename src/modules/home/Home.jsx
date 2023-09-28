@@ -58,7 +58,7 @@ const Home = () => {
                         </div>
                     </div>
                     <div className='featured-property-wrapper'>
-                        <Row gutter={[0, 24]}>
+                        <Row gutter={[16, 24]}>
                             {arr.map((val, i) => {
                                 return <Col span={6} key={val}>
                                     {
@@ -92,6 +92,7 @@ const Home = () => {
                 </div>
 
                 <Features />
+                
                 <ListProperty />
             </div>
         </>

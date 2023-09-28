@@ -52,7 +52,7 @@ const Profile = () => {
                                     + Add Property
                                 </Button>
                             </div>
-                            <Row>
+                            <Row gutter={[16, 24]}>
                                 <Col span={8}>
                                     <PropertyCard
                                         image={cardImg}
