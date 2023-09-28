@@ -15,15 +15,15 @@ const BlogDetails = () => {
                         <div className="bd-tag">Home Insights & Resourses</div>
                     </div>
                     <div className="line-div"></div>
-                    <div className="profile-card">
+                </div>
+                <div className="blog-content-wrapper">
+                <div className="profile-card">
                         <img src={profileIMG} alt="" />
                         <div className="profile-data">
                             <h4>Alina Sarkov</h4>
                             <span>May 21, 2023</span>
                         </div>
                     </div>
-                </div>
-                <div className="blog-content-wrapper">
                     <img src={homeIMG} alt="" />
                     <div className="blog-conent">
                         <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis architecto quasi dolore voluptatem aliquid consequuntur quibusdam ratione explicabo similique tempora. Quasi, soluta praesentium aliquam ipsa nesciunt eum porro eius laborum ipsam obcaecati quas dolorem beatae odio dolores mollitia impedit saepe. Accusantium, fugit hic. A reprehenderit, vero ut iusto hic eius dicta voluptatem tempora pariatur, architecto laboriosam similique totam nulla. Nulla exercitationem nisi voluptas fugiat ipsam rem placeat doloribus rerum pariatur.</p>

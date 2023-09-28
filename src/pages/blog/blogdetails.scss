@@ -7,7 +7,7 @@
 
     .blog-details-header-wrapper {
         @include flexPosition();
-        margin-inline: 300px;
+        margin-inline: 15rem;
         flex-direction: column;
         justify-content: space-between;
         align-items: center;
@@ -41,17 +41,24 @@
         .line-div {
             width: 100%;
             height: 0px;
-            // background-color: #DEDEDE;
             border-bottom: 2px solid #DEDEDE;
         }
+    }
+
+    .blog-content-wrapper {
+        @include flexPosition();
+        flex-direction: column;
+        gap: 25px;
+        margin: 0px 170px 0px 170px;
+        padding-bottom: 3rem;
 
         .profile-card {
             @include flexPosition();
             justify-content: flex-start;
             gap: 10px;
             width: 100%;
-            padding-block: 30px;
-
+            padding-top: 25px;
+            margin-left: 20px;
 
             img {
                 width: 50px;
@@ -72,15 +79,6 @@
             }
 
         }
-
-    }
-
-    .blog-content-wrapper {
-        @include flexPosition();
-        flex-direction: column;
-        gap: 25px;
-        margin: 0px 170px 0px 170px;
-        padding-bottom: 3rem;
 
         img {
             width: 100%;
