@@ -1,0 +1,354 @@
+@import '../../../../common/assets/scss/variables.scss';
+@import '../../../../common/assets/scss/mixins.scss';
+
+.create-property-stepper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 2rem;
+    padding-top: 3rem;
+    background-color: rgb(255 255 255);
+
+    .page-heading {
+        margin: 0;
+        font-weight: 500;
+        color: $colorLevel10;
+    }
+
+    .stepper {
+        margin-top: 4rem;
+        width: 70%;
+
+        .ant-steps {
+            .ant-steps-item {
+                .ant-steps-item-container {
+                    .ant-steps-item-tail {
+                        &::after {
+                            background-color: $colorLevel2;
+                            height: 2px;
+                            width: 100%;
+                            margin-inline: 0px;
+                        }
+                    }
+
+                    .ant-steps-item-icon {
+                        .ant-steps-icon {
+
+                            .step-finish,
+                            .step-process {
+                                position: relative;
+                                bottom: 10px;
+                                right: 10px;
+                            }
+
+                            .step-wait {
+                                position: relative;
+                                bottom: 2px;
+                                right: 2px;
+                            }
+                        }
+                    }
+
+                    .ant-steps-item-content {
+                        .ant-steps-item-title {
+                            color: $colorLevel7;
+                        }
+                    }
+
+                    &:hover {
+                        .ant-steps-item-content {
+                            .ant-steps-item-title {
+                                color: $colorLevel9;
+                            }
+                        }
+                    }
+                }
+
+                &.ant-steps-item-finish {
+                    .ant-steps-item-container {
+                        .ant-steps-item-tail {
+                            &::after {
+                                background-color: $colorLevel5;
+                                height: 2px;
+                            }
+                        }
+                    }
+                }
+
+            }
+        }
+    }
+
+    .step-form-page {
+        width: 80%;
+        border: 1px solid lightgray;
+        margin-top: 5rem;
+        border-radius: 5px;
+        padding: 3rem;
+
+        .property-form {
+            .title {
+                margin: 0px;
+                margin-bottom: 2rem;
+                font-weight: 500;
+                text-transform: uppercase;
+            }
+
+            label {
+                display: block;
+                margin-bottom: 0.2rem;
+                margin-top: 1.3rem;
+                font-weight: 500;
+            }
+
+            .property-details-form,
+            .location-form {
+
+                .ant-input {
+                    @include inputConfig();
+                }
+
+                .ant-select {
+                    @include selectLabel();
+                }
+
+                .ant-radio-group {
+                    display: flex;
+
+                    .ant-radio-wrapper {
+                        @include flexPosition();
+                        margin-top: 0.1rem;
+
+                        .ant-radio-checked .ant-radio-inner {
+                            border-color: $colorLevel6;
+                            background-color: $colorLevel5;
+                        }
+
+                        .ant-radio:hover .ant-radio-inner {
+                            border-color: $colorLevel6 ;
+                        }
+                    }
+                }
+            }
+
+            .pricing-form {
+
+                .input-field-labeled {
+                    @include addonBefore();
+                }
+
+                .ant-input {
+                    @include inputConfig();
+                }
+            }
+
+            .date-and-time-form {
+                .ant-picker {
+                    width: 100%;
+                    padding: 10px;
+
+                    &:hover {
+                        border-color: $colorLevel6;
+                    }
+
+                    &.ant-picker-focused {
+                        border-color: $colorLevel6;
+                    }
+
+                }
+
+                .ant-picker-range {
+                    .ant-picker-active-bar {
+                        background-color: $colorLevel6;
+                    }
+                }
+            }
+
+            .images-form {
+                width: 90%;
+
+                .custom-upload-box {
+                    @include flexPosition();
+                    margin: 0;
+                    border: 2px dashed #ccc;
+                    height: 100px;
+                    width: 100px;
+                    border-radius: 8px;
+                    text-align: center;
+                    cursor: pointer;
+
+                    .custom-upload-label {
+                        @include flexPosition();
+                        flex-direction: column;
+                        height: 100%;
+                        margin: 0;
+                        cursor: pointer;
+                    }
+
+                    .input-img {
+                        display: none;
+
+                        :disabled {
+                            background-color: lightgray
+                        }
+                    }
+                }
+
+                .img-group {
+                    @include flexPosition();
+                    justify-content: flex-start;
+
+                    .image-container {
+                        position: relative;
+                        display: inline-block;
+
+                        .preview-img {
+                            max-width: 100%;
+                            max-height: 100%;
+                            object-fit: cover;
+                            width: 100px;
+                            height: 100px;
+                            border-radius: 5px;
+                        }
+
+                        .delete-button {
+                            @include flexPosition();
+                            position: absolute;
+                            top: -7px;
+                            right: -5px;
+                            // background-color: red;
+                            background-color: white;
+                            color: $colorGray;
+                            border-radius: 40%;
+                            cursor: pointer;
+                            width: 18px;
+                            height: 18px;
+                            padding: 0;
+                            box-shadow: 0px 0px 5px 1px #cbcbcbbe;
+                            transition: all 0.1s linear 0s;
+
+                            &:hover {
+                                box-shadow: 0px 0px 3px 1px #8d8c8ce5;
+                                transform: scale(1.1);
+                            }
+
+                            .ant-btn-icon {
+                                svg {
+                                    font-size: 10px;
+                                    color: $colorGray;
+                                }
+                            }
+                        }
+                    }
+
+                }
+
+            }
+
+        }
+
+        .page-ctrl {
+            @include flexPosition();
+            justify-content: space-between;
+            margin-top: 2.5rem;
+
+            .btn {
+                @include buttonPrimary();
+                height: auto;
+                padding: 10px 40px;
+                border-radius: 30px;
+            }
+        }
+
+    }
+}
+
+
+.step-select-opt {
+    @include selectPopover();
+}
+
+.ant-picker-dropdown {
+    .ant-picker-panel-container {
+        .ant-picker-panel-layout {
+            .ant-picker-header {
+                .ant-picker-header-view {
+                    button:hover {
+                        color: $colorLevel7;
+                    }
+                }
+            }
+
+            .ant-picker-body {
+                .ant-picker-content {
+                    td.ant-picker-cell-today {
+                        .ant-picker-cell-inner {
+                            background-color: rgba(211, 211, 211, 0.27);
+
+                            &::before {
+                                border: none;
+                            }
+                        }
+                    }
+
+                    td.ant-picker-cell-selected {
+                        .ant-picker-cell-inner {
+                            background-color: $colorLevel5;
+
+                            &::before {
+                                border: none;
+                            }
+                        }
+                    }
+
+                }
+            }
+
+            .ant-picker-footer {
+                a.ant-picker-today-btn {
+                    color: $colorLevel6;
+                    font-weight: 500;
+                }
+
+                .ant-picker-ranges {
+                    .ant-picker-ok {
+                        .ant-btn {
+                            background-color: $colorLevel5;
+                        }
+
+                        :disabled {
+                            background-color: lightgray;
+                        }
+                    }
+
+                }
+            }
+
+            .ant-picker-panels {
+                .ant-picker-time-panel {
+
+                    .ant-picker-content {
+                        .ant-picker-time-panel-column {
+                            .ant-picker-time-panel-cell {
+                                &.ant-picker-time-panel-cell-selected {
+                                    .ant-picker-time-panel-cell-inner {
+                                        background-color: $colorLevel5;
+                                        color: white;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+            }
+        }
+    }
+}
+
+.money-filter-select {
+    @include selectPopover();
+}

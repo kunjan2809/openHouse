@@ -1,0 +1,143 @@
+@import '../../../../common/assets/scss/mixins.scss';
+
+.profile-container {
+    padding: 2rem;
+
+    .user-profile-wrapper {
+        @include flexPosition();
+        flex-direction: column;
+        width: 100%;
+        border: 1px solid lightgray;
+        border-radius: 5px;
+        height: 600px;
+        background-color: $colorLevel1;
+
+        .user-details-wrapper {
+            @include flexPosition();
+            flex-direction: column;
+            justify-content: space-between;
+            margin: 20px 25px;
+            gap: 20px;
+
+            .user-profile {
+                width: 80px;
+                height: 80px;
+                border-radius: 50%;
+            }
+
+            .profile-description {
+                width: 100%;
+
+                h4 {
+                    margin: 0px;
+                }
+            }
+
+            .contact-info-wrapper {
+                width: 100%;
+
+                h5 {
+                    margin: 0px 0px 5px 0px;
+                }
+
+                .contact-info {
+                    @include flexPosition();
+                    flex-direction: column;
+                    align-items: flex-start;
+                    gap: 3px;
+                    font-size: 1rem;
+                }
+            }
+
+            .follow-icons {
+                width: 100%;
+
+                h5 {
+                    margin: 0px 0px 5px 0px;
+                }
+
+                .icons {
+                    @include flexPosition();
+                    justify-content: flex-start;
+                    gap: 10px;
+
+                    img {
+                        &:hover {
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
+
+            .edit-profile {
+                @include buttonPrimary();
+                width: 100%;
+                height: auto;
+                padding-block: 7px;
+                font-weight: 500;
+                color: white;
+
+            }
+        }
+    }
+
+    .my-listing {
+        width: 100%;
+
+        .heading {
+            @include flexPosition();
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+            padding-inline: 15px;
+
+            .title {
+                margin: 0;
+                font-weight: 500;
+                color: $colorLevel10;
+            }
+
+            .add-listing-btn {
+                @include buttonPrimary();
+                height: auto;
+                padding: 10px 25px;
+                font-weight: 500;
+            }
+        }
+
+        .ant-row {
+            @include flexPosition();
+            justify-content: flex-start;
+            row-gap: 30px;
+
+            .ant-col {
+                @include flexPosition();
+                justify-content: center;
+                align-items: center;
+            }
+        }
+
+        .view {
+            @include flexPosition();
+            justify-content: flex-end;
+            padding-inline: 15px;
+
+            .view-btn {
+                color: $colorLevel6;
+                padding: 5px 0px;
+                border: none;
+                border-bottom: 1px solid $colorLevel6;
+                border-radius: 0;
+                background-color: #f3f3f3;
+                cursor: pointer;
+                margin-top: 1rem;
+            }
+
+            &:hover {
+                color: $colorLevel5;
+                border-bottom-color: $colorLevel5;
+            }
+        }
+
+
+    }
+}
