@@ -14,7 +14,7 @@ const ListProperty = () => {
                     </div>
                     <div className='list-property-btn-container'>
                         <Button type="primary" className="list-property-btn" onClick={() => navigate('/create-listing')}>
-                            {home.register.title}
+                            {home.register.btn_text}
                         </Button>
                     </div>
                 </div>

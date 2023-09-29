@@ -2,5 +2,43 @@
 @import '../../assets/scss/variables.scss';
 
 .page-footer-container {
-    @include flexPosition();
+    background-color: $colorLevel6;
+    color: white;
+
+    .footer-info {
+        padding: 3rem 7rem;
+
+        h1 {
+            margin: 5px 0px;
+        }
+
+        span {
+            font-size: 1rem;
+        }
+
+        .quick_links {
+
+            h3 {
+                margin: 5px 0px;
+            }
+
+            ul {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+
+                li {
+                    a {
+                        color: white;
+                    }
+                }
+            }
+
+            .get_in_touch {
+                @include flexPosition();
+                justify-content: flex-start;
+                gap: 0.7rem;
+            }
+        }
+    }
 }
