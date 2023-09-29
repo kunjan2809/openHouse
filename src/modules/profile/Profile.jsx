@@ -13,6 +13,7 @@ import { useNavigate } from "react-router-dom"
 
 const Profile = () => {
     const navigate = useNavigate()
+    
     return (
         <>
             <div className="profile-container">

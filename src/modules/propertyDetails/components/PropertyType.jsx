@@ -5,9 +5,13 @@ const PropertyType = (props) => {
     return (
         <>
             <div className="property-details-item">
-                <img src={svg} alt="" />
-                <h5 className='title'>{title}</h5>
-                <h5>{info}</h5>
+                <div className='card-logo'>
+                    <img src={svg} alt="" />
+                </div>
+                <div className='card-body'>
+                    <h5 className='title'>{title}</h5>
+                    <h4>{info}</h4>
+                </div>
             </div>
         </>
     )
