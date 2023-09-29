@@ -3,6 +3,7 @@ import { Row, Col } from 'antd'
 import { Pagination } from 'antd';
 import BlogCard from '../../common/components/card/BlogCard';
 import cardImg2 from '../../common/assets/images/property-thumb-2.png'
+import { blog } from './constant/string';
 
 const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
@@ -12,13 +13,13 @@ const Blog = () => {
             <div className="blog-page-container">
                 <div className="blog-header-container">
                     <div className='blog-container-front'>
-                        <h1>Grow With Open House</h1>
-                        <h4>We provide you the best.</h4>
+                        <h1>{blog.header.title}</h1>
+                        <h4>{blog.header.sub_title}</h4>
                     </div>
                 </div>
                 <div className='blogs-wrapper'>
                     <div className='underlined-heading'>
-                        <h1 className='heading'>Latest Blogs</h1>
+                        <h1 className='heading'>{blog.title}</h1>
                         <div className='line'></div>
                     </div>
                     <div className='blogs-container'>

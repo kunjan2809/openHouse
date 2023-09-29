@@ -1,5 +1,6 @@
 import { Button, Col, Input, Radio, Row, Select } from "antd"
 import PropTypes from "prop-types"
+import { add_listing } from "../constant/string";
 
 
 const PropertyInfo = ({ handleNext, handlePrev }) => {
@@ -110,13 +111,13 @@ const PropertyInfo = ({ handleNext, handlePrev }) => {
 
     return (
         <div className="property-details-form">
-            <h1 className='title'>PROPERTY DETAILS</h1 >
+            <h1 className='title'>{add_listing.steps.step1.title}</h1 >
 
             <Row>
                 <Col span={18}>
                     <Row gutter={20}>
                         <Col span={24}>
-                            <label>Property Type*</label>
+                            <label>{add_listing.steps.step1.fields.type}</label>
                             <Select
                                 popupClassName="step-select-opt"
                                 placeholder='Select property type'
@@ -124,7 +125,7 @@ const PropertyInfo = ({ handleNext, handlePrev }) => {
                             />
                         </Col>
                         <Col span={12}>
-                            <label>Bedrooms*</label>
+                            <label>{add_listing.steps.step1.fields.bedroom}</label>
                             <Select
                                 popupClassName="step-select-opt"
                                 placeholder='Select bedrooms'
@@ -132,7 +133,7 @@ const PropertyInfo = ({ handleNext, handlePrev }) => {
                             />
                         </Col>
                         <Col span={12}>
-                            <label>Bathrooms*</label>
+                            <label>{add_listing.steps.step1.fields.bathroom}</label>
                             <Select
                                 popupClassName="step-select-opt"
                                 placeholder='Select bathrooms'
@@ -140,7 +141,7 @@ const PropertyInfo = ({ handleNext, handlePrev }) => {
                             />
                         </Col>
                         <Col span={12}>
-                            <label>Floors*</label>
+                            <label>{add_listing.steps.step1.fields.floor}</label>
                             <Select
                                 popupClassName="step-select-opt"
                                 placeholder='Select floors'
@@ -148,7 +149,7 @@ const PropertyInfo = ({ handleNext, handlePrev }) => {
                             />
                         </Col>
                         <Col span={12}>
-                            <label>Car Parking*</label>
+                            <label>{add_listing.steps.step1.fields.parking}</label>
                             <Select
                                 popupClassName="step-select-opt"
                                 placeholder='Select car parking'
@@ -157,7 +158,7 @@ const PropertyInfo = ({ handleNext, handlePrev }) => {
                         </Col>
 
                         <Col span={24}>
-                            <label>Basement*</label>
+                            <label>{add_listing.steps.step1.fields.basement}</label>
                             <Radio.Group
                                 className="radio"
                             >
@@ -166,13 +167,13 @@ const PropertyInfo = ({ handleNext, handlePrev }) => {
                             </Radio.Group>
                         </Col>
                         <Col span={12}>
-                            <label>{`Area*`} </label>
+                            <label>{add_listing.steps.step1.fields.area}</label>
                             <Input
                                 placeholder="Area (Sq. Ft.)"
                             />
                         </Col>
                         <Col span={24}>
-                            <label>Description*</label>
+                            <label>{add_listing.steps.step1.fields.description}</label>
                             <TextArea rows={4} placeholder="Enter description" maxLength={6} />
                         </Col>
                     </Row>
@@ -183,8 +184,8 @@ const PropertyInfo = ({ handleNext, handlePrev }) => {
             </Row>
 
             <div className='page-ctrl'>
-                <Button type="primary" className="btn" onClick={() => handlePrev()}>Prev</Button>
-                <Button type="primary" className="btn" onClick={() => handleNext()}>Save & Next</Button>
+                <Button type="primary" className="btn" onClick={() => handlePrev()}>{add_listing.prev_btn}</Button>
+                <Button type="primary" className="btn" onClick={() => handleNext()}>{add_listing.next_btn}</Button>
             </div>
         </div>
     )

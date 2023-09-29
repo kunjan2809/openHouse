@@ -1,6 +1,6 @@
 
 import './assets/scss/createListing.scss'
-import {  Popover, Steps } from 'antd';
+import { Popover, Steps } from 'antd';
 import finishSVG from './assets/svgs/step-finish.svg'
 import processSVG from './assets/svgs/step-process.svg'
 import waitSVG from './assets/svgs/step-wait.svg'
@@ -10,6 +10,7 @@ import DateAndTime from './components/DateAndTime';
 import UploadPictures from './components/UploadPictures';
 import PropertyInfo from './components/PropertyInfo';
 import { useState } from 'react';
+import { add_listing } from './constant/string';
 
 const STATUS = {
     finish: 'finish',
@@ -65,23 +66,23 @@ const CreateListing = () => {
 
     const STEPS = [
         {
-            title: 'PROPERTY DETAILS',
+            title: add_listing.steps.step1.title,
             Component: PropertyInfo
         },
         {
-            title: 'LOCATION',
+            title: add_listing.steps.step2.title,
             Component: Location
         },
         {
-            title: 'PRICING',
+            title: add_listing.steps.step3.title,
             Component: Pricing
         },
         {
-            title: 'DATE & TIME',
+            title: add_listing.steps.step4.title,
             Component: DateAndTime
         },
         {
-            title: 'UPLOAD PICTURES',
+            title: add_listing.steps.step5.title,
             Component: UploadPictures
         },
     ]
@@ -103,7 +104,7 @@ const CreateListing = () => {
     return (
         <>
             <div className="create-property-stepper">
-                <h1 className='page-heading'>ADD YOUR PROPERTY</h1>
+                <h1 className='page-heading'>{add_listing.title}</h1>
 
                 <div className='stepper'>
                     <Steps

@@ -1,22 +1,23 @@
 import { Button, Col, Input, Row, Select } from "antd"
 import PropTypes from "prop-types"
 const { Option } = Select;
+import { add_listing } from "../constant/string";
 
 
 const Pricing = ({ handleNext, handlePrev }) => {
 
     return (
         <div className="pricing-form">
-            <h1 className='title'>PRICE</h1 >
+            <h1 className='title'>{add_listing.steps.step3.title}</h1 >
 
             <Row>
                 <Col span={18}>
                     <Row gutter={20}>
                         <Col span={12}>
-                            <label>Price*</label>
+                            <label>{add_listing.steps.step3.fields.price}</label>
                             <Input
                                 className="input-field-labeled"
-                                placeholder=" "
+                                placeholder="Price"
                                 addonBefore={
                                     <Select
                                         defaultValue="cad"
@@ -38,8 +39,8 @@ const Pricing = ({ handleNext, handlePrev }) => {
             </Row>
 
             <div className='page-ctrl'>
-                <Button type="primary" className="btn" onClick={() => handlePrev()}>Prev</Button>
-                <Button type="primary" className="btn" onClick={() => handleNext()}>Save & Next</Button>
+                <Button type="primary" className="btn" onClick={() => handlePrev()}>{add_listing.prev_btn}</Button>
+                <Button type="primary" className="btn" onClick={() => handleNext()}>{add_listing.next_btn}</Button>
             </div>
         </div>
     )

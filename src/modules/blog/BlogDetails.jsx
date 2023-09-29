@@ -3,6 +3,7 @@ import { Button, Input } from 'antd'
 import profileIMG from './assets/images/avatar-demo-2.png'
 import homeIMG from './assets/images/blog-thumb.png'
 import './assets/scss/blogdetails.scss'
+import { blog_details } from './constant/string'
 
 const BlogDetails = () => {
     return (
@@ -10,7 +11,7 @@ const BlogDetails = () => {
             <div className="blog-details-wrapper">
                 <div className="blog-details-header-wrapper">
                     <div className="bd-header">
-                        <div className="bd-label">DISCOVER</div>
+                        <div className="bd-label">{blog_details.heading}</div>
                         <h1 className="bd-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</h1>
                         <div className="bd-tag">Home Insights & Resourses</div>
                     </div>
@@ -33,15 +34,15 @@ const BlogDetails = () => {
                 </div>
                 <div className='lead-gen-from'>
                     <div className='description'>
-                        <h3>Submit your mail Id for Our Newsletter</h3>
-                        <span>Receive the latest news straight to your inbox.</span>
+                        <h3>{blog_details.newsletter.title}</h3>
+                        <span>{blog_details.newsletter.sub_title}</span>
                     </div>
                     <div className='form'>
                         <Input
                             className="input-field"
                             placeholder="Enter your Email Address"
                         />
-                        <Button type="primary" className='submit-btn'>Submit</Button>
+                        <Button type="primary" className='submit-btn'>{blog_details.newsletter.btn_text}</Button>
                     </div>
                 </div>
             </div>

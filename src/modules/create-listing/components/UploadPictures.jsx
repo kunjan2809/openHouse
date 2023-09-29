@@ -2,7 +2,7 @@ import { PlusOutlined, CloseOutlined } from "@ant-design/icons";
 import { Button, Col, Image, Row } from "antd"
 import PropTypes from "prop-types"
 import { useState } from "react";
-
+import { add_listing } from "../constant/string";
 
 
 const UploadPictures = ({ handleNext, handlePrev }) => {
@@ -27,7 +27,7 @@ const UploadPictures = ({ handleNext, handlePrev }) => {
     return (
         <>
             <div className="images-form">
-                <h1 className='title'>UPLOAD</h1 >
+                <h1 className='title'>{add_listing.steps.step5.title}</h1 >
                 <Row>
                     <Col span={18}>
                         <Row gutter={20}>
@@ -82,8 +82,8 @@ const UploadPictures = ({ handleNext, handlePrev }) => {
                 </Row >
 
                 <div className='page-ctrl'>
-                    <Button type="primary" className="btn" onClick={() => handlePrev()}>Prev</Button>
-                    <Button type="primary" className="btn" onClick={() => handleNext()}>Save & Next</Button>
+                    <Button type="primary" className="btn" onClick={() => handlePrev()}>{add_listing.prev_btn}</Button>
+                    <Button type="primary" className="btn" onClick={() => handleNext()}>{add_listing.next_btn}</Button>
                 </div>
             </div >
 

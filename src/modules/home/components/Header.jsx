@@ -1,4 +1,5 @@
 import { Input } from "antd";
+import { home } from "../constant/string";
 
 const { Search } = Input;
 
@@ -7,8 +8,8 @@ const Header = () => {
         <>
             <div className="header-container">
                 <div className='header-container-front'>
-                    <h1>Let’s Find you a Place of dream. </h1>
-                    <h4>A BASE FOR GOOD LIFE.</h4>
+                    <h1>{home.header.title}</h1>
+                    <h4>{home.header.sub_title}</h4>
                     <div className='search-box'>
                         <Search placeholder="Search by location" enterButton />
                     </div>

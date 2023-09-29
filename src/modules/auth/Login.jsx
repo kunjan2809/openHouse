@@ -1,6 +1,7 @@
 import { Button, Input } from "antd"
 import AuthScreen from "../../common/components/auth/authScreen"
 import { Link } from "react-router-dom"
+import { login } from "./constant/string"
 
 const Login = () => {
     return (
@@ -9,29 +10,29 @@ const Login = () => {
                 <div className="fields">
                     <div className="fields-container">
                         <div className="header">
-                            <span>Welcome to Open House!</span>
-                            <h1>Sign in to your account</h1>
+                            <span>{login.welcomeMsg}</span>
+                            <h1>{login.title}</h1>
                         </div>
                         <div className="auth-form">
                             <form>
-                                <p className="input-label">Phone Number</p>
+                                <p className="input-label">{login.fields.email}</p>
                                 <Input
                                     className="input-field"
                                     placeholder="Enter your phone no."
                                     autoComplete="username"
                                 />
-                                <p className="input-label">Password</p>
+                                <p className="input-label">{login.fields.password}</p>
                                 <Input.Password
                                     className="input-field input-field-password"
                                     placeholder="Enter password"
                                     autoComplete="current-password"
                                 />
-                                <Button type="primary" className="signin-btn">Sign in</Button>
+                                <Button type="primary" className="signin-btn">{login.btn_text}</Button>
                             </form>
-                            <Link to='/forget-password'> <h4 className="forgot-password-title">Forgot Password?</h4></Link>
+                            <Link to='/forget-password'> <h4 className="forgot-password-title">{login.forgot_pass}</h4></Link>
                         </div>
                         <div className="footer">
-                            <p>New to Open House? <Link to='/signup'>Sign up</Link></p>
+                            <p>{login.option} <Link to='/signup'>{login.option_link}</Link></p>
                         </div>
                     </div>
                 </div>
