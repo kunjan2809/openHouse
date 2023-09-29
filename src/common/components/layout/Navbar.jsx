@@ -4,6 +4,7 @@ import logo from '../../assets/logo.svg'
 import profile from '../../assets/images/avatar-demo.png'
 import './navbar.scss'
 import { Link, NavLink } from 'react-router-dom'
+import { layout } from './constant/string'
 
 const Navbar = () => {
     return (
@@ -16,10 +17,10 @@ const Navbar = () => {
                     <Row align="middle" gutter={2}>
                         <Col span={20}>
                             <ul className='links'>
-                                <li><NavLink exact to='/'>Home</NavLink></li>
-                                <li><NavLink exact to='/about'>About</NavLink></li>
-                                <li><NavLink exact to='/blog'>Blog</NavLink></li>
-                                <li><NavLink exact to='/contact'>Contact Us</NavLink></li>
+                                <li><NavLink exact to='/'>{layout.links_nav.home}</NavLink></li>
+                                <li><NavLink exact to='/about'>{layout.links_nav.about}</NavLink></li>
+                                <li><NavLink exact to='/blog'>{layout.links_nav.blog}</NavLink></li>
+                                <li><NavLink exact to='/contact'>{layout.links_nav.contact}</NavLink></li>
                             </ul>
                         </Col>
                         <Col span={4}>
@@ -27,9 +28,9 @@ const Navbar = () => {
                                 <Link to='/profile'>
                                     <Avatar src={<img src={profile} alt="avatar" />} />
                                 </Link> :
-                            <Link to='/login'>
-                                <Button type="primary" className='primary-button'>Sign in</Button>
-                            </Link>}
+                                <Link to='/login'>
+                                    <Button type="primary" className='primary-button'>{layout.btn_text}</Button>
+                                </Link>}
                         </Col>
                     </Row>
                 </Col>

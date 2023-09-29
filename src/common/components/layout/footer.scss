@@ -4,9 +4,22 @@
 .page-footer-container {
     background-color: $colorLevel6;
     color: white;
+    padding: 3.5rem 5rem 2rem 5rem;
+    box-sizing: border-box;
+    @include flexPosition();
 
     .footer-info {
-        padding: 3rem 7rem;
+
+        width: 100%;
+
+        // .header {
+        //     display: flex;
+        //     flex-direction: column;
+
+        //     a {
+        //         width: fit-content;
+        //     }
+        // }
 
         h1 {
             margin: 5px 0px;
@@ -40,5 +53,17 @@
                 gap: 0.7rem;
             }
         }
+
+        .bottom-copyright {
+            margin-top: 4rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.522);
+
+            span {
+                color: rgba(255, 255, 255, 0.522);
+                margin-top: 2rem;
+                display: block;
+            }
+        }
     }
+
 }
