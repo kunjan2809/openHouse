@@ -8,6 +8,7 @@ import PropertyCard from '../../common/components/card/PropertyCard';
 import Header from './components/header';
 import Features from './components/Features';
 import ListProperty from './components/ListProperty';
+import { home } from './constant/string';
 
 const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
@@ -23,10 +24,10 @@ const Home = () => {
                 <Header />
 
                 <div className='featured-home-container'>
-                    <div className='featured-label'>Discover</div>
+                    <div className='featured-label'>{home.featured_listings.head_msg}</div>
                     <div className='header-wrapper'>
                         <div className='underlined-heading'>
-                            <h1 className='heading'>Featured Listings Near You</h1>
+                            <h1 className='heading'>{home.featured_listings.title}</h1>
                             <div className='line'></div>
                         </div>
 
@@ -92,7 +93,7 @@ const Home = () => {
                 </div>
 
                 <Features />
-                
+
                 <ListProperty />
             </div>
         </>

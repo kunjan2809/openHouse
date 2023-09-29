@@ -1,5 +1,6 @@
 import { Button, Col, Input, Row, Select } from "antd"
 import PropTypes from "prop-types"
+import { add_listing } from "../constant/string";
 
 const BEDROOMS = [
     {
@@ -31,55 +32,47 @@ const BEDROOMS = [
 const Location = ({ handleNext, handlePrev }) => {
     return (
         <div className="location-form">
-            <h1 className='title'>LOCATION</h1 >
+            <h1 className='title'>{add_listing.steps.step3.title}</h1 >
 
             <Row>
                 <Col span={18}>
                     <Row gutter={20}>
                         <Col span={12}>
-                            <label>Country*</label>
+                            <label>{add_listing.steps.step2.fields.country}</label>
                             <Select
                                 popupClassName="step-select-opt"
-                                placeholder='Select bedrooms'
+                                placeholder='Select country'
                                 options={BEDROOMS}
                             />
                         </Col>
                         <Col span={12}>
-                            <label>State/Province*</label>
+                            <label>{add_listing.steps.step2.fields.state}</label>
                             <Select
                                 popupClassName="step-select-opt"
-                                placeholder='Select floors'
+                                placeholder='Select state'
                             />
                         </Col>
                         <Col span={24}>
-                            <label>Street Name*</label>
+                            <label>{add_listing.steps.step2.fields.street}</label>
                             <Input
                                 placeholder="Street name"
                             />
                         </Col>
                         <Col span={12}>
-                            <label>City*</label>
+                            <label>{add_listing.steps.step2.fields.city}</label>
                             <Select
                                 popupClassName="step-select-opt"
-                                placeholder='Select bedrooms'
+                                placeholder='Select city'
                                 options={BEDROOMS}
                             />
                         </Col>
                         <Col span={12}>
-                            <label>Zip Code*</label>
+                            <label>{add_listing.steps.step2.fields.zip}</label>
                             <Input
                                 className="input-field-labeled"
-                                placeholder="Area (Sq. Ft.)"
+                                placeholder="zip"
                             />
                         </Col>
-                        {/* <Col span={12}>
-                            <p className="input-label">Phone Number</p>
-                            <Input
-                                className="input-field-labeled"
-                                placeholder=" "
-                                addonBefore={selectBefore}
-                            />
-                        </Col> */}
                     </Row>
                 </Col>
                 <Col span={6}>
@@ -88,8 +81,8 @@ const Location = ({ handleNext, handlePrev }) => {
             </Row>
 
             <div className='page-ctrl'>
-                <Button type="primary" className="btn" onClick={() => handlePrev()}>Prev</Button>
-                <Button type="primary" className="btn" onClick={() => handleNext()}>Save & Next</Button>
+                <Button type="primary" className="btn" onClick={() => handlePrev()}>{add_listing.prev_btn}</Button>
+                <Button type="primary" className="btn" onClick={() => handleNext()}>{add_listing.next_btn}</Button>
             </div>
         </div>
     )

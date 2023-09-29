@@ -1,5 +1,6 @@
 import { Button } from 'antd'
 import { useNavigate } from 'react-router-dom'
+import { home } from '../constant/string'
 
 const ListProperty = () => {
     const navigate = useNavigate()
@@ -9,11 +10,11 @@ const ListProperty = () => {
             <div className='list-your-property'>
                 <div className='list-your-property-inner'>
                     <div className='list-your-property-header'>
-                        <h1>Register your property Free today.</h1>
+                        <h1>{home.register.title}</h1>
                     </div>
                     <div className='list-property-btn-container'>
                         <Button type="primary" className="list-property-btn" onClick={() => navigate('/create-listing')}>
-                            List Your Property
+                            {home.register.btn_text}
                         </Button>
                     </div>
                 </div>

@@ -3,14 +3,15 @@ import dealsSVG from '../assets/svgs/deals.svg'
 import hostSVG from '../assets/svgs/host.svg'
 import quickSVG from '../assets/svgs/quick.svg'
 import Feature from './Feature'
+import { home } from '../constant/string'
 
 const Features = () => {
     return (
         <>
             <div className='featured-looking-container'>
-                <div className='featured-label'>Learn more</div>
+                <div className='featured-label'>{home.features.head_msg}</div>
                 <div className='underlined-heading'>
-                    <h1 className='heading'>{"Features You're Looking For"}</h1>
+                    <h1 className='heading'>{home.features.title}</h1>
                     <div className='line'></div>
                 </div>
 

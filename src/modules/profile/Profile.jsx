@@ -10,6 +10,7 @@ import edit_icon from "./assets/svgs/edit-icon.svg"
 import './assets/scss/profile.scss'
 import PropertyCard from "../../common/components/card/PropertyCard"
 import { useNavigate } from "react-router-dom"
+import { profile } from "./constant/string"
 
 const Profile = () => {
     const navigate = useNavigate()
@@ -27,30 +28,30 @@ const Profile = () => {
                                     <span>With over a decade of experience and a passion for client satisfaction, John Smith is your go-to real estate professional.</span>
                                 </div>
                                 <div className="contact-info-wrapper">
-                                    <h5>Get in Touch:</h5>
+                                    <h5>{profile.profile.contact}</h5>
                                     <div className="contact-info">
                                         <span><img src={phone_svg} alt="" /> +91 986476483</span>
                                         <span><img src={mail_svg} alt="" /> prashant30@gmail.com</span>
                                     </div>
                                 </div>
                                 <div className="follow-icons">
-                                    <h5>Follow me on:</h5>
+                                    <h5>{profile.profile.follow}</h5>
                                     <div className="icons">
                                         <img src={instagram} alt="" />
                                         <img src={facebook} alt="" />
                                         <img src={twitter} alt="" />
                                     </div>
                                 </div>
-                                <Button className="edit-profile"><span><img src={edit_icon} alt="" /> Edit Profile</span></Button>
+                                <Button className="edit-profile"><span><img src={edit_icon} alt="" /> {profile.profile.btn_text}</span></Button>
                             </div>
                         </div>
                     </Col>
                     <Col span={18}>
                         <div className="my-listing">
                             <div className="heading">
-                                <h1 className="title">My Properties</h1>
+                                <h1 className="title">{profile.listings.title}</h1>
                                 <Button type="primary" className='add-listing-btn' onClick={() => navigate('/create-listing')}>
-                                    + Add Property
+                                {profile.listings.add_btn}
                                 </Button>
                             </div>
                             <Row gutter={[16, 24]}>
@@ -106,7 +107,7 @@ const Profile = () => {
                                 </Col>
                             </Row>
                             <div className="view">
-                                <Button className="view-btn">View all</Button>
+                                <Button className="view-btn">{profile.listings.view}</Button>
                             </div>
                         </div>
 

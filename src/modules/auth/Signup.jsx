@@ -1,6 +1,7 @@
 import { Button, Col, Input, InputNumber, Row, Select } from "antd"
 import AuthScreen from "../../common/components/auth/authScreen"
 import { Link } from "react-router-dom"
+import { signup,otp } from "./constant/string";
 
 const { Option } = Select;
 
@@ -14,12 +15,12 @@ const Signup = () => {
                         {
                             true ? (<>
                                 <div className="header">
-                                    <span>Welcome to Open House!</span>
-                                    <h1>Sign up</h1>
+                                    <span>{signup.welcomeMsg}</span>
+                                    <h1>{signup.title}</h1>
                                 </div>
                                 <div className="auth-form">
                                     <form>
-                                        <p className="input-label">Name</p>
+                                        <p className="input-label">{signup.fields.name}</p>
                                         <Row gutter={20}>
                                             <Col span={12}>
                                                 <Input
@@ -34,12 +35,12 @@ const Signup = () => {
                                                 />
                                             </Col>
                                         </Row>
-                                        <p className="input-label">Company</p>
+                                        <p className="input-label">{signup.fields.company}</p>
                                         <Input
                                             className="input-field"
                                             placeholder="Enter Company’s Name"
                                         />
-                                        <p className="input-label">Phone Number</p>
+                                        <p className="input-label">{signup.fields.phone}</p>
                                         <Input
                                             className="input-field-labeled"
                                             placeholder=" "
@@ -54,37 +55,37 @@ const Signup = () => {
                                                 </Select>
                                             }
                                         />
-                                        <p className="input-label">Email</p>
+                                        <p className="input-label">{signup.fields.email}</p>
                                         <Input
                                             className="input-field"
                                             placeholder="Enter Email"
                                         />
-                                        <p className="input-label">Password</p>
+                                        <p className="input-label">{signup.fields.password}</p>
                                         <Input.Password
                                             className="input-field input-field-password"
                                             placeholder="Enter password"
                                             autocomplete="new-password"
                                         />
-                                        <p className="input-label">Confirm Password</p>
+                                        <p className="input-label">{signup.fields.confirm_pass}</p>
                                         <Input.Password
                                             className="input-field input-field-password"
                                             placeholder="Re-enter password"
                                             autocomplete="new-password"
                                         />
-                                        <Button type="primary" className="signin-btn">Sign up</Button>
+                                        <Button type="primary" className="signin-btn">{signup.btn_text}</Button>
                                     </form>
                                 </div>
                                 <div className="footer">
-                                    <p>Already a User? <Link to='/login'>Sign in</Link></p>
+                                    <p>{signup.option} <Link to='/login'>{signup.option_link}</Link></p>
                                 </div>
                             </>) : (<>
                                 <div className="otp-container">
                                     <div className="header">
-                                        <span>Welcome to Open House!</span>
-                                        <p>We have sent you one time password to your mobile no.</p>
+                                        <span>{otp.welcomeMsg}</span>
+                                        <p>{otp.sub_text}</p>
                                     </div>
                                     <div className="otp-verification">
-                                        <p className="title">Please Enter OTP</p>
+                                        <p className="title">{otp.title}</p>
                                         <p className="timer">01:00</p>
 
                                         <div className="otp-fields">
@@ -114,11 +115,11 @@ const Signup = () => {
                                             />
                                         </div>
 
-                                        <Button type="primary" className="verify-otp-btn">Verify OTP</Button>
-                                        <p className="resend-otp">Resend OTP</p>
+                                        <Button type="primary" className="verify-otp-btn">{otp.btn_text}</Button>
+                                        <p className="resend-otp">{otp.resend}</p>
                                     </div>
                                     <div className="footer">
-                                        <p>Already a User? <Link to='/login'>Sign in</Link></p>
+                                        <p>{otp.option} <Link to='/login'>{otp.option_link}</Link></p>
                                     </div>
                                 </div>
                             </>)
