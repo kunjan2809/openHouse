@@ -20,4 +20,10 @@ const property_details = {
     }
 }
 
-export { property_details }
+const realtor_details={
+    title:"Realtor Details",
+    contact:"Contact Info",
+    media:"Social Media"
+}
+
+export { property_details ,realtor_details}
