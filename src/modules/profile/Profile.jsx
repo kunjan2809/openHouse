@@ -1,11 +1,11 @@
 import { Button, Col, Row } from "antd"
 import cardImg from '../../common/assets/images/property.png'
 import profile_img from './assets/images/profile-img.png'
-import phone_svg from "./assets/svgs/phone.svg"
-import mail_svg from "./assets/svgs/email.svg"
-import instagram from "./assets/svgs/instagram.svg"
-import facebook from "./assets/svgs/facebook.svg"
-import twitter from "./assets/svgs/twitter.svg"
+import phone_svg from "../../common/assets/svgs/phone.svg"
+import mail_svg from "../../common/assets/svgs/email.svg"
+import instagram from "../../common/assets/svgs/instagram.svg"
+import facebook from "../../common/assets/svgs/facebook.svg"
+import twitter from "../../common/assets/svgs/twitter.svg"
 import edit_icon from "./assets/svgs/edit-icon.svg"
 import './assets/scss/profile.scss'
 import PropertyCard from "../../common/components/card/PropertyCard"

@@ -12,7 +12,8 @@ const property_details = {
     },
     description: {
         title: "Description",
-        view: "View More"
+        more: "View More",
+        less:"Show Less"
     },
     similar: {
         title: "Similar Open Houses"

@@ -1,6 +1,6 @@
 const home={
     header:{
-        title:"Let’s Find you a Place of dream",
+        title:"Let’s find you a place of dream",
         sub_title:"A bASE FOR GOOD LIFE"
     },
     featured_listings:{

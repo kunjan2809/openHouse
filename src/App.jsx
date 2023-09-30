@@ -12,8 +12,9 @@ import BlogDetails from './modules/blog/BlogDetails'
 import CreateListing from './modules/create-listing/CreateListing'
 import About from './modules/about/About'
 import Contact from './modules/contact/Contact'
-import PropertyDetails from './modules/propertyDetails/PropertyDetails'
+import PropertyDetails from './modules/property-details/PropertyDetails'
 import ListingSuccess from './modules/create-listing/ListingSuccess'
+import NotFound from './modules/others/404'
 
 const App = () => {
 
@@ -43,7 +44,7 @@ const App = () => {
             {/* <Route path="/" element={<AuthRoute permissionType="ALLOW"><Dashboard /></AuthRoute>} /> */}
           </Route>
 
-          {/* <Route path="*" element={<PageNotFound />} /> */}
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </>
