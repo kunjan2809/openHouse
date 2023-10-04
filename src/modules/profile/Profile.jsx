@@ -42,7 +42,7 @@ const Profile = () => {
                                         <img src={twitter} alt="" />
                                     </div>
                                 </div>
-                                <Button className="edit-profile"><span><img src={edit_icon} alt="" /> {profile.profile.btn_text}</span></Button>
+                                <Button className="edit-profile" onClick={()=>navigate('/profile/edit')}><span><img src={edit_icon} alt="" /> {profile.profile.btn_text}</span></Button>
                             </div>
                         </div>
                     </Col>

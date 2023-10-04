@@ -15,6 +15,7 @@ import Contact from './modules/contact/Contact'
 import PropertyDetails from './modules/property-details/PropertyDetails'
 import ListingSuccess from './modules/create-listing/ListingSuccess'
 import NotFound from './modules/others/404'
+import EditProfile from './modules/profile/EditProfile'
 
 const App = () => {
 
@@ -29,6 +30,7 @@ const App = () => {
 
           <Route path="/" element={<Layout><Home /></Layout>} />
           <Route path="/profile" element={<Layout><Profile /></Layout>} />
+          <Route path="/profile/edit" element={<Layout><EditProfile /></Layout>} />
 
           <Route path="/blog" element={<Layout><Blog /></Layout>} />
           <Route path="/blog/:id" element={<Layout><BlogDetails /></Layout>} />

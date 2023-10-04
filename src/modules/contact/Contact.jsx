@@ -1,7 +1,12 @@
+import './assets/scss/contact.scss'
 
 const Contact = () => {
   return (
-    <div>Contact</div>
+    <>
+    <div className="contact-us-wrapper">
+        <h1>Coming soon...</h1>
+      </div>
+    </>
   )
 }
 

@@ -3,7 +3,6 @@ import './footer.scss'
 import { Link } from 'react-router-dom'
 import instagram from "../../assets/svgs/footer-instagram.svg"
 import facebook from "../../assets/svgs/footer-facebook.svg"
-import logo from '../../../common/assets/logo-white.png'
 import { layout } from './constant/string'
 
 const Footer = () => {

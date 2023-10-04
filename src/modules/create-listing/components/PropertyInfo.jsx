@@ -2,9 +2,9 @@ import { Button, Col, Input, Radio, Row, Select } from "antd"
 import PropTypes from "prop-types"
 import { add_listing } from "../constant/string";
 
+const { TextArea } = Input;
 
 const PropertyInfo = ({ handleNext, handlePrev }) => {
-    const { TextArea } = Input;
 
     const PROPERTYTYPE = [
         {
