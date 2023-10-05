@@ -16,11 +16,14 @@ import PropertyDetails from './modules/property-details/PropertyDetails'
 import ListingSuccess from './modules/create-listing/ListingSuccess'
 import NotFound from './modules/others/404'
 import EditProfile from './modules/profile/EditProfile'
+import { Provider } from 'react-redux'
+import { store } from './store/store'
 
 const App = () => {
 
   return (
     <>
+    <Provider store={store}>
       <BrowserRouter>
         <Routes>
           <Route path="/login" element={<Login />} />
@@ -49,6 +52,7 @@ const App = () => {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
+      </Provider>
     </>
   )
 }
