@@ -1,6 +1,6 @@
 import { Button, Input } from "antd"
 import AuthScreen from "../../common/components/auth/authScreen"
-import { Link } from "react-router-dom"
+import { Link, useNavigate, useParams } from "react-router-dom"
 import TICK from '../../common/assets/svgs/rightTick.svg'
 import { reset_password } from "./constant/string"
 import { useFormik } from 'formik';
@@ -10,22 +10,24 @@ import { useState } from "react"
 import { resetPassword } from "./store/actions/auth"
 
 const ResetPassword = () => {
-  const token = "8e732c8bef907cd055ee317b922832105215b2ce21bdb0cf9be75fd9f6fb1d34"
+  const { token } = useParams()
 
   const [successComponent, setSuccessComponent] = useState(false)
 
+  const navigate = useNavigate();
   const dispatch = useDispatch()
 
   const successCallback = () => {
     setSuccessComponent(true)
+    navigate('/login')
   }
 
   //validation
   const formSchema = Yup.object().shape({
-    password: Yup.string().trim().required('Password required').min(5, 'Password must be at least 5 characters').matches(
+    password: Yup.string().trim().required('Password required').min(8, 'Password must be at least 8 characters').matches(
       /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*()_+{}[\]:;<>,.?~\\/-]).*$/,
       'Password must contain at least one uppercase, one lowercase, one digit, and one special character'),
-    confirm_password: Yup.string().required('Confirm password required').min(5, 'Password must be at least 5 characters').matches(/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*()_+{}[\]:;<>,.?~\\/-]).*$/, 'Password must contain at least one uppercase, one lowercase, one digit, and one special character').oneOf([Yup.ref('password'), null], 'Passwords must match')
+    confirm_password: Yup.string().required('Confirm password required').min(8, 'Password must be at least 8 characters').matches(/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*()_+{}[\]:;<>,.?~\\/-]).*$/, 'Password must contain at least one uppercase, one lowercase, one digit, and one special character').oneOf([Yup.ref('password'), null], 'Passwords must match')
   })
 
   const initialValues = {

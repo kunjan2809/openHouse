@@ -26,7 +26,7 @@ const Signup = () => {
         last_name: Yup.string().trim().required('Last name required'),
         company: Yup.string().trim().required('Company name required'),
         country_code: Yup.string().trim().required('Country code required'),
-        phone: Yup.string().matches(/^\d+$/, 'Phone number must contain only numbers').min(4, 'Phone number must be at least 4 characters').max(13, 'Phone number must be at most 13 characters').required('Phone number is required'),
+        phone: Yup.string().matches(/^[0-9]+$/, 'Phone number must contain only numbers').min(4, 'Phone number must be at least 4 characters').max(13, 'Phone number must be at most 13 characters').required('Phone number is required'),
         email: Yup.string().trim().email("Invalid email").required('Email required'),
         password: Yup.string().trim().required('Password required').min(8, 'Password must be at least 8 characters').matches(/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*()_+{}[\]:;<>,.?~\\/-]).*$/, 'Password must contain at least one uppercase, one lowercase, one digit, and one special character'),
         confirm_password: Yup.string().required('Confirm password required').min(8, 'Password must be at least 8 characters').matches(/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*()_+{}[\]:;<>,.?~\\/-]).*$/, 'Password must contain at least one uppercase, one lowercase, one digit, and one special character').oneOf([Yup.ref('password'), null], 'Passwords must match')
@@ -163,7 +163,7 @@ const Signup = () => {
                                             name="password"
                                             className="input-field input-field-password"
                                             placeholder="Enter password"
-                                            autocomplete="new-password"
+                                            autoComplete="new-password"
                                             onChange={handleChange}
                                             onBlur={handleBlur}
                                             value={values.password}
@@ -175,7 +175,7 @@ const Signup = () => {
                                             name="confirm_password"
                                             className="input-field input-field-password"
                                             placeholder="Re-enter password"
-                                            autocomplete="new-password"
+                                            autoComplete="new-password"
                                             onChange={handleChange}
                                             onBlur={handleBlur}
                                             value={values.confirm_password}

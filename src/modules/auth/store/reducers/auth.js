@@ -3,6 +3,7 @@ import { FORGOT_PASSWORD_FAIL, FORGOT_PASSWORD_REQUEST, FORGOT_PASSWORD_SUCCESS,
 
 const initialState = {
     userDetails: {},
+    userToken: "",
     loginLoading: false
 }
 
@@ -36,7 +37,8 @@ const authReducer = (state = initialState, action) => {
         case LOGIN_SUCCESS:
             return {
                 ...state,
-                userDetails: action.payload,
+                userDetails: action.payload.data,
+                userToken: action.payload.token,
                 loginLoading: false
             }
         case LOGIN_FAIL:

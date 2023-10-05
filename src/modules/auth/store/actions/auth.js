@@ -29,7 +29,12 @@ export const signin = (data, successCallback) => {
             data: data
         })
         if (response) {
-            dispatch({ type: LOGIN_SUCCESS, payload: response?.data?.data })
+            dispatch({
+                type: LOGIN_SUCCESS, payload: {
+                    data: response?.data?.user,
+                    token: response?.data?.token
+                }
+            })
             successCallback()
         }
         else if (error) {

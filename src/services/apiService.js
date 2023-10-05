@@ -5,7 +5,7 @@ const apiRequest = async ({
     method,
     url,
     data,
-    isToken = true,
+    isToken,
 }) => {
 
     let response = null, error = null
@@ -20,7 +20,9 @@ const apiRequest = async ({
     
     if (isToken) {
         let { auth } = store.getState()
-        let token = auth.userDetails.token
+        let token = auth.userToken
+
+        console.log('token', token)
 
         options = {
             ...options,
