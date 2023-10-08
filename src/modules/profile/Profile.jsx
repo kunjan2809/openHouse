@@ -22,16 +22,11 @@ const Profile = () => {
     const dispatch = useDispatch()
 
     const { profile_details } = useSelector((state) => state.profile)
+    const profileImg = profile_details?.profilePicture
 
-    const successCallback = () => {
-    }
-
-    const handleEdit = () => {
-        navigate('/profile/edit')
-    }
 
     useEffect(() => {
-        dispatch(getProfile(successCallback))
+        dispatch(getProfile())
     }, [])
 
 
@@ -42,12 +37,19 @@ const Profile = () => {
                     <Col span={6}>
                         <div className="user-profile-wrapper">
                             <div className="user-details-wrapper">
-                                {profile_details?.profilePicture ? 
-                                <img src={profile_details?.profilePicture} alt="" className="user-profile" onError={({ currentTarget }) => {
-                                    currentTarget.onerror = null;
-                                    currentTarget.src={error_img};
-                                  }}/> :
-                                    <Avatar icon={<UserOutlined />} size={100} className="user-profile" />}
+                                {profileImg ?
+                                    <img
+                                        src={`${import.meta.env.VITE_API_URL}/images/${profile_details?.profilePicture}`}
+                                        alt="" className="user-profile"
+                                        onError={({ currentTarget }) => {
+                                            currentTarget.onerror = null;
+                                            currentTarget.src = error_img;
+                                        }}
+                                    /> :
+                                    <Avatar
+                                        icon={<UserOutlined />}
+                                        size={100}
+                                        className="user-profile" />}
                                 <div className="profile-description">
                                     <h4>{`${profile_details?.firstName} ${profile_details?.lastName}`}</h4>
                                     <span>{profile_details?.description}</span>
@@ -67,7 +69,7 @@ const Profile = () => {
                                         <a href={profile_details?.twitter}><img src={twitter} alt="" /></a>
                                     </div>
                                 </div>
-                                <Button className="edit-profile" onClick={handleEdit}><span><img src={edit_icon} alt="" /> {profile.profile.btn_text}</span></Button>
+                                <Button className="edit-profile" onClick={() => navigate('/profile/edit')}><span><img src={edit_icon} alt="" /> {profile.profile.btn_text}</span></Button>
                             </div>
                         </div>
                     </Col>

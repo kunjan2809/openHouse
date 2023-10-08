@@ -4,7 +4,7 @@
 .navbar {
     border-bottom: 1px solid #E2E2E2;
 
-    .nabvar-row {
+    .navbar-row {
         padding: 10px;
 
         .logo {
@@ -54,6 +54,10 @@
                     }
                 }
             }
+        }
+
+        .nav-profile-avatar {
+            margin-left: 10px;
         }
 
         .primary-button {

@@ -1,5 +1,4 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-
 import Signup from './modules/auth/Signup'
 import ForgotPassword from './modules/auth/ForgotPassword'
 import Login from './modules/auth/Login'
@@ -19,42 +18,43 @@ import EditProfile from './modules/profile/EditProfile'
 import { Provider } from 'react-redux'
 import { persistor, store } from './store/store'
 import { PersistGate } from 'redux-persist/integration/react'
+import AuthRoute from './common/components/authRoute/AuthRoute'
 
 const App = () => {
 
   return (
     <>
-    <Provider store={store}>
-    <PersistGate loading={null} persistor={persistor}>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/forget-password" element={<ForgotPassword />} />
-          <Route path="/reset-password/:token" element={<ResetPassword />} />
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+          <BrowserRouter>
+            <Routes>
+              {/* General routes */}
+              <Route path="/signup" element={<Signup />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/forget-password" element={<ForgotPassword />} />
+              <Route path="/reset-password/:token" element={<ResetPassword />} />
 
-          <Route path="/" element={<Layout><Home /></Layout>} />
-          <Route path="/profile" element={<Layout><Profile /></Layout>} />
-          <Route path="/profile/edit" element={<Layout><EditProfile /></Layout>} />
+              {/* Public routes */}
+              <Route path="/" element={<Layout><Home /></Layout>} />
 
-          <Route path="/blog" element={<Layout><Blog /></Layout>} />
-          <Route path="/blog/:id" element={<Layout><BlogDetails /></Layout>} />
+              <Route path="/blog" element={<Layout><Blog /></Layout>} />
+              <Route path="/blog/:id" element={<Layout><BlogDetails /></Layout>} />
 
-          <Route path="/create-listing" element={<Layout><CreateListing /></Layout>} />
-          <Route path="/create-listing/submit" element={<Layout><ListingSuccess /></Layout>} />
-          <Route path="/property/:id" element={<Layout><PropertyDetails /></Layout>} />
+              <Route path="/create-listing" element={<Layout><CreateListing /></Layout>} />
+              <Route path="/create-listing/submit" element={<Layout><ListingSuccess /></Layout>} />
+              <Route path="/property/:id" element={<Layout><PropertyDetails /></Layout>} />
 
-          <Route path="/about" element={<Layout><About /></Layout>} />
-          <Route path="/contact" element={<Layout><Contact /></Layout>} />
+              <Route path="/about" element={<Layout><About /></Layout>} />
+              <Route path="/contact" element={<Layout><Contact /></Layout>} />
 
-          <Route path="/" >
-            {/* <Route path="/" element={<AuthRoute permissionType="ALLOW"><Dashboard /></AuthRoute>} /> */}
-          </Route>
+              {/* Private routes */}
+              <Route path="/profile" element={<AuthRoute><Layout><Profile /></Layout></AuthRoute>} />
+              <Route path="/profile/edit" element={<AuthRoute><Layout><EditProfile /></Layout></AuthRoute>} />
 
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-      </PersistGate>
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </BrowserRouter>
+        </PersistGate>
       </Provider>
     </>
   )

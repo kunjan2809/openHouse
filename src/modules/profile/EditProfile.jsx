@@ -1,7 +1,7 @@
 import { Button, Col, Image, Input, Row, Select } from "antd"
 import './assets/scss/editProfile.scss'
 import { edit_profile } from './constant/string.js'
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import instagram from "../../common/assets/svgs/instagram.svg"
 import facebook from "../../common/assets/svgs/facebook.svg"
 import twitter from "../../common/assets/svgs/twitter.svg"
@@ -9,32 +9,37 @@ import { useDispatch, useSelector } from "react-redux";
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useNavigate } from "react-router-dom";
-import { getProfile, updateProfile } from "./store/actions/profile";
+import { updateProfile } from "./store/actions/profile";
 
 const { TextArea } = Input;
 const { Option } = Select;
 
 const EditProfile = () => {
 
-    const [file, setFile] = useState();
-
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
+    const [file, setFile] = useState()
     const { profile_details } = useSelector((state) => state.profile)
 
+
+    //Getting uploaded file
     const handleFileChange = (e) => {
         const file = e.target.files[0];
 
         if (file) {
             setFile(file);
         }
-    };
-
-    const successCallback = () => {
     }
 
-    //validation
+
+    //==> Success and error callbacks <==
+    const successCallback = () => {
+        navigate('/profile')
+    }
+
+
+    //==> Yup-formik validation <==
     const formSchema = Yup.object().shape({
         first_name: Yup.string().trim().required('First name required'),
         last_name: Yup.string().trim().required('Last name required'),
@@ -75,15 +80,7 @@ const EditProfile = () => {
         }
     })
 
-    const {
-        values,
-        handleChange,
-        handleBlur,
-        touched,
-        errors,
-        submitForm,
-        setFieldValue,
-    } = formik
+    const { values, handleChange, handleBlur, touched, errors, submitForm, setFieldValue } = formik
 
 
     return (
@@ -102,7 +99,7 @@ const EditProfile = () => {
                                 <Col span={12}>
                                     <label className="input-label">{edit_profile.about.fields.first_name}</label>
                                     <Input
-                                        name="fist_name"
+                                        name="first_name"
                                         className="input-field"
                                         placeholder="First name"
                                         onChange={handleChange}
@@ -128,7 +125,6 @@ const EditProfile = () => {
                         </Col>
 
                         <Col span={15}>
-
                             {file && <Image className="profile-img" src={URL.createObjectURL(file)} />}
 
                             <label htmlFor="imageInput" className="input-label">
@@ -247,11 +243,9 @@ const EditProfile = () => {
                         <Col span={24}>
                             <Button type="primary" className="save-btn" onClick={() => submitForm()}>{edit_profile.btn_text}</Button>
                         </Col>
-
                     </Row>
                 </form>
             </div>
-
         </>
     )
 }

@@ -10,7 +10,6 @@ const persistConfig = {
     whitelist: ['auth']
 }
 
-
 const rootReducer = combineReducers({
     auth: authReducer,
     profile: profileReducer

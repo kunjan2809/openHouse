@@ -4,8 +4,7 @@ import PropTypes from "prop-types";
 import './blogCard.scss'
 import { useNavigate } from "react-router-dom";
 
-const BlogCard = (props) => {
-    const { heading, description, date, image, isTranding } = props
+const BlogCard = ({ heading, description, date, image, isTranding }) => {
     const navigate = useNavigate()
 
     return (

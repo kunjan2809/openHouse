@@ -1,4 +1,4 @@
-import { Button, Input } from "antd"
+import { Button, Input, message } from "antd"
 import AuthScreen from "../../common/components/auth/authScreen"
 import { Link, useNavigate, useParams } from "react-router-dom"
 import TICK from '../../common/assets/svgs/rightTick.svg'
@@ -10,19 +10,31 @@ import { useState } from "react"
 import { resetPassword } from "./store/actions/auth"
 
 const ResetPassword = () => {
+
   const { token } = useParams()
-
-  const [successComponent, setSuccessComponent] = useState(false)
-
-  const navigate = useNavigate();
+  const navigate = useNavigate()
   const dispatch = useDispatch()
 
+  const [successComponent, setSuccessComponent] = useState(false)
+  const [messageApi, contextHolder] = message.useMessage();
+
+
+  //==> Success and error callbacks <==
   const successCallback = () => {
     setSuccessComponent(true)
     navigate('/login')
   }
 
-  //validation
+  const errorCallback = (message) => {
+    messageApi.open({
+      type: 'error',
+      content: message,
+      duration: 5,
+    });
+  }
+
+
+  //==> Yup-formik validation <==
   const formSchema = Yup.object().shape({
     password: Yup.string().trim().required('Password required').min(8, 'Password must be at least 8 characters').matches(
       /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*()_+{}[\]:;<>,.?~\\/-]).*$/,
@@ -43,18 +55,12 @@ const ResetPassword = () => {
         password: values.password,
         confirm_password: values.confirm_password
       }
-      dispatch(resetPassword(payload, successCallback, token))
+      dispatch(resetPassword(payload, token, successCallback, errorCallback))
     }
   })
 
-  const {
-    values,
-    handleChange,
-    handleBlur,
-    touched,
-    errors,
-    submitForm
-  } = formik
+  const { values, handleChange, handleBlur, touched, errors, submitForm } = formik
+
 
   return (
     <>
@@ -109,6 +115,7 @@ const ResetPassword = () => {
           </div>
         </div>
       </AuthScreen >
+      {contextHolder}
     </>
   )
 }

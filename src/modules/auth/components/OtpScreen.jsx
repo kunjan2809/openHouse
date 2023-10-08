@@ -1,5 +1,5 @@
 import { otp } from '../constant/string'
-import { Button, InputNumber } from 'antd'
+import { Button, InputNumber, Statistic, message } from 'antd'
 import { useEffect, useRef, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import PropTypes from "prop-types";
@@ -8,14 +8,16 @@ import { resendOtp, verifyOtp } from '../store/actions/auth'
 const OtpScreen = ({ phone, successCallback }) => {
 
     const targets = useRef([])
-    const timerClock = useRef()
-
     const dispatch = useDispatch()
+    const { Countdown } = Statistic;
 
     const [OTP, setOTP] = useState(['', '', '', '', '', ''])
-    const [startTimer, setStartTimer] = useState(true)
+    const [time, setTime] = useState(Date.now())
     const [isResendEnable, setIsResendEnable] = useState(false)
+    const [messageApi, contextHolder] = message.useMessage();
 
+
+    //==> Otp input change handlers <==
     const handleOtpChange = (e, index) => {
         let value = targets.current[index].value
 
@@ -45,15 +47,25 @@ const OtpScreen = ({ phone, successCallback }) => {
         }
     }
 
-    const successCallbackVerifyOtp = () => {
-        setOTP(['', '', '', '', '', ''])
-        successCallback()
-    }
 
+    //==> Api call and event handling <==
     const successCallbackResend = () => {
         setOTP(['', '', '', '', '', ''])
-        setStartTimer(true)
+        setTime((Date.now() + 1000 * 60))
         setIsResendEnable(false)
+        messageApi.open({
+            type: 'success',
+            content: 'OTP sent successfully',
+            duration: 5,
+        });
+    }
+
+    const errorCallback = (message) => {
+        messageApi.open({
+            type: 'error',
+            content: message,
+            duration: 5,
+        });
     }
 
     const handleOtpVerify = () => {
@@ -61,7 +73,7 @@ const OtpScreen = ({ phone, successCallback }) => {
             phoneNumber: phone,
             otp: OTP.join('')
         }
-        dispatch(verifyOtp(payload, successCallbackVerifyOtp))
+        dispatch(verifyOtp(payload, successCallbackVerifyOtp, errorCallback))
     }
 
     const handleResendOtp = () => {
@@ -71,20 +83,16 @@ const OtpScreen = ({ phone, successCallback }) => {
         dispatch(resendOtp(payload, successCallbackResend))
     }
 
+    const successCallbackVerifyOtp = () => {
+        setOTP(['', '', '', '', '', ''])
+        successCallback()
+    }
+
+
+    //Running timer on initial render
     useEffect(() => {
-        if (startTimer) {
-            let time = 60  //S
-            let interval = setInterval(() => {
-                time--
-                timerClock.current.innerHTML = `00:${time < 10 ? `0${time}` : time}`
-                if (time === 0) {
-                    clearInterval(interval)
-                    setIsResendEnable(true)
-                }
-            }, 1000)
-            setStartTimer(false)
-        }
-    }, [startTimer])
+        setTime((Date.now() + 1000 * 60))
+    }, [])
 
 
     return (
@@ -123,11 +131,13 @@ const OtpScreen = ({ phone, successCallback }) => {
                         isResendEnable ?
                             <p className="resend-otp" onClick={handleResendOtp}>{otp.resend}</p>
                             :
-                            <p className="timer">{otp.resend_in} <span ref={timerClock}>{'00:00'}</span></p>
+                            <div className="timer">{otp.resend_in} <Countdown className='otp-countdown' key={isResendEnable} format='mm:ss' value={time} onFinish={() => { setIsResendEnable(true); setTime(Date.now()) }} />
+                            </div>
                     }
 
                 </div>
             </div>
+            {contextHolder}
         </>
     )
 }

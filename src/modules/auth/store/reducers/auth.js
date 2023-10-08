@@ -3,7 +3,8 @@ import { FORGOT_PASSWORD_FAIL, FORGOT_PASSWORD_REQUEST, FORGOT_PASSWORD_SUCCESS,
 
 const initialState = {
     userToken: "",
-    loading: false
+    loading: false,
+    userDetails: {}
 }
 
 const authReducer = (state = initialState, action) => {
@@ -49,18 +50,21 @@ const authReducer = (state = initialState, action) => {
                 ...state,
                 loading: true,
                 userToken: "",
+                userDetails: {}
             }
         case LOGIN_SUCCESS:
             return {
                 ...state,
                 loading: false,
                 userToken: action.payload?.userToken,
+                userDetails: action.payload?.userDetails
             }
         case LOGIN_FAIL:
             return {
                 ...state,
                 loading: false,
                 userToken: "",
+                userDetails: {}
             }
 
         //forgot password

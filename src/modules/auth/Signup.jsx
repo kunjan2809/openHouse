@@ -1,4 +1,4 @@
-import { Button, Col, Input, Row, Select } from "antd"
+import { Button, Col, Input, Row, Select, message } from "antd"
 import AuthScreen from "../../common/components/auth/authScreen"
 import { Link, useNavigate } from "react-router-dom"
 import { signup } from "./constant/string";
@@ -13,27 +13,39 @@ const { Option } = Select;
 
 const Signup = () => {
 
-    const [isOtpScreen, setIsOtpScreen] = useState(false)
-
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
+    const [isOtpScreen, setIsOtpScreen] = useState(false)
+    const [messageApi, contextHolder] = message.useMessage();
+
+
+    //==> Success and error callbacks <==
     const successCallback = () => {
         setIsOtpScreen(true)
     }
 
-    const successCallbackVerifyOtp = () => {
-        navigate('/login')
+    const errorCallback = (message) => {
+        messageApi.open({
+            type: 'error',
+            content: message,
+            duration: 5,
+        });
     }
 
-    //validation
+    const successCallbackVerifyOtp = () => {
+        navigate('/')
+    }
+
+
+    //==> Yup-formik validation <==
     const formSchema = Yup.object().shape({
         first_name: Yup.string().trim().required('First name required'),
         last_name: Yup.string().trim().required('Last name required'),
         company: Yup.string().trim().required('Company name required'),
         country_code: Yup.string().trim().required('Country code required'),
         phone: Yup.string().matches(/^[0-9]+$/, 'Phone number must contain only numbers').min(4, 'Phone number must be at least 4 characters').max(13, 'Phone number must be at most 13 characters').required('Phone number is required'),
-        email: Yup.string().trim().email("Invalid email").required('Email required'),
+        email: Yup.string().email("Invalid email").required('Email required'),
         password: Yup.string().trim().required('Password required').min(8, 'Password must be at least 8 characters').matches(/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*()_+{}[\]:;<>,.?~\\/-]).*$/, 'Password must contain at least one uppercase, one lowercase, one digit, and one special character'),
         confirm_password: Yup.string().required('Confirm password required').min(8, 'Password must be at least 8 characters').matches(/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*()_+{}[\]:;<>,.?~\\/-]).*$/, 'Password must contain at least one uppercase, one lowercase, one digit, and one special character').oneOf([Yup.ref('password'), null], 'Passwords must match')
     })
@@ -63,19 +75,12 @@ const Signup = () => {
                 password: values.password,
                 confirmPassword: values.confirm_password
             }
-            dispatch(signUp(payload, successCallback))
+            dispatch(signUp(payload, successCallback, errorCallback))
         }
     })
 
-    const {
-        values,
-        handleChange,
-        handleBlur,
-        touched,
-        errors,
-        submitForm,
-        setFieldValue,
-    } = formik
+    const { values, handleChange, handleBlur, touched, errors, submitForm, setFieldValue } = formik
+
 
     return (
         <>
@@ -129,6 +134,7 @@ const Signup = () => {
 
                                         <p className="input-label">{signup.fields.phone}</p>
                                         <Input
+                                            type="number"
                                             name="phone"
                                             className="input-field-labeled"
                                             placeholder="Phone number"
@@ -203,6 +209,7 @@ const Signup = () => {
                     </div>
                 </div>
             </AuthScreen >
+            {contextHolder}
         </>
     )
 }

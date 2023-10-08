@@ -1,4 +1,4 @@
-import { Button, Input, Select } from "antd"
+import { Button, Input, Select, message } from "antd"
 import AuthScreen from "../../common/components/auth/authScreen"
 import { Link, useNavigate } from "react-router-dom"
 import { login } from "./constant/string"
@@ -13,13 +13,14 @@ const { Option } = Select;
 
 const Login = () => {
 
-
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const [isMobileVerified, setIsMobileVerified] = useState(true)
+    const [messageApi, contextHolder] = message.useMessage();
 
+
+    //==> Success and error callbacks <==
     const successCallback = (isMobileVerified) => {
-        console.log('isMobileVerified', isMobileVerified)
         if (!isMobileVerified) {
             setIsMobileVerified(false)
         } else {
@@ -27,11 +28,25 @@ const Login = () => {
         }
     }
 
-    //validation
+    const successCallbackVerifyOtp = () => {
+        navigate('/')
+        resetForm()
+    }
+
+    const errorCallback = (message) => {
+        messageApi.open({
+            type: 'error',
+            content: message,
+            duration: 5,
+        });
+    }
+
+
+    //==> Yup-formik validation <==
     const formSchema = Yup.object().shape({
         country_code: Yup.string().trim().required('Country code required'),
         phone: Yup.string().matches(/^[0-9]+$/, 'Phone number must contain only numbers').min(4, 'Phone number must be at least 4 characters').max(13, 'Phone number must be at most 13 characters').required('Phone number is required'),
-        password: Yup.string().trim().required('Password required').min(5, 'Password must be at least 5 characters').matches(/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*()_+{}[\]:;<>,.?~\\/-]).*$/, 'Password must contain at least one uppercase, one lowercase, one digit, and one special character'),
+        password: Yup.string().trim().required('Password required')
     })
 
     const initialValues = {
@@ -48,26 +63,13 @@ const Login = () => {
                 phoneNumber: values.country_code + values.phone,
                 password: values.password
             }
-            dispatch(signin(payload, successCallback))
+            dispatch(signin(payload, successCallback, errorCallback))
         }
     })
 
-    const {
-        values,
-        handleChange,
-        handleBlur,
-        touched,
-        errors,
-        submitForm,
-        setFieldValue,
-        resetForm
-    } = formik
+    const { values, handleChange, handleBlur, touched, errors, submitForm, setFieldValue, resetForm } = formik
 
-    const successCallbackVerifyOtp = () => {
-        resetForm()
-    }
 
-    console.log('otpStatus', isMobileVerified)
 
     return (
         <>
@@ -88,6 +90,7 @@ const Login = () => {
                                     <form>
                                         <p className="input-label">{login.fields.phone}</p>
                                         <Input
+                                            type="number"
                                             name="phone"
                                             className="input-field-labeled"
                                             placeholder=" "
@@ -111,15 +114,15 @@ const Login = () => {
                                         <br />
                                         {touched.phone && errors.phone && <span className='error'>{errors.phone}</span>}
                                         {/* <Input
-                                    name="email"
-                                    className="input-field"
-                                    placeholder="Enter your email"
-                                    autoComplete="username"
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}
-                                    value={values.email}
-                                />
-                                {touched.email && errors.email && <span className='error'>{errors.email}</span>} */}
+                                            name="email"
+                                            className="input-field"
+                                            placeholder="Enter your email"
+                                            autoComplete="username"
+                                            onChange={handleChange}
+                                            onBlur={handleBlur}
+                                            value={values.email}
+                                        />
+                                        {touched.email && errors.email && <span className='error'>{errors.email}</span>} */}
 
                                         <p className="input-label">{login.fields.password}</p>
                                         <Input.Password
@@ -145,6 +148,7 @@ const Login = () => {
                     </div>
                 </div>
             </AuthScreen >
+            {contextHolder}
         </>
     )
 }

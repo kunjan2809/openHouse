@@ -1,4 +1,4 @@
-import { Button, Input } from "antd"
+import { Button, Input, message } from "antd"
 import AuthScreen from "../../common/components/auth/authScreen"
 import { Link } from "react-router-dom"
 import TICK from '../../common/assets/svgs/rightTick.svg'
@@ -11,17 +11,28 @@ import { forgotPassword } from "./store/actions/auth"
 
 const ForgotPassword = () => {
 
-    const [successComponent, setSuccessComponent] = useState(false)
-
     const dispatch = useDispatch()
+    const [successComponent, setSuccessComponent] = useState(false)
+    const [messageApi, contextHolder] = message.useMessage();
 
+
+    //==> Success and error callbacks <==
     const successCallback = () => {
         setSuccessComponent(true)
     }
 
-    //validation
+    const errorCallback = (message) => {
+        messageApi.open({
+            type: 'error',
+            content: message,
+            duration: 5,
+        });
+    }
+
+
+    //==> Yup-formik validation <==
     const formSchema = Yup.object().shape({
-        email: Yup.string().trim().required('Email required'),
+        email: Yup.string().email("Invalid email").required('Email required'),
     })
 
     const initialValues = {
@@ -35,18 +46,12 @@ const ForgotPassword = () => {
             let payload = {
                 email: values.email,
             }
-            dispatch(forgotPassword(payload, successCallback))
+            dispatch(forgotPassword(payload, successCallback, errorCallback))
         }
     })
 
-    const {
-        values,
-        handleChange,
-        handleBlur,
-        touched,
-        errors,
-        submitForm
-    } = formik
+    const { values, handleChange, handleBlur, touched, errors, submitForm } = formik
+
 
     return (
         <>
@@ -89,6 +94,7 @@ const ForgotPassword = () => {
                     </div>
                 </div>
             </AuthScreen >
+            {contextHolder}
         </>
     )
 }

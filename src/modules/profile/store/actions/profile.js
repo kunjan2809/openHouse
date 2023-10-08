@@ -2,7 +2,7 @@ import { apiRequest } from "../../../../services/apiService";
 import { getFormData } from "../../../../services/utils";
 import { GET_PROFILE_FAIL, GET_PROFILE_REQUEST, GET_PROFILE_SUCCESS, UPDATE_PROFILE_FAIL, UPDATE_PROFILE_REQUEST, UPDATE_PROFILE_SUCCESS } from "../constant";
 
-export const getProfile = (successCallback) => {
+export const getProfile = () => {
     return async (dispatch) => {
         dispatch({ type: GET_PROFILE_REQUEST });
         const { response, error } = await apiRequest({
@@ -12,7 +12,6 @@ export const getProfile = (successCallback) => {
         })
         if (response) {
             dispatch({ type: GET_PROFILE_SUCCESS, payload: response?.data?.data })
-            successCallback()
         }
         else if (error) {
             dispatch({ type: GET_PROFILE_FAIL })

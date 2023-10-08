@@ -40,24 +40,27 @@ const PropertyDetails = () => {
   const [isOpenDesc, setIsOpenDesc] = useState(false)
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  //Map properties
   const defaultProps = {
     center: {
       lat: 49.048664,
       lng: -122.337788
     },
     zoom: 11
-  };
+  }
 
+
+  //==> Modal handling <==
   const showModal = () => {
     setIsModalOpen(true);
-  };
+  }
 
   const handleCancel = () => {
     setIsModalOpen(false);
-  };
+  }
+
 
   return (
-
     <>
       <div className="property-details-wrapper">
         <h2> 603, xyz apartments, Surrey, VIM 3B5</h2>
