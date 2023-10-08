@@ -1,5 +1,5 @@
 import { apiRequest } from "../../../../services/apiService";
-import { FORGOT_PASSWORD_FAIL, FORGOT_PASSWORD_REQUEST, FORGOT_PASSWORD_SUCCESS, LOGIN_FAIL, LOGIN_REQUEST, LOGIN_SUCCESS, RESET_PASSWORD_FAIL, RESET_PASSWORD_REQUEST, RESET_PASSWORD_SUCCESS, SIGNUP_FAIL, SIGNUP_REQUEST, SIGNUP_SUCCESS } from "../constant";
+import { FORGOT_PASSWORD_FAIL, FORGOT_PASSWORD_REQUEST, FORGOT_PASSWORD_SUCCESS, GENERATE_OTP_FAIL, GENERATE_OTP_REQUEST, GENERATE_OTP_SUCCESS, LOGIN_FAIL, LOGIN_REQUEST, LOGIN_SUCCESS, OTP_FAIL, OTP_REQUEST, OTP_SUCCESS, RESET_PASSWORD_FAIL, RESET_PASSWORD_REQUEST, RESET_PASSWORD_SUCCESS, SIGNUP_FAIL, SIGNUP_REQUEST, SIGNUP_SUCCESS } from "../constant";
 
 
 export const signUp = (data, successCallback) => {
@@ -11,7 +11,7 @@ export const signUp = (data, successCallback) => {
             data: data
         })
         if (response) {
-            dispatch({ type: SIGNUP_SUCCESS, payload: response?.data?.data })
+            dispatch({ type: SIGNUP_SUCCESS, payload: response?.data })
             successCallback()
         }
         else if (error) {
@@ -19,6 +19,43 @@ export const signUp = (data, successCallback) => {
         }
     }
 }
+
+export const verifyOtp = (data, successCallback) => {
+    return async (dispatch) => {
+        dispatch({ type: OTP_REQUEST });
+        const { response, error } = await apiRequest({
+            method: 'POST',
+            url: `verifyotp`,
+            data: data
+        })
+        if (response) {
+            dispatch({ type: OTP_SUCCESS, payload: response?.data })
+            successCallback()
+        }
+        else if (error) {
+            dispatch({ type: OTP_FAIL })
+        }
+    }
+}
+
+export const resendOtp = (data, successCallback) => {
+    return async (dispatch) => {
+        dispatch({ type: GENERATE_OTP_REQUEST });
+        const { response, error } = await apiRequest({
+            method: 'POST',
+            url: `generateotp`,
+            data: data
+        })
+        if (response) {
+            dispatch({ type: GENERATE_OTP_SUCCESS, payload: response?.data })
+            successCallback()
+        }
+        else if (error) {
+            dispatch({ type: GENERATE_OTP_FAIL })
+        }
+    }
+}
+
 
 export const signin = (data, successCallback) => {
     return async (dispatch) => {
@@ -31,11 +68,16 @@ export const signin = (data, successCallback) => {
         if (response) {
             dispatch({
                 type: LOGIN_SUCCESS, payload: {
-                    data: response?.data?.user,
-                    token: response?.data?.token
+                    otpStatus: response?.data?.isVerfied,
+                    userToken: response?.data?.token
                 }
             })
-            successCallback()
+            let isMobileVerified = response?.data?.isVerfied
+            if (isMobileVerified !== undefined && isMobileVerified !== null) {
+                successCallback(isMobileVerified)
+            } else {
+                successCallback(true)
+            }
         }
         else if (error) {
             dispatch({ type: LOGIN_FAIL })
@@ -52,7 +94,7 @@ export const forgotPassword = (data, successCallback) => {
             data: data
         })
         if (response) {
-            dispatch({ type: FORGOT_PASSWORD_SUCCESS, payload: response?.data?.data })
+            dispatch({ type: FORGOT_PASSWORD_SUCCESS, payload: response?.data })
             successCallback()
         }
         else if (error) {
@@ -70,7 +112,7 @@ export const resetPassword = (data, successCallback, token) => {
             data: data
         })
         if (response) {
-            dispatch({ type: RESET_PASSWORD_SUCCESS, payload: response?.data?.data })
+            dispatch({ type: RESET_PASSWORD_SUCCESS, payload: response?.data })
             successCallback()
         }
         else if (error) {

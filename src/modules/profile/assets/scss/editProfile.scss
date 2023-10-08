@@ -51,6 +51,19 @@
             @include inputConfig();
         }
 
+        //select
+        .input-field-labeled {
+            @include addonBefore();
+
+            .ant-input-group-addon {
+                width: 100px
+            }
+
+            .ant-input {
+                @include inputConfig();
+            }
+        }
+
         .profile-img {
             width: 100px;
             height: 100px;
@@ -58,7 +71,7 @@
             margin-top: 1.3rem;
         }
 
-        .input-img{
+        .input-img {
             display: none;
         }
 
@@ -71,7 +84,7 @@
             transition: all 0.1s linear 0s;
         }
 
-        .custom-button:hover{
+        .custom-button:hover {
             background-color: $colorLevel5;
             color: white;
         }

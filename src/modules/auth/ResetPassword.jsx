@@ -43,7 +43,6 @@ const ResetPassword = () => {
         password: values.password,
         confirm_password: values.confirm_password
       }
-      console.log('payload', payload)
       dispatch(resetPassword(payload, successCallback, token))
     }
   })

@@ -1,4 +1,4 @@
-import { Button, Input } from "antd"
+import { Button, Input, Select } from "antd"
 import AuthScreen from "../../common/components/auth/authScreen"
 import { Link, useNavigate } from "react-router-dom"
 import { login } from "./constant/string"
@@ -6,24 +6,37 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch } from "react-redux";
 import { signin } from "./store/actions/auth";
+import OtpScreen from "./components/OtpScreen";
+import { useState } from "react";
+
+const { Option } = Select;
 
 const Login = () => {
 
+
     const navigate = useNavigate()
     const dispatch = useDispatch()
+    const [isMobileVerified, setIsMobileVerified] = useState(true)
 
-    const successCallback = () => {
-        navigate('/')
+    const successCallback = (isMobileVerified) => {
+        console.log('isMobileVerified', isMobileVerified)
+        if (!isMobileVerified) {
+            setIsMobileVerified(false)
+        } else {
+            navigate('/')
+        }
     }
 
     //validation
     const formSchema = Yup.object().shape({
-        email: Yup.string().trim().required('Email required').matches(/^(\d{4,13})$|^\S+@\S+\.\S+$/, 'Please enter a valid phone number or email address.'),
+        country_code: Yup.string().trim().required('Country code required'),
+        phone: Yup.string().matches(/^[0-9]+$/, 'Phone number must contain only numbers').min(4, 'Phone number must be at least 4 characters').max(13, 'Phone number must be at most 13 characters').required('Phone number is required'),
         password: Yup.string().trim().required('Password required').min(5, 'Password must be at least 5 characters').matches(/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*()_+{}[\]:;<>,.?~\\/-]).*$/, 'Password must contain at least one uppercase, one lowercase, one digit, and one special character'),
     })
 
     const initialValues = {
-        email: '',
+        country_code: '+1',
+        phone: '',
         password: ''
     }
 
@@ -32,10 +45,9 @@ const Login = () => {
         validationSchema: formSchema,
         onSubmit: (values) => {
             let payload = {
-                email: values.email,
+                phoneNumber: values.country_code + values.phone,
                 password: values.password
             }
-            console.log('payload', payload)
             dispatch(signin(payload, successCallback))
         }
     })
@@ -46,22 +58,59 @@ const Login = () => {
         handleBlur,
         touched,
         errors,
-        submitForm
+        submitForm,
+        setFieldValue,
+        resetForm
     } = formik
+
+    const successCallbackVerifyOtp = () => {
+        resetForm()
+    }
+
+    console.log('otpStatus', isMobileVerified)
 
     return (
         <>
             <AuthScreen>
                 <div className="fields">
                     <div className="fields-container">
-                        <div className="header">
-                            <span>{login.welcomeMsg}</span>
-                            <h1>{login.title}</h1>
-                        </div>
-                        <div className="auth-form">
-                            <form>
-                                <p className="input-label">{login.fields.email}</p>
-                                <Input
+                        {isMobileVerified === false ?
+                            <OtpScreen
+                                phone={values.country_code + values.phone}
+                                successCallback={successCallbackVerifyOtp}
+                            /> :
+                            <>
+                                <div className="header">
+                                    <span>{login.welcomeMsg}</span>
+                                    <h1>{login.title}</h1>
+                                </div>
+                                <div className="auth-form">
+                                    <form>
+                                        <p className="input-label">{login.fields.phone}</p>
+                                        <Input
+                                            name="phone"
+                                            className="input-field-labeled"
+                                            placeholder=" "
+                                            addonBefore={
+                                                <Select
+                                                    defaultValue="+1"
+                                                    className="select-country-code"
+                                                    popupClassName="country-code-selector"
+                                                    onChange={(value) => setFieldValue('country_code', value)}
+                                                    onBlur={handleBlur}
+                                                    value={values.country_code}
+                                                >
+                                                    <Option value="+1">+1</Option>
+                                                </Select>
+                                            }
+                                            onChange={handleChange}
+                                            onBlur={handleBlur}
+                                            value={values.phone}
+                                        />
+                                        {touched.country_code && errors.country_code && <span className='error'>{errors.country_code}</span>}
+                                        <br />
+                                        {touched.phone && errors.phone && <span className='error'>{errors.phone}</span>}
+                                        {/* <Input
                                     name="email"
                                     className="input-field"
                                     placeholder="Enter your email"
@@ -70,27 +119,29 @@ const Login = () => {
                                     onBlur={handleBlur}
                                     value={values.email}
                                 />
-                                {touched.email && errors.email && <span className='error'>{errors.email}</span>}
+                                {touched.email && errors.email && <span className='error'>{errors.email}</span>} */}
 
-                                <p className="input-label">{login.fields.password}</p>
-                                <Input.Password
-                                    name="password"
-                                    className="input-field input-field-password"
-                                    placeholder="Enter password"
-                                    autoComplete="current-password"
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}
-                                    value={values.password}
-                                />
-                                {touched.password && errors.password && <span className='error'>{errors.password}</span>}
+                                        <p className="input-label">{login.fields.password}</p>
+                                        <Input.Password
+                                            name="password"
+                                            className="input-field input-field-password"
+                                            placeholder="Enter password"
+                                            autoComplete="current-password"
+                                            onChange={handleChange}
+                                            onBlur={handleBlur}
+                                            value={values.password}
+                                        />
+                                        {touched.password && errors.password && <span className='error'>{errors.password}</span>}
 
-                                <Button type="primary" className="signin-btn" onClick={() => submitForm()}>{login.btn_text}</Button>
-                            </form>
-                            <Link to='/forget-password'> <h4 className="forgot-password-title">{login.forgot_pass}</h4></Link>
-                        </div>
-                        <div className="footer">
-                            <p>{login.option} <Link to='/signup'>{login.option_link}</Link></p>
-                        </div>
+                                        <Button type="primary" className="signin-btn" onClick={() => submitForm()}>{login.btn_text}</Button>
+                                    </form>
+                                    <Link to='/forget-password'> <h4 className="forgot-password-title">{login.forgot_pass}</h4></Link>
+                                </div>
+                                <div className="footer">
+                                    <p>{login.option} <Link to='/signup'>{login.option_link}</Link></p>
+                                </div>
+                            </>
+                        }
                     </div>
                 </div>
             </AuthScreen >

@@ -17,7 +17,7 @@ const layout = {
     links_get_in_touch: {
         title: "Get in Touch"
     },
-    copy:"Copyright@2023 Openhouse All Rights Reserved.",
-    btn_text:"Sign in"
+    copy: "Copyright@2023 Openhouse All Rights Reserved.",
+    btn_text: "Sign in"
 }
 export { layout }

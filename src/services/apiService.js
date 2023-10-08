@@ -1,5 +1,5 @@
 import axios from "axios";
-import {store} from '../store/store'
+import { store } from '../store/store'
 
 const apiRequest = async ({
     method,
@@ -17,12 +17,10 @@ const apiRequest = async ({
         },
         data: data
     }
-    
+
     if (isToken) {
         let { auth } = store.getState()
         let token = auth.userToken
-
-        console.log('token', token)
 
         options = {
             ...options,
@@ -38,6 +36,7 @@ const apiRequest = async ({
             response = res
         })
         .catch(err => {
+            console.error('API ERROR:::', err)
             error = err
         })
 

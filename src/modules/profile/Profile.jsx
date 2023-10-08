@@ -1,6 +1,6 @@
-import { Button, Col, Row } from "antd"
+import { Avatar, Button, Col, Row } from "antd"
 import cardImg from '../../common/assets/images/property.png'
-import profile_img from './assets/images/profile-img.png'
+import error_img from './assets/images/error.png'
 import phone_svg from "../../common/assets/svgs/phone.svg"
 import mail_svg from "../../common/assets/svgs/email.svg"
 import instagram from "../../common/assets/svgs/instagram.svg"
@@ -11,10 +11,30 @@ import './assets/scss/profile.scss'
 import PropertyCard from "../../common/components/card/PropertyCard"
 import { useNavigate } from "react-router-dom"
 import { profile } from "./constant/string"
+import { useDispatch, useSelector } from "react-redux"
+import { useEffect } from "react"
+import { getProfile } from "./store/actions/profile"
+import { UserOutlined } from "@ant-design/icons"
 
 const Profile = () => {
+
     const navigate = useNavigate()
-    
+    const dispatch = useDispatch()
+
+    const { profile_details } = useSelector((state) => state.profile)
+
+    const successCallback = () => {
+    }
+
+    const handleEdit = () => {
+        navigate('/profile/edit')
+    }
+
+    useEffect(() => {
+        dispatch(getProfile(successCallback))
+    }, [])
+
+
     return (
         <>
             <div className="profile-container">
@@ -22,27 +42,32 @@ const Profile = () => {
                     <Col span={6}>
                         <div className="user-profile-wrapper">
                             <div className="user-details-wrapper">
-                                <img src={profile_img} alt="" className="user-profile" />
+                                {profile_details?.profilePicture ? 
+                                <img src={profile_details?.profilePicture} alt="" className="user-profile" onError={({ currentTarget }) => {
+                                    currentTarget.onerror = null;
+                                    currentTarget.src={error_img};
+                                  }}/> :
+                                    <Avatar icon={<UserOutlined />} size={100} className="user-profile" />}
                                 <div className="profile-description">
-                                    <h4>Prashant Vats</h4>
-                                    <span>With over a decade of experience and a passion for client satisfaction, John Smith is your go-to real estate professional.</span>
+                                    <h4>{`${profile_details?.firstName} ${profile_details?.lastName}`}</h4>
+                                    <span>{profile_details?.description}</span>
                                 </div>
                                 <div className="contact-info-wrapper">
                                     <h5>{profile.profile.contact}</h5>
                                     <div className="contact-info">
-                                        <span><img src={phone_svg} alt="" /> +91 986476483</span>
-                                        <span><img src={mail_svg} alt="" /> prashant30@gmail.com</span>
+                                        <span><img src={phone_svg} alt="" /> {`${profile_details?.phoneNumber?.substring(0, 2)} ${profile_details?.phoneNumber?.substring(2)}`}</span>
+                                        <span><img src={mail_svg} alt="" /> {profile_details?.email}</span>
                                     </div>
                                 </div>
                                 <div className="follow-icons">
                                     <h5>{profile.profile.follow}</h5>
                                     <div className="icons">
-                                        <img src={instagram} alt="" />
-                                        <img src={facebook} alt="" />
-                                        <img src={twitter} alt="" />
+                                        <a href={profile_details?.instagram} target="_blank" rel="noreferrer"><img src={instagram} alt="" /></a>
+                                        <a href={profile_details?.facebook}><img src={facebook} alt="" /></a>
+                                        <a href={profile_details?.twitter}><img src={twitter} alt="" /></a>
                                     </div>
                                 </div>
-                                <Button className="edit-profile" onClick={()=>navigate('/profile/edit')}><span><img src={edit_icon} alt="" /> {profile.profile.btn_text}</span></Button>
+                                <Button className="edit-profile" onClick={handleEdit}><span><img src={edit_icon} alt="" /> {profile.profile.btn_text}</span></Button>
                             </div>
                         </div>
                     </Col>
@@ -51,7 +76,7 @@ const Profile = () => {
                             <div className="heading">
                                 <h1 className="title">{profile.listings.title}</h1>
                                 <Button type="primary" className='add-listing-btn' onClick={() => navigate('/create-listing')}>
-                                {profile.listings.add_btn}
+                                    {profile.listings.add_btn}
                                 </Button>
                             </div>
                             <Row gutter={[16, 24]}>

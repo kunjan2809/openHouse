@@ -15,7 +15,7 @@ const Navbar = () => {
                 </Col>
                 <Col span={12}>
                     <Row align="middle" gutter={2}>
-                        <Col span={20}>
+                        <Col span={18}>
                             <ul className='links'>
                                 <li><NavLink exact to='/'>{layout.links_nav.home}</NavLink></li>
                                 <li><NavLink exact to='/about'>{layout.links_nav.about}</NavLink></li>
@@ -23,7 +23,7 @@ const Navbar = () => {
                                 <li><NavLink exact to='/contact'>{layout.links_nav.contact}</NavLink></li>
                             </ul>
                         </Col>
-                        <Col span={4}>
+                        <Col span={6}>
                             {true ?
                                 <Link to='/profile'>
                                     <Avatar src={<img src={profile} alt="avatar" />} />

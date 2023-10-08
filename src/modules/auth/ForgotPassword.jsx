@@ -35,7 +35,6 @@ const ForgotPassword = () => {
             let payload = {
                 email: values.email,
             }
-            console.log('payload', payload)
             dispatch(forgotPassword(payload, successCallback))
         }
     })

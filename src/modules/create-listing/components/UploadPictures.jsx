@@ -48,11 +48,7 @@ const UploadPictures = ({ handleNext, handlePrev }) => {
                                 </div>}
                                 <br />
 
-                                <Image.PreviewGroup
-                                    preview={{
-                                        onChange: (current, prev) => console.log(`current index: ${current}, prev index: ${prev}`),
-                                    }}
-                                >
+                                <Image.PreviewGroup>
                                     <Row className="img-group" gutter={[0, 10]}>
                                         {fileList?.map((img, index) => {
                                             return <>

@@ -1,6 +1,6 @@
 import { Button, Col, Input, Row, Select } from "antd"
 import AuthScreen from "../../common/components/auth/authScreen"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { signup } from "./constant/string";
 import OtpScreen from "./components/OtpScreen";
 import { useDispatch } from "react-redux";
@@ -12,12 +12,18 @@ import { useState } from "react";
 const { Option } = Select;
 
 const Signup = () => {
+
     const [isOtpScreen, setIsOtpScreen] = useState(false)
 
+    const navigate = useNavigate()
     const dispatch = useDispatch()
 
     const successCallback = () => {
         setIsOtpScreen(true)
+    }
+
+    const successCallbackVerifyOtp = () => {
+        navigate('/login')
     }
 
     //validation
@@ -51,8 +57,8 @@ const Signup = () => {
                 firstName: values.first_name,
                 lastName: values.last_name,
                 companyName: values.company,
-                countryCode: values.country_code,
-                phoneNumber: values.phone,
+                // countryCode: values.country_code,
+                phoneNumber: values.country_code + values.phone,
                 email: values.email,
                 password: values.password,
                 confirmPassword: values.confirm_password
@@ -68,7 +74,7 @@ const Signup = () => {
         touched,
         errors,
         submitForm,
-        setFieldValue
+        setFieldValue,
     } = formik
 
     return (
@@ -125,7 +131,7 @@ const Signup = () => {
                                         <Input
                                             name="phone"
                                             className="input-field-labeled"
-                                            placeholder=" "
+                                            placeholder="Phone number"
                                             addonBefore={
                                                 <Select
                                                     defaultValue="+1"
@@ -136,7 +142,6 @@ const Signup = () => {
                                                     value={values.country_code}
                                                 >
                                                     <Option value="+1">+1</Option>
-                                                    <Option value="+91">+91</Option>
                                                 </Select>
                                             }
                                             onChange={handleChange}
@@ -189,7 +194,10 @@ const Signup = () => {
                                     <p>{signup.option} <Link to='/login'>{signup.option_link}</Link></p>
                                 </div>
                             </>) : (<>
-                                <OtpScreen />
+                                <OtpScreen
+                                    phone={values.country_code + values.phone}
+                                    successCallback={successCallbackVerifyOtp}
+                                />
                             </>)
                         }
                     </div>

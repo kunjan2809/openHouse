@@ -17,20 +17,21 @@ import ListingSuccess from './modules/create-listing/ListingSuccess'
 import NotFound from './modules/others/404'
 import EditProfile from './modules/profile/EditProfile'
 import { Provider } from 'react-redux'
-import { store } from './store/store'
+import { persistor, store } from './store/store'
+import { PersistGate } from 'redux-persist/integration/react'
 
 const App = () => {
 
   return (
     <>
     <Provider store={store}>
+    <PersistGate loading={null} persistor={persistor}>
       <BrowserRouter>
         <Routes>
-          <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/forget-password" element={<ForgotPassword />} />
           <Route path="/reset-password/:token" element={<ResetPassword />} />
-          {/* <Route path="/reset-password/d29c341d5bff98b3c0c07756d8dae849fc200cacf6f0f818d8a7fdc22c7a20c9" element={<ResetPassword />} /> */}
 
           <Route path="/" element={<Layout><Home /></Layout>} />
           <Route path="/profile" element={<Layout><Profile /></Layout>} />
@@ -53,6 +54,7 @@ const App = () => {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
+      </PersistGate>
       </Provider>
     </>
   )

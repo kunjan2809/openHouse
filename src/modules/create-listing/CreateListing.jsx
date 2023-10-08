@@ -97,7 +97,6 @@ const CreateListing = () => {
     }
 
     const handleChangeStep = (value) => {
-        console.log('onChange:', value);
         setCurrent(value);
     }
 

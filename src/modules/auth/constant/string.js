@@ -11,7 +11,7 @@ const signup = {
     },
     btn_text: "Sign up",
     option: "Already a User?",
-    option_link:"Sign In"
+    option_link: "Sign In"
 }
 
 const otp = {
@@ -19,22 +19,23 @@ const otp = {
     sub_text: "We have sent you one time password to your mobile no.",
     title: "Please Enter OTP",
     btn_text: "Verify OTP",
+    resend_in: "Resend OTP in",
     resend: "Resend OTP",
     option: "Already a User?",
-    option_link:"Sign In"
+    option_link: "Sign In"
 }
 
 const login = {
     welcomeMsg: "Welcome to Open House!",
     title: "Sign in to your account",
     fields: {
-        email: "Email",
+        phone: "Phone No.",
         password: "Password",
     },
     btn_text: "Sign in",
     forgot_pass: "Forgot Password?",
     option: "New to Open House?",
-    option_link:"Sign up"
+    option_link: "Sign up"
 }
 
 const forgot_password = {
@@ -46,7 +47,7 @@ const forgot_password = {
     btn_text: "Submit",
     forgot_pass: "Forgot Password?",
     option: "New to Open House?",
-    option_link:"Sign up",
+    option_link: "Sign up",
     mail_sent: "We've sent you an email with instructions to reset your password."
 }
 
@@ -60,7 +61,7 @@ const reset_password = {
     btn_text: "Submit",
     forgot_pass: "Forgot Password?",
     option: "New to Open House?",
-    option_link:"Sign up",
+    option_link: "Sign up",
     reset: "Your password has been updated successfully."
 }
 

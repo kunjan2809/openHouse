@@ -12,14 +12,17 @@ const profile = {
 }
 
 const edit_profile = {
-    title:"YOUR PROFILE",
+    title: "YOUR PROFILE",
     about: {
         title: "ABOUT",
         sub_title: "Share information about yourself so that we can learn more about you.",
         fields: {
-            name: "Your Name*",
+            first_name: "First Name*",
+            last_name: "Last Name*",
             pic: "Upload profile photo",
-            description: "Description*"
+            description: "Description*",
+            email: "Email*",
+            phone: "Phone No.*"
         }
     },
     links: {
@@ -31,7 +34,7 @@ const edit_profile = {
             twitter: "Twitter*"
         }
     },
-    btn_text:"Save"
+    btn_text: "Save"
 }
 
 export { profile, edit_profile }
