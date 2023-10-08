@@ -34,7 +34,7 @@ const Navbar = () => {
                                     {profilePicture ? <Avatar
                                         size='large'
                                         src={<img
-                                            src={profilePicture}
+                                            src={`${import.meta.env.VITE_API_URL}/images/${profilePicture}`}
                                             alt="avatar"
                                         />}
                                     >
