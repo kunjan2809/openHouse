@@ -10,7 +10,8 @@ import { UserOutlined } from "@ant-design/icons"
 
 const Navbar = () => {
     //Store access
-    const { userToken, userDetails: { profilePicture } } = useSelector((state) => state.auth)
+    const { userToken, userDetails } = useSelector((state) => state.auth)
+    const profilePicture = userDetails?.profilePicture
 
     return (
         <div className="navbar">
