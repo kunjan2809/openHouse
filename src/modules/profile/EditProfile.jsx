@@ -1,7 +1,7 @@
 import { Button, Col, Image, Input, Row, Select } from "antd"
 import './assets/scss/editProfile.scss'
 import { edit_profile } from './constant/string.js'
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import instagram from "../../common/assets/svgs/instagram.svg"
 import facebook from "../../common/assets/svgs/facebook.svg"
 import twitter from "../../common/assets/svgs/twitter.svg"
@@ -49,16 +49,16 @@ const EditProfile = () => {
     })
 
     const initialValues = {
-        first_name: profile_details?.firstName,
-        last_name: profile_details?.lastName,
-        profile: '',
+        first_name: '',
+        last_name: '',
+        profile: null,
         description: '',
-        country_code: '+1',
-        phone: profile_details?.phoneNumber?.substring(2),
-        email: profile_details?.email,
+        country_code: '',
+        phone: '',
+        email: '',
         instagram: '',
         facebook: '',
-        twitter: ''
+        twitter: '',
     }
 
     const formik = useFormik({
@@ -80,8 +80,34 @@ const EditProfile = () => {
         }
     })
 
-    const { values, handleChange, handleBlur, touched, errors, submitForm, setFieldValue } = formik
+    const { values, handleChange, handleBlur, touched, errors, submitForm, setFieldValue, setValues } = formik
 
+    useEffect(() => {
+        if (profile_details) {
+            console.log(' instagram', {
+                instagram: (!profile_details?.socialLinks?.instagram || profile_details?.socialLinks?.instagram === 'undefined') ? '' : profile_details?.socialLinks?.instagram,
+                facebook: (!profile_details?.socialLinks?.facebook || profile_details?.socialLinks?.facebook === 'undefined') ? '' : profile_details?.socialLinks?.facebook,
+                twitter: (!profile_details?.socialLinks?.twitter || profile_details?.socialLinks?.twitter === 'undefined') ? '' : profile_details?.socialLinks?.twitter
+     
+            }
+            )
+            setValues({
+                first_name: profile_details?.firstName,
+                last_name: profile_details?.lastName,
+                profile: `${import.meta.env.VITE_API_URL}/images/${profile_details?.profilePicture}`,
+                description: profile_details?.description,
+                country_code: '+1',
+                phone: profile_details?.phoneNumber?.substring(2),
+                email: profile_details?.email,
+                instagram: (!profile_details?.socialLinks?.instagram || profile_details?.socialLinks?.instagram === 'undefined') ? '' : profile_details?.socialLinks?.instagram,
+                facebook: (!profile_details?.socialLinks?.facebook || profile_details?.socialLinks?.facebook === 'undefined') ? '' : profile_details?.socialLinks?.facebook,
+                twitter: (!profile_details?.socialLinks?.twitter || profile_details?.socialLinks?.twitter === 'undefined') ? '' : profile_details?.socialLinks?.twitter
+            })
+        }
+    }, [profile_details])
+
+
+    console.log('profile', values.profile)
 
     return (
         <>
@@ -125,6 +151,7 @@ const EditProfile = () => {
                         </Col>
 
                         <Col span={15}>
+
                             {file && <Image className="profile-img" src={URL.createObjectURL(file)} />}
 
                             <label htmlFor="imageInput" className="input-label">

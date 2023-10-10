@@ -1,5 +1,6 @@
 import { apiRequest } from "../../../../services/apiService";
 import { getFormData } from "../../../../services/utils";
+import { UPDATE_AUTH } from "../../../auth/store/constant";
 import { GET_PROFILE_FAIL, GET_PROFILE_REQUEST, GET_PROFILE_SUCCESS, UPDATE_PROFILE_FAIL, UPDATE_PROFILE_REQUEST, UPDATE_PROFILE_SUCCESS } from "../constant";
 
 export const getProfile = () => {
@@ -19,11 +20,6 @@ export const getProfile = () => {
     }
 }
 
-
-export const setEditProfile = (payload) => {
-    return { type: GET_PROFILE_SUCCESS, payload }
-}
-
 export const updateProfile = (data, successCallback) => {
     const payload = getFormData(data)
     return async (dispatch) => {
@@ -36,6 +32,7 @@ export const updateProfile = (data, successCallback) => {
         })
         if (response) {
             dispatch({ type: UPDATE_PROFILE_SUCCESS, payload: response?.data?.data })
+            dispatch({ type: UPDATE_AUTH, payload: response?.data?.data })
             successCallback()
         }
         else if (error) {

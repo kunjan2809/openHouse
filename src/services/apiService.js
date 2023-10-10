@@ -20,7 +20,7 @@ const apiRequest = async ({
 
     if (isToken) {
         let { auth } = store.getState()
-        let token = auth.userToken
+        let token = auth?.userToken
 
         options = {
             ...options,

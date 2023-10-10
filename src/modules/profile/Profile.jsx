@@ -1,6 +1,6 @@
 import { Avatar, Button, Col, Row } from "antd"
 import cardImg from '../../common/assets/images/property.png'
-import error_img from './assets/images/error.png'
+import error_img from '../../common/assets/images/error.png'
 import phone_svg from "../../common/assets/svgs/phone.svg"
 import mail_svg from "../../common/assets/svgs/email.svg"
 import instagram from "../../common/assets/svgs/instagram.svg"
@@ -64,9 +64,9 @@ const Profile = () => {
                                 <div className="follow-icons">
                                     <h5>{profile.profile.follow}</h5>
                                     <div className="icons">
-                                        <a href={profile_details?.instagram} target="_blank" rel="noreferrer"><img src={instagram} alt="" /></a>
-                                        <a href={profile_details?.facebook}><img src={facebook} alt="" /></a>
-                                        <a href={profile_details?.twitter}><img src={twitter} alt="" /></a>
+                                        <a href={profile_details?.socialLinks?.instagram} target="_blank" rel="noreferrer"><img src={instagram} alt="" /></a>
+                                        <a href={profile_details?.socialLinks?.facebook} target="_blank" rel="noreferrer"><img src={facebook} alt="" /></a>
+                                        <a href={profile_details?.socialLinks?.twitter} target="_blank" rel="noreferrer"><img src={twitter} alt="" /></a>
                                     </div>
                                 </div>
                                 <Button className="edit-profile" onClick={() => navigate('/profile/edit')}><span><img src={edit_icon} alt="" /> {profile.profile.btn_text}</span></Button>

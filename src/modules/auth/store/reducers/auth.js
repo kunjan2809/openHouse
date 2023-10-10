@@ -1,4 +1,4 @@
-import { FORGOT_PASSWORD_FAIL, FORGOT_PASSWORD_REQUEST, FORGOT_PASSWORD_SUCCESS, LOGIN_FAIL, LOGIN_REQUEST, LOGIN_SUCCESS, OTP_FAIL, OTP_REQUEST, OTP_SUCCESS, RESET_PASSWORD_FAIL, RESET_PASSWORD_REQUEST, RESET_PASSWORD_SUCCESS, SIGNUP_FAIL, SIGNUP_REQUEST, SIGNUP_SUCCESS } from "../constant"
+import { FORGOT_PASSWORD_FAIL, FORGOT_PASSWORD_REQUEST, FORGOT_PASSWORD_SUCCESS, LOGIN_FAIL, LOGIN_REQUEST, LOGIN_SUCCESS, OTP_FAIL, OTP_REQUEST, OTP_SUCCESS, RESET_PASSWORD_FAIL, RESET_PASSWORD_REQUEST, RESET_PASSWORD_SUCCESS, SIGNUP_FAIL, SIGNUP_REQUEST, SIGNUP_SUCCESS, UPDATE_AUTH } from "../constant"
 
 
 const initialState = {
@@ -99,6 +99,25 @@ const authReducer = (state = initialState, action) => {
             return {
                 ...state,
                 loading: false
+            }
+
+        //update auth
+        case UPDATE_AUTH:
+            {
+                const { firstName, lastName, companyName, profilePicture } = action.payload
+                let newData = {
+                    ...state.userDetails,
+                    firstName,
+                    lastName,
+                    companyName,
+                    profilePicture
+                }
+                console.log('newData', newData)
+                
+                return {
+                    ...state,
+                    userDetails: { ...newData }
+                }
             }
 
 

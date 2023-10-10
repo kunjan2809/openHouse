@@ -6,6 +6,7 @@ import { Link, NavLink } from 'react-router-dom'
 import { layout } from './constant/string'
 import { useSelector } from 'react-redux'
 import { UserOutlined } from "@ant-design/icons"
+import error_img from '../../../common/assets/images/error.png'
 
 
 const Navbar = () => {
@@ -37,6 +38,10 @@ const Navbar = () => {
                                         src={<img
                                             src={`${import.meta.env.VITE_API_URL}/images/${profilePicture}`}
                                             alt="avatar"
+                                            onError={({ currentTarget }) => {
+                                                currentTarget.onerror = null;
+                                                currentTarget.src = error_img;
+                                            }}
                                         />}
                                     >
                                     </Avatar> :

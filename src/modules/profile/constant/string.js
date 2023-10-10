@@ -19,7 +19,7 @@ const edit_profile = {
         fields: {
             first_name: "First Name*",
             last_name: "Last Name*",
-            pic: "Upload profile photo",
+            pic: "Upload a new profile photo",
             description: "Description*",
             email: "Email*",
             phone: "Phone No.*"
