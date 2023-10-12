@@ -1,5 +1,5 @@
 import { Avatar, Button, Col, Row } from "antd"
-import cardImg from '../../common/assets/images/property.png'
+// import cardImg from '../../common/assets/images/property.png'
 import error_img from '../../common/assets/images/error.png'
 import phone_svg from "../../common/assets/svgs/phone.svg"
 import mail_svg from "../../common/assets/svgs/email.svg"
@@ -15,6 +15,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { useEffect } from "react"
 import { getProfile } from "./store/actions/profile"
 import { UserOutlined } from "@ant-design/icons"
+import { getOwnProperties } from "./store/actions/properties"
 
 const Profile = () => {
 
@@ -24,9 +25,14 @@ const Profile = () => {
     const { profile_details } = useSelector((state) => state.profile)
     const profileImg = profile_details?.profilePicture
 
+    const { own_properties } = useSelector((state) => state.ownProperties)
+
+    console.log('own_properties', own_properties)
+
 
     useEffect(() => {
         dispatch(getProfile())
+        dispatch(getOwnProperties())
     }, [])
 
 
@@ -39,7 +45,7 @@ const Profile = () => {
                             <div className="user-details-wrapper">
                                 {profileImg ?
                                     <img
-                                        src={`${import.meta.env.VITE_API_URL}/images/${profile_details?.profilePicture}`}
+                                        src={`${import.meta.env.VITE_API_URL}${profile_details?.profilePicture}`}
                                         alt="" className="user-profile"
                                         onError={({ currentTarget }) => {
                                             currentTarget.onerror = null;
@@ -52,7 +58,7 @@ const Profile = () => {
                                         className="user-profile" />}
                                 <div className="profile-description">
                                     <h4>{`${profile_details?.firstName} ${profile_details?.lastName}`}</h4>
-                                    <span>{profile_details?.description}</span>
+                                    <span>{(!profile_details?.description || profile_details?.description === 'undefined') ? '' : profile_details?.description}</span>
                                 </div>
                                 <div className="contact-info-wrapper">
                                     <h5>{profile.profile.contact}</h5>
@@ -82,59 +88,23 @@ const Profile = () => {
                                 </Button>
                             </div>
                             <Row gutter={[16, 24]}>
-                                <Col span={8}>
-                                    <PropertyCard
-                                        image={cardImg}
-                                        price='3,75,000'
-                                        date='15th Feb’2023'
-                                        time='10:30 p.m.'
-                                        address='603, Borinson street, Texas, USA'
-                                        isSold={false}
-                                    />
-                                </Col>
-                                <Col span={8}>
-                                    <PropertyCard
-                                        image={cardImg}
-                                        price='3,75,000'
-                                        date='15th Feb’2023'
-                                        time='10:30 p.m.'
-                                        address='603, Borinson street, Texas, USA'
-                                        isSold={true}
-                                    />
-                                </Col>
-                                <Col span={8}>
-                                    <PropertyCard
-                                        image={cardImg}
-                                        price='3,75,000'
-                                        date='15th Feb’2023'
-                                        time='10:30 p.m.'
-                                        address='603, Borinson street, Texas, USA'
-                                        isSold={false}
-                                    />
-                                </Col>
-                                <Col span={8}>
-                                    <PropertyCard
-                                        image={cardImg}
-                                        price='3,75,000'
-                                        date='15th Feb’2023'
-                                        time='10:30 p.m.'
-                                        address='603, Borinson street, Texas, USA'
-                                        isSold={true}
-                                    />
-                                </Col>
-                                <Col span={8}>
-                                    <PropertyCard
-                                        image={cardImg}
-                                        price='3,75,000'
-                                        date='15th Feb’2023'
-                                        time='10:30 p.m.'
-                                        address='603, Borinson street, Texas, USA'
-                                        isSold={true}
-                                    />
-                                </Col>
+                                {
+                                    own_properties?.map((property) => {
+                                        return <Col span={8} key={property._id}>
+                                            <PropertyCard
+                                                image={`${import.meta.env.VITE_API_URL}${property.images[0]}`}
+                                                price={property.price}
+                                                date={property.date}
+                                                time={property.startTime}
+                                                address={`${property.address?.street}, ${property.address?.city}, ${property.address?.country}`}
+                                                isSold={property.isSold}
+                                            />
+                                        </Col>
+                                    })
+                                }
                             </Row>
                             <div className="view">
-                                <Button className="view-btn">{profile.listings.view}</Button>
+                                {own_properties.length > 6 && <Button className="view-btn">{profile.listings.view}</Button>}
                             </div>
                         </div>
 

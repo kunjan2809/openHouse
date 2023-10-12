@@ -16,12 +16,11 @@ const PropertyCard = ({ price, date, time, address, image, isSold = false, isLik
                 className="custom-property-card"
                 hoverable
                 bordered={false}
-                style={{ minWidth: 300 }}
                 cover={<div className={isSold ? 'blur-img' : ''}><div className="filter"></div> <img alt=" " src={image} /></div>}
                 onClick={() => navigate('/property/1')}
             >
                 <div className="cardContent">
-                    <h3 className={isSold ? 'disabled' : ''}>${price}</h3>
+                    <h2 className={isSold ? 'disabled' : ''}>${price}</h2>
                     <p>{address}</p>
                     <div className="date-time">
                         <div className="dtc"><img alt='' src={calender} /><span>{date}</span></div>

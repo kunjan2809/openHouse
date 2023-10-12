@@ -84,18 +84,11 @@ const EditProfile = () => {
 
     useEffect(() => {
         if (profile_details) {
-            console.log(' instagram', {
-                instagram: (!profile_details?.socialLinks?.instagram || profile_details?.socialLinks?.instagram === 'undefined') ? '' : profile_details?.socialLinks?.instagram,
-                facebook: (!profile_details?.socialLinks?.facebook || profile_details?.socialLinks?.facebook === 'undefined') ? '' : profile_details?.socialLinks?.facebook,
-                twitter: (!profile_details?.socialLinks?.twitter || profile_details?.socialLinks?.twitter === 'undefined') ? '' : profile_details?.socialLinks?.twitter
-     
-            }
-            )
             setValues({
                 first_name: profile_details?.firstName,
                 last_name: profile_details?.lastName,
-                profile: `${import.meta.env.VITE_API_URL}/images/${profile_details?.profilePicture}`,
-                description: profile_details?.description,
+                profile: `${import.meta.env.VITE_API_URL}${profile_details?.profilePicture}`,
+                description: (!profile_details?.description || profile_details?.description=== 'undefined') ? '' : profile_details?.description,
                 country_code: '+1',
                 phone: profile_details?.phoneNumber?.substring(2),
                 email: profile_details?.email,

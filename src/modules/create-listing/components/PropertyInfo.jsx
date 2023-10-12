@@ -16,8 +16,8 @@ const PropertyInfo = ({ handleNext, handlePrev }) => {
             label: 'Apartment'
         },
         {
-            value: 'guesthouse',
-            label: 'Guesthouse'
+            value: 'guest_house',
+            label: 'Guest House'
         },
         {
             value: 'hotel',

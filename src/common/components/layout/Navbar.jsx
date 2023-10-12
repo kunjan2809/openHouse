@@ -36,7 +36,7 @@ const Navbar = () => {
                                     {profilePicture ? <Avatar
                                         size='large'
                                         src={<img
-                                            src={`${import.meta.env.VITE_API_URL}/images/${profilePicture}`}
+                                            src={`${import.meta.env.VITE_API_URL}${profilePicture}`}
                                             alt="avatar"
                                             onError={({ currentTarget }) => {
                                                 currentTarget.onerror = null;

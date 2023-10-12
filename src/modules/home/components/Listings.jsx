@@ -32,8 +32,11 @@ const Listings = () => {
                             popupClassName={'property-filter-select'}
                             options={[
                                 { value: 'any', label: 'Any Price' },
-                                { value: '<100000', label: '<$100000' },
-                                { value: '<200000', label: '<$200000' },
+                                { value: '<300000', label: '<300000' },
+                                { value: '<500000', label: '<500000' },
+                                { value: '<700000', label: '<700000' },
+                                { value: '<1000000', label: '<1000000' },
+                                { value: '>1000000', label: '>1000000' },
                             ]}
                         />
                         <Select
@@ -44,8 +47,10 @@ const Listings = () => {
                             popupClassName={'property-filter-select'}
                             options={[
                                 { value: 'any', label: 'Any Type' },
-                                { value: 'basement', label: 'Basement' },
+                                { value: 'house', label: 'House' },
                                 { value: 'apartment', label: 'Apartment' },
+                                { value: 'guest_house', label: 'Guest House' },
+                                { value: 'hotel', label: 'Hotel' },
                             ]}
                         />
                         <Select
@@ -70,8 +75,7 @@ const Listings = () => {
                             popupClassName={'property-filter-select'}
                             options={[
                                 { value: 'any', label: 'Recommended' },
-                                { value: 'Ascending', label: 'Ascending' },
-                                { value: 'Descending', label: 'Descending' },
+                                { value: 'ascending', label: 'Ascending' },
                             ]}
                         />
                     </div>

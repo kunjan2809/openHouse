@@ -19,7 +19,7 @@ const add_listing = {
             fields: {
                 country: "Country*",
                 state: "State/Province*",
-                street: "Street Name*",
+                street: "Address*",
                 city: "City*",
                 zip: "Zip Code*"
             }
