@@ -6,7 +6,7 @@ const initialState = {
     own_properties: [],
 }
 
-const ownPropertiesreducer = (state = initialState, action) => {
+const ownPropertiesReducer = (state = initialState, action) => {
     switch (action.type) {
         
         //get profile
@@ -34,4 +34,4 @@ const ownPropertiesreducer = (state = initialState, action) => {
     }
 }
 
-export { ownPropertiesreducer }
+export { ownPropertiesReducer }

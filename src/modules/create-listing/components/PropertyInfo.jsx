@@ -4,110 +4,111 @@ import { add_listing } from "../constant/string";
 
 const { TextArea } = Input;
 
-const PropertyInfo = ({ handleNext, handlePrev }) => {
+const PROPERTYTYPE = [
+    {
+        value: 'house',
+        label: 'House'
+    },
+    {
+        value: 'apartment',
+        label: 'Apartment'
+    },
+    {
+        value: 'guest_house',
+        label: 'Guest House'
+    },
+    {
+        value: 'hotel',
+        label: 'Hotel'
+    },
+]
 
-    const PROPERTYTYPE = [
-        {
-            value: 'house',
-            label: 'House'
-        },
-        {
-            value: 'apartment',
-            label: 'Apartment'
-        },
-        {
-            value: 'guest_house',
-            label: 'Guest House'
-        },
-        {
-            value: 'hotel',
-            label: 'Hotel'
-        },
-    ]
+const BEDROOMS = [
+    {
+        value: '1',
+        label: '1'
+    },
+    {
+        value: '2',
+        label: '2'
+    },
+    {
+        value: '3',
+        label: '3'
+    },
+    {
+        value: '4',
+        label: '4'
+    },
+    {
+        value: '5',
+        label: '5'
+    },
+    {
+        value: '6',
+        label: '6'
+    },
+]
 
-    const BEDROOMS = [
-        {
-            value: '1',
-            label: '1'
-        },
-        {
-            value: '2',
-            label: '2'
-        },
-        {
-            value: '3',
-            label: '3'
-        },
-        {
-            value: '4',
-            label: '4'
-        },
-        {
-            value: '5',
-            label: '5'
-        },
-        {
-            value: '6',
-            label: '6'
-        },
-    ]
+const BATHROOMS = [
+    {
+        value: '1',
+        label: '1'
+    },
+    {
+        value: '2',
+        label: '2'
+    },
+    {
+        value: '3',
+        label: '3'
+    },
+    {
+        value: '4',
+        label: '4'
+    },
+    {
+        value: '5',
+        label: '5'
+    },
+    {
+        value: '6',
+        label: '6'
+    },
+]
 
-    const BATHROOMS = [
-        {
-            value: '1',
-            label: '1'
-        },
-        {
-            value: '2',
-            label: '2'
-        },
-        {
-            value: '3',
-            label: '3'
-        },
-        {
-            value: '4',
-            label: '4'
-        },
-        {
-            value: '5',
-            label: '5'
-        },
-        {
-            value: '6',
-            label: '6'
-        },
-    ]
+const FLOORS = [
+    {
+        value: '1',
+        label: '1'
+    },
+    {
+        value: '2',
+        label: '2'
+    },
+    {
+        value: '3',
+        label: '3'
+    }
+]
 
-    const FLOORS = [
-        {
-            value: '1',
-            label: '1'
-        },
-        {
-            value: '2',
-            label: '2'
-        },
-        {
-            value: '3',
-            label: '3'
-        }
-    ]
+const PARKING = [
+    {
+        value: 'streets',
+        label: 'Streets'
+    },
+    {
+        value: 'garage',
+        label: 'Garage'
+    },
+    {
+        value: 'other',
+        label: 'Other'
+    }
+]
 
-    const PARKING = [
-        {
-            value: 'streets',
-            label: 'Streets'
-        },
-        {
-            value: 'garage',
-            label: 'Garage'
-        },
-        {
-            value: 'other',
-            label: 'Other'
-        }
-    ]
+
+const PropertyInfo = ({ handleNext }) => {
 
     return (
         <div className="property-details-form">
@@ -183,8 +184,7 @@ const PropertyInfo = ({ handleNext, handlePrev }) => {
                 </Col>
             </Row>
 
-            <div className='page-ctrl'>
-                <Button type="primary" className="btn" onClick={() => handlePrev()}>{add_listing.prev_btn}</Button>
+            <div className='page-ctrl next-only'>
                 <Button type="primary" className="btn" onClick={() => handleNext()}>{add_listing.next_btn}</Button>
             </div>
         </div>

@@ -1,20 +1,65 @@
 import { Col, Pagination, Row, Select } from 'antd'
-import cardImg from '../../../common/assets/images/property.png'
-import cardImg2 from '../../../common/assets/images/property-thumb-2.png'
+// import cardImg from '../../../common/assets/images/property.png'
+// import cardImg2 from '../../../common/assets/images/property-thumb-2.png'
 import PropertyCard from '../../../common/components/card/PropertyCard'
 import { home } from '../constant/string'
+import { useDispatch, useSelector } from 'react-redux'
+import { getLisitngs, listingFilter } from '../store/actions/listings'
+import moment from 'moment'
+import { useEffect } from 'react'
+import PropTypes from "prop-types";
 
-const Listings = () => {
+const PROPERTY_TYPE_OPTIONS = [
+    { value: 'any', label: 'Any Type' },
+    { value: 'house', label: 'House' },
+    { value: 'apartment', label: 'Apartment' },
+    { value: 'guest_house', label: 'Guest House' },
+    { value: 'hotel', label: 'Hotel' },
+]
 
-    const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+const PRICE_OPTIONS = [
+    { value: 'any', label: 'Any Price' },
+    { value: '<300000', label: '<300000' },
+    { value: '<500000', label: '<500000' },
+    { value: '<700000', label: '<700000' },
+    { value: '<1000000', label: '<1000000' },
+    { value: '>1000000', label: '>1000000' },
+]
 
-    const handleChange = (value) => {
-        console.log('value :>> ', value);
-    };
+const BEDROOM_OPTIONS = [
+    { value: 'any', label: 'Any Beds' },
+    { value: '1', label: '1' },
+    { value: '2', label: '2' },
+    { value: '3', label: '3' },
+    { value: '4+', label: '4+' },
+]
+
+const SORTING_OPTIONS = [
+    { value: 'any', label: 'Recommended' },
+    { value: 'ascending', label: 'Ascending' },
+]
+
+const Listings = ({ setPage, page }) => {
+
+    const dispatch = useDispatch();
+    const { listings, totalListings, filters } = useSelector((state) => state.listings)
+
+    const handleChange = (key, value) => {
+        dispatch(listingFilter({ key, value }))
+        setPage(1)
+    }
+
+    useEffect(() => {
+        dispatch(getLisitngs(filters))
+    }, [filters])
+
+    useEffect(() => {
+        dispatch(listingFilter({ key: 'page', value: page }))
+    }, [page])
+
 
     return (
         <>
-
             <div className='featured-home-container'>
                 <div className='featured-label'>{home.featured_listings.head_msg}</div>
                 <div className='header-wrapper'>
@@ -26,95 +71,75 @@ const Listings = () => {
                     <div className='header-filter-container'>
                         <Select
                             className='filter-dropdown'
-                            defaultValue="any"
                             bordered={false}
-                            onChange={handleChange}
+                            value={filters.type}
+                            onChange={(value) => handleChange('type', value)}
                             popupClassName={'property-filter-select'}
-                            options={[
-                                { value: 'any', label: 'Any Price' },
-                                { value: '<300000', label: '<300000' },
-                                { value: '<500000', label: '<500000' },
-                                { value: '<700000', label: '<700000' },
-                                { value: '<1000000', label: '<1000000' },
-                                { value: '>1000000', label: '>1000000' },
-                            ]}
+                            options={PROPERTY_TYPE_OPTIONS}
                         />
                         <Select
                             className='filter-dropdown'
-                            defaultValue="any"
                             bordered={false}
-                            onChange={handleChange}
+                            value={filters.price}
+                            onChange={(value) => handleChange('price', value)}
                             popupClassName={'property-filter-select'}
-                            options={[
-                                { value: 'any', label: 'Any Type' },
-                                { value: 'house', label: 'House' },
-                                { value: 'apartment', label: 'Apartment' },
-                                { value: 'guest_house', label: 'Guest House' },
-                                { value: 'hotel', label: 'Hotel' },
-                            ]}
+                            options={PRICE_OPTIONS}
                         />
                         <Select
                             className='filter-dropdown'
-                            defaultValue="any"
                             bordered={false}
-                            onChange={handleChange}
+                            value={filters.bedroom}
+                            onChange={(value) => handleChange('bedroom', value)}
                             popupClassName={'property-filter-select'}
-                            options={[
-                                { value: 'any', label: 'Any Beds' },
-                                { value: '1', label: '1' },
-                                { value: '2', label: '2' },
-                                { value: '3', label: '3' },
-                                { value: '4+', label: '4+' },
-                            ]}
+                            options={BEDROOM_OPTIONS}
                         />
                         <Select
                             className='filter-dropdown'
-                            defaultValue="any"
                             bordered={false}
-                            onChange={handleChange}
+                            value={filters.sort}
+                            onChange={(value) => handleChange('sort', value)}
                             popupClassName={'property-filter-select'}
-                            options={[
-                                { value: 'any', label: 'Recommended' },
-                                { value: 'ascending', label: 'Ascending' },
-                            ]}
+                            options={SORTING_OPTIONS}
                         />
                     </div>
                 </div>
                 <div className='featured-property-wrapper'>
                     <Row gutter={[16, 24]}>
-                        {arr.map((val, i) => {
-                            return <Col span={6} key={val}>
-                                {
-                                    (i % 2 === 1) ? (
-                                        <PropertyCard
-                                            image={cardImg2}
-                                            price='3,75,000'
-                                            date='15th Feb’2023'
-                                            time='10:30 p.m.'
-                                            address='603, Borinson street, Texas, USA'
-                                            isSold={false}
-                                            isLikeable={true}
-                                            isLiked={false}
-                                        />) : (<PropertyCard
-                                            image={cardImg}
-                                            price='3,75,000'
-                                            date='15th Feb’2023'
-                                            time='10:30 p.m.'
-                                            address='603, Borinson street, Texas, USA'
-                                            isSold={false}
-                                            isLikeable={true}
-                                            isLiked={true}
-                                        />)
-                                }
+                        {listings?.map((property) => {
+                            return <Col span={6} key={property._id}>
+                                <PropertyCard
+                                    image={`${import.meta.env.VITE_API_URL}${property.images[0]}`}
+                                    price={property.price}
+                                    date={moment(property.date).format("Do MMM, YYYY")}
+                                    time={property.startTime}
+                                    address={`${property.address?.street}, ${property.address?.city}, ${property.address?.country}`}
+                                    isSold={property.isSold}
+                                    isLikeable={true}
+                                    isLiked={false}
+                                />
                             </Col>
                         })}
-
                     </Row>
-                    <div className='home-pagination'><Pagination defaultCurrent={1} total={50} /></div>
+                    <div className='home-pagination'>
+                        {
+                            totalListings > filters?.pageSize && <Pagination
+                                current={page}
+                                total={totalListings}
+                                pageSize={filters?.pageSize}
+                                showSizeChanger={false}
+                                onChange={(p) => setPage(p)}
+                            />
+                        }
+                    </div>
                 </div>
             </div>
         </>
     )
+}
+
+Listings.propTypes = {
+    setPage: PropTypes.func,
+    page: PropTypes.number,
 }
 
 export default Listings

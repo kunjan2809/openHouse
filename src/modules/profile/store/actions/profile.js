@@ -20,14 +20,14 @@ export const getProfile = () => {
     }
 }
 
-export const updateProfile = (data, successCallback) => {
-    const payload = getFormData(data)
+export const updateProfile = (payload, successCallback) => {
+    const formattedPayload = getFormData(payload)
     return async (dispatch) => {
         dispatch({ type: UPDATE_PROFILE_REQUEST });
         const { response, error } = await apiRequest({
             method: 'PUT',
             url: `updateuser`,
-            data: payload,
+            data: formattedPayload,
             isToken: true
         })
         if (response) {

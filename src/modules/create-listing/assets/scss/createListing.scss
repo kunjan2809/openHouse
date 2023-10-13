@@ -262,6 +262,10 @@
                 padding: 10px 40px;
                 border-radius: 30px;
             }
+
+            &.next-only {
+                justify-content: flex-end;
+            }
         }
 
     }

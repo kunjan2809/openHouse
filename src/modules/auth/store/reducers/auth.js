@@ -112,7 +112,6 @@ const authReducer = (state = initialState, action) => {
                     companyName,
                     profilePicture
                 }
-                console.log('newData', newData)
                 
                 return {
                     ...state,

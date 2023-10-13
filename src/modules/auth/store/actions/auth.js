@@ -2,13 +2,13 @@ import { apiRequest } from "../../../../services/apiService";
 import { FORGOT_PASSWORD_FAIL, FORGOT_PASSWORD_REQUEST, FORGOT_PASSWORD_SUCCESS, GENERATE_OTP_FAIL, GENERATE_OTP_REQUEST, GENERATE_OTP_SUCCESS, LOGIN_FAIL, LOGIN_REQUEST, LOGIN_SUCCESS, OTP_FAIL, OTP_REQUEST, OTP_SUCCESS, RESET_PASSWORD_FAIL, RESET_PASSWORD_REQUEST, RESET_PASSWORD_SUCCESS, SIGNUP_FAIL, SIGNUP_REQUEST, SIGNUP_SUCCESS } from "../constant";
 
 
-export const signUp = (data, successCallback, errorCallback) => {
+export const signUp = (payload, successCallback, errorCallback) => {
     return async (dispatch) => {
         dispatch({ type: SIGNUP_REQUEST });
         const { response, error } = await apiRequest({
             method: 'POST',
             url: `signUp`,
-            data: data
+            data: payload
         })
         if (response) {
             dispatch({ type: SIGNUP_SUCCESS, payload: response?.data })
@@ -21,13 +21,13 @@ export const signUp = (data, successCallback, errorCallback) => {
     }
 }
 
-export const verifyOtp = (data, successCallback, errorCallback) => {
+export const verifyOtp = (payload, successCallback, errorCallback) => {
     return async (dispatch) => {
         dispatch({ type: OTP_REQUEST });
         const { response, error } = await apiRequest({
             method: 'POST',
             url: `verifyotp`,
-            data: data
+            data: payload
         })
         if (response) {
             dispatch({ type: OTP_SUCCESS, payload: response?.data })
@@ -47,13 +47,13 @@ export const verifyOtp = (data, successCallback, errorCallback) => {
     }
 }
 
-export const resendOtp = (data, successCallback) => {
+export const resendOtp = (payload, successCallback) => {
     return async (dispatch) => {
         dispatch({ type: GENERATE_OTP_REQUEST });
         const { response, error } = await apiRequest({
             method: 'POST',
             url: `generateotp`,
-            data: data
+            data: payload
         })
         if (response) {
             dispatch({ type: GENERATE_OTP_SUCCESS, payload: response?.data })
@@ -65,13 +65,13 @@ export const resendOtp = (data, successCallback) => {
     }
 }
 
-export const signin = (data, successCallback, errorCallback) => {
+export const signin = (payload, successCallback, errorCallback) => {
     return async (dispatch) => {
         dispatch({ type: LOGIN_REQUEST });
         const { response, error } = await apiRequest({
             method: 'POST',
             url: `login`,
-            data: data
+            data: payload
         })
         if (response) {
             dispatch({
@@ -95,13 +95,13 @@ export const signin = (data, successCallback, errorCallback) => {
     }
 }
 
-export const forgotPassword = (data, successCallback, errorCallback) => {
+export const forgotPassword = (payload, successCallback, errorCallback) => {
     return async (dispatch) => {
         dispatch({ type: FORGOT_PASSWORD_REQUEST });
         const { response, error } = await apiRequest({
             method: 'POST',
             url: `forgot-password`,
-            data: data
+            data: payload
         })
         if (response) {
             dispatch({ type: FORGOT_PASSWORD_SUCCESS, payload: response?.data })
@@ -114,13 +114,13 @@ export const forgotPassword = (data, successCallback, errorCallback) => {
     }
 }
 
-export const resetPassword = (data, token, successCallback, errorCallback) => {
+export const resetPassword = (payload, token, successCallback, errorCallback) => {
     return async (dispatch) => {
         dispatch({ type: RESET_PASSWORD_REQUEST });
         const { response, error } = await apiRequest({
             method: 'PATCH',
             url: `reset-password/${token}`,
-            data: data
+            data: payload
         })
         if (response) {
             dispatch({ type: RESET_PASSWORD_SUCCESS, payload: response?.data })

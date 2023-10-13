@@ -63,7 +63,6 @@ const CreateListing = () => {
 
     const [current, setCurrent] = useState(0);
 
-
     const STEPS = [
         {
             title: add_listing.steps.step1.title,

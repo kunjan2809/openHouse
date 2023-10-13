@@ -27,9 +27,6 @@ const Profile = () => {
 
     const { own_properties } = useSelector((state) => state.ownProperties)
 
-    console.log('own_properties', own_properties)
-
-
     useEffect(() => {
         dispatch(getProfile())
         dispatch(getOwnProperties())

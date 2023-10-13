@@ -31,7 +31,7 @@ const PropertyCard = ({ price, date, time, address, image, isSold = false, isLik
                         <img className="clip-shape" alt=' ' src={soldSVG} />
                         <div className="sold-txt">Sold</div>
                     </div>}
-                    {isLikeable && <div className={`like-btn ${isLiked ? 'active' : ''}`}>
+                    {isLikeable && <div className={`like-btn ${isLiked ? 'active' : ''}`} onClick={(e)=>{e.stopPropagation()}}>
                         <HeartSVG />
                     </div>}
                 </div>
