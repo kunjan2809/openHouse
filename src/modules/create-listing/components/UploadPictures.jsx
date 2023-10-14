@@ -5,9 +5,10 @@ import { useState } from "react";
 import { add_listing } from "../constant/string";
 
 
-const UploadPictures = ({ handleNext, handlePrev }) => {
+const UploadPictures = ({ handlePrev }) => {
 
     const [fileList, setFileList] = useState([]);
+    const [error, setError] = useState(null);
 
     const handleDelete = (index) => {
         const updatedFileList = [...fileList];
@@ -18,11 +19,21 @@ const UploadPictures = ({ handleNext, handlePrev }) => {
     const handleFileChange = (e) => {
         const files = e.target.files;
         if (files && files.length > 0) {
+            setError(null)
+
             const remainingSlots = 12 - fileList.length;
             const newFiles = Array.from(files).slice(0, remainingSlots);
             setFileList((prev) => [...prev, ...newFiles]);
         }
     };
+
+    const handleSubmitListing = () => {
+        console.log('fileList.length :>> ', fileList.length);
+        if (fileList.length <= 0) {
+            setError('Please upload images')
+            return
+        }
+    }
 
     return (
         <>
@@ -32,20 +43,24 @@ const UploadPictures = ({ handleNext, handlePrev }) => {
                     <Col span={18}>
                         <Row gutter={20}>
                             <Col span={20}>
-                                {fileList?.length < 12 && <div className="custom-upload-box">
-                                    <label htmlFor="imageInput" className="custom-upload-label">
-                                        <PlusOutlined />
-                                        <div>Upload</div>
-                                    </label>
-                                    <input
-                                        type="file"
-                                        accept="image/*"
-                                        id="imageInput"
-                                        onChange={handleFileChange}
-                                        className="input-img"
-                                        multiple
-                                    />
-                                </div>}
+                                {fileList?.length < 12 && <>
+                                    <div className="custom-upload-box">
+                                        <label htmlFor="imageInput" className="custom-upload-label">
+                                            <PlusOutlined />
+                                            <div>Upload</div>
+                                        </label>
+                                        <input
+                                            type="file"
+                                            accept="image/*"
+                                            id="imageInput"
+                                            onChange={handleFileChange}
+                                            className="input-img"
+                                            multiple
+                                        />
+                                    </div>
+                                    {error && <span className="error">{error}</span>}
+                                </>
+                                }
                                 <br />
 
                                 <Image.PreviewGroup>
@@ -63,23 +78,19 @@ const UploadPictures = ({ handleNext, handlePrev }) => {
                                                         ></Button>
                                                     </div>
                                                 </Col>
-
                                             </>
                                         })}
                                     </Row>
                                 </Image.PreviewGroup>
-
                             </Col>
                         </Row>
                     </Col>
-                    <Col span={6}>
-
-                    </Col>
-                </Row >
+                    <Col span={6}></Col>
+                </Row>
 
                 <div className='page-ctrl'>
                     <Button type="primary" className="btn" onClick={() => handlePrev()}>{add_listing.prev_btn}</Button>
-                    <Button type="primary" className="btn" onClick={() => handleNext()}>{add_listing.next_btn}</Button>
+                    <Button type="primary" className="btn" onClick={() => handleSubmitListing()}>{add_listing.submit_btn}</Button>
                 </div>
             </div >
 

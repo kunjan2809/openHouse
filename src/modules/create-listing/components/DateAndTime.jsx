@@ -7,6 +7,7 @@ import * as Yup from 'yup';
 import { useDispatch, useSelector } from "react-redux";
 import { storeStepData } from "../store/actions/createListing";
 import { useEffect } from "react";
+import dayjs from 'dayjs';
 
 const DateAndTime = ({ handleNext, handlePrev }) => {
 
@@ -16,8 +17,8 @@ const DateAndTime = ({ handleNext, handlePrev }) => {
 
     //==> Yup-formik validation <==
     const formSchema = Yup.object().shape({
-        date: Yup.string().trim().required('Date required'),
-        time: Yup.string().trim().required('Time required'),
+        date: Yup.string().trim().required('Please select date'),
+        time: Yup.array().min(2, 'Please select time').required('Please select time'),
     })
 
     const initialValues = {
@@ -39,7 +40,7 @@ const DateAndTime = ({ handleNext, handlePrev }) => {
         }
     })
 
-    const { values, handleChange, handleBlur, touched, errors, submitForm, setValues } = formik
+    const { values, touched, errors, submitForm, setValues, setFieldValue } = formik
 
     //Set field values on load
     useEffect(() => {
@@ -48,6 +49,7 @@ const DateAndTime = ({ handleNext, handlePrev }) => {
         }
     }, [listingData])
 
+    console.log('dayjs() :>> ', dayjs('Sat Oct 14 2023 13:46:47 GMT+0530 (India Standard Time)'));
 
     return (
         <div className="date-and-time-form">
@@ -60,12 +62,13 @@ const DateAndTime = ({ handleNext, handlePrev }) => {
                             <label>{add_listing.steps.step4.fields.date}</label>
                             <DatePicker
                                 name="date"
-                                format={'YYYY-MM-DDTHH:mm:ss.SSSZ'}
-                            // onChange={handleChange}
-                            // onBlur={handleBlur}
-                            // value={values.date}
+                                format={'YYYY-MM-DD'}
+                                onChange={(date) => {
+                                    setFieldValue('date', date.format('YYYY-MM-DD'))
+                                }}
+                                value={values.date ? dayjs(values.date) : null}
                             />
-                            {/* {touched.date && errors.date && <span className='error'>{errors.date}</span>} */}
+                            {touched.date && errors.date && <span className='error'>{errors.date}</span>}
                         </Col>
                         <Col span={24}>
                             <label>{add_listing.steps.step4.fields.time}</label>
@@ -73,11 +76,12 @@ const DateAndTime = ({ handleNext, handlePrev }) => {
                                 name="time"
                                 use12Hours
                                 format="h:mm a"
-                            // nChange={handleChange}
-                            // onBlur={handleBlur}
-                            // value={values.time}
+                                onChange={(time) => {
+                                    setFieldValue('time', [time[0].toDate(), time[1].toDate()])
+                                }}
+                                value={values.time ? [dayjs(values.time[0]), dayjs(values.time[1])] : null}
                             />
-                            {/* {touched.time && errors.time && <span className='error'>{errors.time}</span>} */}
+                            {touched.time && errors.time && <span className='error'>{errors.time}</span>}
                         </Col>
                     </Row>
                 </Col>

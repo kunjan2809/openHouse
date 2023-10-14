@@ -42,7 +42,8 @@ const add_listing = {
         }
     },
     prev_btn: "PREVIOUS",
-    next_btn: "SAVE & NEXT"
+    next_btn: "SAVE & NEXT",
+    submit_btn: "Submit"
 }
 
 const thank_you = {
