@@ -21,10 +21,10 @@ const Footer = () => {
                                 <div className="quick_links">
                                     <h3>{layout.links_nav.title}</h3>
                                     <ul>
-                                        <li><Link exact to='/'>{layout.links_nav.home}</Link></li>
-                                        <li><Link exact to='/about'>{layout.links_nav.about}</Link></li>
-                                        <li><Link exact to='/blog'>{layout.links_nav.blog}</Link></li>
-                                        <li><Link exact to='/contact'>{layout.links_nav.contact}</Link></li>
+                                        <li><Link to='/'>{layout.links_nav.home}</Link></li>
+                                        <li><Link to='/about'>{layout.links_nav.about}</Link></li>
+                                        <li><Link to='/blog'>{layout.links_nav.blog}</Link></li>
+                                        <li><Link to='/contact'>{layout.links_nav.contact}</Link></li>
                                     </ul>
                                 </div>
                             </Col>
@@ -32,9 +32,9 @@ const Footer = () => {
                                 <div className="quick_links">
                                     <h3>{layout.links_support.title}</h3>
                                     <ul>
-                                        <li><Link exact to='/'>{layout.links_support.privacy}</Link></li>
-                                        <li><Link exact to='/'>{layout.links_support.tos}</Link></li>
-                                        <li><Link exact to='/'>{layout.links_support.data}</Link></li>
+                                        <li><Link to='/'>{layout.links_support.privacy}</Link></li>
+                                        <li><Link to='/'>{layout.links_support.tos}</Link></li>
+                                        <li><Link to='/'>{layout.links_support.data}</Link></li>
                                     </ul>
                                 </div>
                             </Col>
@@ -42,8 +42,8 @@ const Footer = () => {
                                 <div className="quick_links">
                                     <h3>{layout.links_get_in_touch.title}</h3>
                                     <div className="get_in_touch">
-                                        <Link exact to='/'><img src={instagram} alt="" /></Link>
-                                        <Link exact to='/'><img src={facebook} alt="" /></Link>
+                                        <Link to='/'><img src={instagram} alt="" /></Link>
+                                        <Link to='/'><img src={facebook} alt="" /></Link>
                                     </div>
                                 </div>
                             </Col>

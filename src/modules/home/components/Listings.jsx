@@ -112,7 +112,7 @@ const Listings = ({ setPage, page }) => {
                                     price={property.price}
                                     date={moment(property.date).format("Do MMM, YYYY")}
                                     time={property.startTime}
-                                    address={`${property.address?.street}, ${property.address?.city}, ${property.address?.country}`}
+                                    address={`${property.address?.address}, ${property.address?.city}, ${property.address?.country}`}
                                     isSold={property.isSold}
                                     isLikeable={true}
                                     isLiked={false}

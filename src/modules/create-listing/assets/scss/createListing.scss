@@ -118,10 +118,11 @@
 
                 .ant-radio-group {
                     display: flex;
-
+                    
                     .ant-radio-wrapper {
                         @include flexPosition();
                         margin-top: 0.1rem;
+                        color: $colorGray;
 
                         .ant-radio-checked .ant-radio-inner {
                             border-color: $colorLevel6;

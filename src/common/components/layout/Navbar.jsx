@@ -24,10 +24,10 @@ const Navbar = () => {
                     <Row align="middle" justify='end' gutter={2}>
                         <Col span={19}>
                             <ul className='links'>
-                                <li><NavLink exact to='/'>{layout.links_nav.home}</NavLink></li>
-                                <li><NavLink exact to='/about'>{layout.links_nav.about}</NavLink></li>
-                                <li><NavLink exact to='/blog'>{layout.links_nav.blog}</NavLink></li>
-                                <li><NavLink exact to='/contact'>{layout.links_nav.contact}</NavLink></li>
+                                <li><NavLink to='/'>{layout.links_nav.home}</NavLink></li>
+                                <li><NavLink to='/about'>{layout.links_nav.about}</NavLink></li>
+                                <li><NavLink to='/blog'>{layout.links_nav.blog}</NavLink></li>
+                                <li><NavLink to='/contact'>{layout.links_nav.contact}</NavLink></li>
                             </ul>
                         </Col>
                         {

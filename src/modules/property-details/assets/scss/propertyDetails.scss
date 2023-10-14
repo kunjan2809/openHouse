@@ -4,9 +4,9 @@
 .property-details-wrapper {
     padding-inline: 5rem;
 
-    h2 {
+    .property-details-heading {
         color: $colorGray;
-        font-weight: 400;
+        font-weight: 600;
         margin-top: 0px;
         margin-bottom: 10px;
         padding-top: 3rem;
@@ -180,7 +180,7 @@
                 overflow: hidden;
                 position: relative;
 
-                p{
+                p {
                     margin-top: 0px;
                 }
 

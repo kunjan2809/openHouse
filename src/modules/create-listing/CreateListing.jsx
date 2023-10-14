@@ -12,11 +12,35 @@ import PropertyInfo from './components/PropertyInfo';
 import { useState } from 'react';
 import { add_listing } from './constant/string';
 
+// Stepper configurations
 const STATUS = {
     finish: 'finish',
     process: 'process',
     wait: 'wait'
 }
+
+const STEPS = [
+    {
+        title: add_listing.steps.step1.title,
+        Component: PropertyInfo
+    },
+    {
+        title: add_listing.steps.step2.title,
+        Component: Location
+    },
+    {
+        title: add_listing.steps.step3.title,
+        Component: Pricing
+    },
+    {
+        title: add_listing.steps.step4.title,
+        Component: DateAndTime
+    },
+    {
+        title: add_listing.steps.step5.title,
+        Component: UploadPictures
+    },
+]
 
 const customDot = (dot, data) => {
     const { status, title } = data
@@ -59,32 +83,10 @@ const customDot = (dot, data) => {
     }
 }
 
+
 const CreateListing = () => {
 
     const [current, setCurrent] = useState(0);
-
-    const STEPS = [
-        {
-            title: add_listing.steps.step1.title,
-            Component: PropertyInfo
-        },
-        {
-            title: add_listing.steps.step2.title,
-            Component: Location
-        },
-        {
-            title: add_listing.steps.step3.title,
-            Component: Pricing
-        },
-        {
-            title: add_listing.steps.step4.title,
-            Component: DateAndTime
-        },
-        {
-            title: add_listing.steps.step5.title,
-            Component: UploadPictures
-        },
-    ]
 
     const handlePrev = () => {
         if (current !== 0)

@@ -31,7 +31,7 @@ const PropertyCard = ({ price, date, time, address, image, isSold = false, isLik
                         <img className="clip-shape" alt=' ' src={soldSVG} />
                         <div className="sold-txt">Sold</div>
                     </div>}
-                    {isLikeable && <div className={`like-btn ${isLiked ? 'active' : ''}`} onClick={(e)=>{e.stopPropagation()}}>
+                    {isLikeable && <div className={`like-btn ${isLiked ? 'active' : ''}`} onClick={(e) => { e.stopPropagation() }}>
                         <HeartSVG />
                     </div>}
                 </div>
@@ -41,7 +41,7 @@ const PropertyCard = ({ price, date, time, address, image, isSold = false, isLik
 }
 
 PropertyCard.propTypes = {
-    price: PropTypes.string,
+    price: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     date: PropTypes.string,
     time: PropTypes.string,
     address: PropTypes.string,

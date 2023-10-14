@@ -1,0 +1,2 @@
+export const CREATE_LISTING_STEP = 'CREATE_LISTING_STEP'
+

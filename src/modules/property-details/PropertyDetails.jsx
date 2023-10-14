@@ -63,7 +63,7 @@ const PropertyDetails = () => {
   return (
     <>
       <div className="property-details-wrapper">
-        <h2> 603, xyz apartments, Surrey, VIM 3B5</h2>
+        <h2 className='property-details-heading'> 603, xyz apartments, Surrey, VIM 3B5</h2>
         <div className="property-images-wrapper">
           <Image.PreviewGroup
             preview={{
@@ -170,7 +170,7 @@ const PropertyDetails = () => {
         </div>
 
         <div className="similar-open-houses">
-          <h2>{property_details.similar.title}</h2>
+          <h2 className='property-details-heading'>{property_details.similar.title}</h2>
 
           <div className='carousel'>
             <Carousel
