@@ -7,6 +7,8 @@ import { useDispatch } from "react-redux";
 import { createListing } from "../store/actions/createListing";
 import { useNavigate } from "react-router-dom";
 import { store } from "../../../store/store";
+import dayjs from 'dayjs';
+
 
 
 const UploadPictures = ({ handlePrev }) => {
@@ -19,7 +21,7 @@ const UploadPictures = ({ handlePrev }) => {
 
     //==> Success and error callbacks <==
     const successCallback = () => {
-        // navigate('/listing-success')
+        navigate('/listing-success')
     }
 
     const handleFileChange = (e) => {
@@ -45,18 +47,23 @@ const UploadPictures = ({ handlePrev }) => {
             setError('Please upload images')
             return
         }
-        
+
         let { listingData } = store.getState().createListing
         let { S0, S1, S2, S3 } = listingData
+        let startTime = dayjs(S3.time[0]).toISOString(), endTime = dayjs(S3.time[1]).toISOString()
+
         let payload = {
             ...S0,
             ...S1,
             ...S2,
             ...S3,
-            fileList
+            startTime,
+            endTime,
+            propertyImg: fileList
         }
-        console.log('payload_success', S0, S1, S2, S3, payload)
-        // dispatch(createListing(payload, successCallback))
+        delete payload.time
+        console.log('payload_success', payload)
+        dispatch(createListing(payload, successCallback))
     }
 
     return (

@@ -1,4 +1,4 @@
-import { CREATE_LISTING_FAIL, CREATE_LISTING_REQUEST, CREATE_LISTING_STEP, CREATE_LISTING_SUCCESS } from "../constant";
+import { CLEAR_PROPERTY_LISTING_DATA, CREATE_LISTING_FAIL, CREATE_LISTING_REQUEST, CREATE_LISTING_STEP, CREATE_LISTING_SUCCESS } from "../constant";
 
 const initialState = {
     loading: false,
@@ -12,11 +12,16 @@ const createListingReducer = (state = initialState, action) => {
         case CREATE_LISTING_STEP:
             return {
                 ...state,
-                loading: false,
                 listingData: {
                     ...state.listingData,
                     [action.payload.step]: action.payload.data
                 }
+            }
+        //Clear listing data
+        case CLEAR_PROPERTY_LISTING_DATA:
+            return {
+                ...state,
+                listingData: {}
             }
 
         //Create listing

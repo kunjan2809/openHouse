@@ -2,7 +2,7 @@ import { GET_PROFILE_FAIL, GET_PROFILE_REQUEST, GET_PROFILE_SUCCESS, UPDATE_PROF
 
 const initialState = {
     loading: false,
-    profile_details: {},
+    profileDetails: {},
 }
 
 const profileReducer = (state = initialState, action) => {
@@ -18,13 +18,13 @@ const profileReducer = (state = initialState, action) => {
             return {
                 ...state,
                 loading: false,
-                profile_details: action.payload
+                profileDetails: action.payload
             }
         case GET_PROFILE_FAIL:
             return {
                 ...state,
                 loading: false,
-                profile_details: {}
+                profileDetails: {}
             }
 
         //update profile

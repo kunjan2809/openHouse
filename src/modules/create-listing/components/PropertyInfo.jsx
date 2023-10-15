@@ -279,7 +279,7 @@ const PropertyInfo = ({ handleNext }) => {
                                 name="description"
                                 rows={4}
                                 placeholder="Enter description"
-                                maxLength={500}
+                                maxLength={1500}
                                 onChange={handleChange}
                                 onBlur={handleBlur}
                                 value={values.description}

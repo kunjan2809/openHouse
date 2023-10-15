@@ -21,11 +21,14 @@ import floor from './assets/svgs/floor.svg'
 import basement from './assets/svgs/basement.svg'
 import area from './assets/svgs/area.svg'
 import car_parking from './assets/svgs/car_parking.svg'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import PropertyCard from '../../common/components/card/PropertyCard';
 import Carousel from 'react-multi-carousel';
 import PropTypes from "prop-types"
-import RealtorDetails from './RealtorDetails';
+import RealtorInfo from './RealtorInfo';
+import { useDispatch, useSelector } from 'react-redux';
+import { getPropertyDetails } from './store/actions/propertyDetails';
+import { useParams } from 'react-router-dom';
 
 
 const imgArr = [ThumbImg, property2, property3, property4, property5, property6, property3, property4, property5]
@@ -36,6 +39,11 @@ AnyReactComponent.propTypes = {
 }
 
 const PropertyDetails = () => {
+
+  const { id } = useParams()
+
+  const dispatch = useDispatch()
+  const { propertyDetails } = useSelector((state) => state.propertyDetails)
 
   const [isOpenDesc, setIsOpenDesc] = useState(false)
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -59,11 +67,15 @@ const PropertyDetails = () => {
     setIsModalOpen(false);
   }
 
+  useEffect(() => {
+    dispatch(getPropertyDetails(id))
+  }, [id])
+
 
   return (
     <>
       <div className="property-details-wrapper">
-        <h2 className='property-details-heading'> 603, xyz apartments, Surrey, VIM 3B5</h2>
+        <h2 className='property-details-heading'>{`${propertyDetails.location?.address}, ${propertyDetails.location?.city}, ${propertyDetails.location?.state} ${propertyDetails.location?.zip}`}</h2>
         <div className="property-images-wrapper">
           <Image.PreviewGroup
             preview={{
@@ -105,32 +117,32 @@ const PropertyDetails = () => {
         </div >
         <p className='trending-tag sub-header'>Trending</p>
         <div className="price-tag">
-          <h1>$ 3,75,000</h1>
+          <h1>${propertyDetails.price}</h1>
           <Button type='primary' className='contact-button' onClick={() => showModal()}>{property_details.btn_text}</Button>
         </div>
         <p className='sub-header'>{property_details.details.title}</p>
         <div className="property-details">
           <Row gutter={[20, 35]}>
             <Col span={6}>
-              <PropertyType svg={house_type} title={property_details.details.type} info={'Town House'} />
+              <PropertyType svg={house_type} title={property_details.details.type} info={propertyDetails.type} />
             </Col>
             <Col span={6}>
-              <PropertyType svg={bedroom} title={property_details.details.bed} info={'4'} />
+              <PropertyType svg={bedroom} title={property_details.details.bed} info={propertyDetails.bedroom} />
             </Col>
             <Col span={6}>
-              <PropertyType svg={bathroom} title={property_details.details.bath} info={'3'} />
+              <PropertyType svg={bathroom} title={property_details.details.bath} info={propertyDetails.bathroom} />
             </Col>
             <Col span={6}>
-              <PropertyType svg={floor} title={property_details.details.floor} info={'3'} />
+              <PropertyType svg={floor} title={property_details.details.floor} info={propertyDetails.floor} />
             </Col>
             <Col span={6}>
-              <PropertyType svg={basement} title={property_details.details.basement} info={'Yes'} />
+              <PropertyType svg={basement} title={property_details.details.basement} info={propertyDetails.basement === true ? 'Yes' : 'No'} />
             </Col>
             <Col span={6}>
-              <PropertyType svg={area} title={property_details.details.area} info={'4.152 sqft.'} />
+              <PropertyType svg={area} title={property_details.details.area} info={propertyDetails.area} />
             </Col>
             <Col span={6}>
-              <PropertyType svg={car_parking} title={property_details.details.parking} info={'1'} />
+              <PropertyType svg={car_parking} title={property_details.details.parking} info={propertyDetails.parking} />
             </Col>
           </Row>
         </div >
@@ -143,9 +155,10 @@ const PropertyDetails = () => {
               <div className="description-text">
                 <div>
                   <div className={`description ${isOpenDesc ? 'open' : ''}`}>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit soluta ducimus ea repellat, maxime aut aliquid! Vero id consequatur tempore fuga hic quam odit ipsam? Reiciendis, repudiandae eos error laboriosam nisi recusandae ut officiis maiores totam corrupti delectus maxime esse voluptatem, asperiores, temporibus quia modi quis laborum beatae accusantium voluptates enim sunt iste. Voluptas beatae incidunt delectus sapiente, minus eaque sequi ratione, in officia corporis sunt? Inventore quam eius illo ducimus vero temporibus nihil aut ea. Voluptates recusandae tempore assumenda ex placeat praesentium magni numquam quaerat veniam vel laudantium eligendi non tenetur quia saepe ad animi suscipit dolores nisi nihil, quo, quisquam sapiente nemo velit! Unde, officia iusto repellendus animi autem, id beatae modi obcaecati error et expedita, nisi voluptate incidunt ratione eaque pariatur iure recusandae voluptatem. Commodi inventore quod exercitationem doloremque laboriosam quas accusamus, perspiciatis iusto vero ipsum possimus, at quibusdam eveniet iure magni veniam culpa unde maxime consequatur corrupti ducimus sint recusandae, iste nulla. Inventore ullam et repudiandae nobis eum possimus aut! Impedit pariatur asperiores eligendi assumenda, ad libero dolore officia, atque praesentium cupiditate dignissimos minima! Iste, quis? Expedita repellendus laborum laboriosam. Hic esse corporis assumenda natus, consequatur repellendus nihil voluptas eveniet. Eligendi a quos reprehenderit ab impedit atque labore deleniti totam mollitia pariatur eius possimus, sit omnis delectus provident, ea odio! Nobis similique tempore voluptas culpa nemo nulla eaque ea magni enim, natus esse velit dolores officia? Beatae odit explicabo est fugiat amet magni nisi tenetur in cumque! Minima debitis iure dicta deleniti esse. Quaerat vitae modi nisi porro molestias ex maxime cumque, iure sint unde voluptatibus. Porro corrupti temporibus magnam impedit ipsam, excepturi rerum nulla quam! Qui earum magni delectus facilis tempora, porro at nisi reprehenderit, nesciunt perferendis ab voluptates dignissimos consectetur aspernatur ullam assumenda obcaecati. Vitae, inventore, sunt consequatur molestias iusto adipisci quasi nihil nemo provident voluptates omnis repudiandae eaque quia aspernatur nobis cumque molestiae quos? Id blanditiis sequi maiores, esse animi est harum amet? Corporis nemo pariatur aliquam itaque consectetur repudiandae eligendi ab nisi, rerum, vitae numquam deserunt consequuntur quis, aut corrupti! Maiores repellendus adipisci cupiditate illo, est optio amet labore nostrum officiis accusantium totam quae autem cumque, reiciendis quod! Animi eum aspernatur unde, accusantium vel architecto enim soluta corrupti explicabo velit, aut hic nulla atque voluptates saepe. Accusantium dolorum magni temporibus doloribus magnam, sit dolore animi illo nihil eaque, voluptatibus ipsam corporis expedita totam ratione, tenetur culpa numquam ut deserunt mollitia odio nam laudantium? Consectetur, harum! Sed nihil consequatur facilis quis. Aperiam eum repellat odio, libero id maiores eius pariatur ea nostrum dolores et ad quos perspiciatis hic sapiente est dolor deserunt quo! Magni ullam a unde animi optio numquam, reiciendis delectus, incidunt, blanditiis totam nihil doloribus ipsam facilis quae impedit. Consequuntur nisi debitis assumenda ea quis omnis molestiae enim, delectus cumque porro, eligendi dolor nostrum perferendis unde soluta ratione vitae quod! Minima amet praesentium fuga est quam? Dicta eaque beatae nihil incidunt tenetur omnis laudantium vero, illo voluptatem laboriosam sunt dignissimos labore, modi hic rerum necessitatibus mollitia architecto autem perspiciatis iste adipisci?</p>
+                    <p>{propertyDetails.description}</p>
                   </div>
-                  <span className="view-more-btn" onClick={() => setIsOpenDesc(!isOpenDesc)}>{!isOpenDesc ? property_details.description.more : property_details.description.less}</span>
+                  {console.log('propertyDetails?.description?.length', propertyDetails?.description?.length)}
+                  {propertyDetails?.description?.length > 1200 ? <span className="view-more-btn" onClick={() => setIsOpenDesc(!isOpenDesc)}>{!isOpenDesc ? property_details.description.more : property_details.description.less}</span> : null}
                 </div>
               </div>
             </Col>
@@ -303,7 +316,7 @@ const PropertyDetails = () => {
         </div>
       </div >
 
-      <RealtorDetails isModalOpen={isModalOpen} handleCancel={handleCancel} />
+      <RealtorInfo isModalOpen={isModalOpen} handleCancel={handleCancel} id={propertyDetails?._id} />
     </>
 
   )

@@ -31,7 +31,7 @@ export const updateProfile = (payload, successCallback) => {
             isToken: true
         })
         if (response) {
-            dispatch({ type: UPDATE_PROFILE_SUCCESS, payload: response?.data?.data })
+            dispatch({ type: UPDATE_PROFILE_SUCCESS })
             dispatch({ type: UPDATE_AUTH, payload: response?.data?.data })
             successCallback()
         }

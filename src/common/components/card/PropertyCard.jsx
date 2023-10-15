@@ -7,7 +7,8 @@ import { HeartSVG } from "../../assets/optimizedSVG/svgs";
 import { useNavigate } from "react-router-dom";
 import './propertyCard.scss'
 
-const PropertyCard = ({ price, date, time, address, image, isSold = false, isLikeable = false, isLiked = false }) => {
+const PropertyCard = ({ id, price, date, time, address, image, isSold = false, isLikeable = false, isLiked = false }) => {
+
     const navigate = useNavigate()
 
     return (
@@ -17,7 +18,7 @@ const PropertyCard = ({ price, date, time, address, image, isSold = false, isLik
                 hoverable
                 bordered={false}
                 cover={<div className={isSold ? 'blur-img' : ''}><div className="filter"></div> <img alt=" " src={image} /></div>}
-                onClick={() => navigate('/property/1')}
+                onClick={() => navigate(`/property/${id}`)}
             >
                 <div className="cardContent">
                     <h2 className={isSold ? 'disabled' : ''}>${price}</h2>
@@ -41,6 +42,7 @@ const PropertyCard = ({ price, date, time, address, image, isSold = false, isLik
 }
 
 PropertyCard.propTypes = {
+    id: PropTypes.number,
     price: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     date: PropTypes.string,
     time: PropTypes.string,

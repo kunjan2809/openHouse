@@ -16,14 +16,15 @@ import { useEffect } from "react"
 import { getProfile } from "./store/actions/profile"
 import { UserOutlined } from "@ant-design/icons"
 import { getOwnProperties } from "./store/actions/properties"
+import moment from "moment"
 
 const Profile = () => {
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
-    const { profile_details } = useSelector((state) => state.profile)
-    const profileImg = profile_details?.profilePicture
+    const { profileDetails } = useSelector((state) => state.profile)
+    const profileImg = profileDetails?.profilePicture
 
     const { own_properties } = useSelector((state) => state.ownProperties)
 
@@ -42,7 +43,7 @@ const Profile = () => {
                             <div className="user-details-wrapper">
                                 {profileImg ?
                                     <img
-                                        src={`${import.meta.env.VITE_API_URL}${profile_details?.profilePicture}`}
+                                        src={`${import.meta.env.VITE_API_URL}${profileDetails?.profilePicture}`}
                                         alt="" className="user-profile"
                                         onError={({ currentTarget }) => {
                                             currentTarget.onerror = null;
@@ -54,22 +55,22 @@ const Profile = () => {
                                         size={100}
                                         className="user-profile" />}
                                 <div className="profile-description">
-                                    <h4>{`${profile_details?.firstName} ${profile_details?.lastName}`}</h4>
-                                    <span>{(!profile_details?.description || profile_details?.description === 'undefined') ? '' : profile_details?.description}</span>
+                                    <h4>{`${profileDetails?.firstName} ${profileDetails?.lastName}`}</h4>
+                                    <span>{(!profileDetails?.description || profileDetails?.description === 'undefined') ? '' : profileDetails?.description}</span>
                                 </div>
                                 <div className="contact-info-wrapper">
                                     <h5>{profile.profile.contact}</h5>
                                     <div className="contact-info">
-                                        <span><img src={phone_svg} alt="" /> {`${profile_details?.phoneNumber?.substring(0, 2)} ${profile_details?.phoneNumber?.substring(2)}`}</span>
-                                        <span><img src={mail_svg} alt="" /> {profile_details?.email}</span>
+                                        <span><img src={phone_svg} alt="" /> {`${profileDetails?.phoneNumber?.substring(0, 2)} ${profileDetails?.phoneNumber?.substring(2)}`}</span>
+                                        <span><img src={mail_svg} alt="" /> {profileDetails?.email}</span>
                                     </div>
                                 </div>
                                 <div className="follow-icons">
                                     <h5>{profile.profile.follow}</h5>
                                     <div className="icons">
-                                        <a href={profile_details?.socialLinks?.instagram} target="_blank" rel="noreferrer"><img src={instagram} alt="" /></a>
-                                        <a href={profile_details?.socialLinks?.facebook} target="_blank" rel="noreferrer"><img src={facebook} alt="" /></a>
-                                        <a href={profile_details?.socialLinks?.twitter} target="_blank" rel="noreferrer"><img src={twitter} alt="" /></a>
+                                        <a href={profileDetails?.socialLinks?.instagram} target="_blank" rel="noreferrer"><img src={instagram} alt="" /></a>
+                                        <a href={profileDetails?.socialLinks?.facebook} target="_blank" rel="noreferrer"><img src={facebook} alt="" /></a>
+                                        <a href={profileDetails?.socialLinks?.twitter} target="_blank" rel="noreferrer"><img src={twitter} alt="" /></a>
                                     </div>
                                 </div>
                                 <Button className="edit-profile" onClick={() => navigate('/profile/edit')}><span><img src={edit_icon} alt="" /> {profile.profile.btn_text}</span></Button>
@@ -89,10 +90,11 @@ const Profile = () => {
                                     own_properties?.map((property) => {
                                         return <Col span={8} key={property._id}>
                                             <PropertyCard
+                                                id={property._id}
                                                 image={`${import.meta.env.VITE_API_URL}${property.images[0]}`}
                                                 price={property.price}
-                                                date={property.date}
-                                                time={property.startTime}
+                                                date={moment(property.date).format("Do MMM, YYYY")}
+                                                time={moment(property.startTime).format('h.mmA')}
                                                 address={`${property.location?.address}, ${property.location?.city}, ${property.location?.country}`}
                                                 isSold={property.isSold}
                                             />

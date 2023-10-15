@@ -6,6 +6,7 @@ import storage from 'redux-persist/lib/storage'
 import { ownPropertiesReducer } from '../modules/profile/store/reducers/properties';
 import { listingsReducer } from '../modules/home/store/reducers/listings';
 import { createListingReducer } from '../modules/create-listing/store/reducers/createListing';
+import { propertyDetailsReducer } from '../modules/property-details/store/reducers/propertyDetails';
 
 const persistConfig = {
     key: 'root',
@@ -18,7 +19,8 @@ const rootReducer = combineReducers({
     profile: profileReducer,
     ownProperties: ownPropertiesReducer,
     listings: listingsReducer,
-    createListing: createListingReducer
+    createListing: createListingReducer,
+    propertyDetails: propertyDetailsReducer
 })
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)

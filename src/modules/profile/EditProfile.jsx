@@ -20,7 +20,7 @@ const EditProfile = () => {
     const dispatch = useDispatch()
 
     const [file, setFile] = useState()
-    const { profile_details } = useSelector((state) => state.profile)
+    const { profileDetails } = useSelector((state) => state.profile)
 
 
     //Getting uploaded file
@@ -83,21 +83,21 @@ const EditProfile = () => {
     const { values, handleChange, handleBlur, touched, errors, submitForm, setFieldValue, setValues } = formik
 
     useEffect(() => {
-        if (profile_details) {
+        if (profileDetails) {
             setValues({
-                first_name: profile_details?.firstName,
-                last_name: profile_details?.lastName,
-                profile: `${import.meta.env.VITE_API_URL}${profile_details?.profilePicture}`,
-                description: (!profile_details?.description || profile_details?.description=== 'undefined') ? '' : profile_details?.description,
+                first_name: profileDetails?.firstName,
+                last_name: profileDetails?.lastName,
+                profile: `${import.meta.env.VITE_API_URL}${profileDetails?.profilePicture}`,
+                description: (!profileDetails?.description || profileDetails?.description=== 'undefined') ? '' : profileDetails?.description,
                 country_code: '+1',
-                phone: profile_details?.phoneNumber?.substring(2),
-                email: profile_details?.email,
-                instagram: (!profile_details?.socialLinks?.instagram || profile_details?.socialLinks?.instagram === 'undefined') ? '' : profile_details?.socialLinks?.instagram,
-                facebook: (!profile_details?.socialLinks?.facebook || profile_details?.socialLinks?.facebook === 'undefined') ? '' : profile_details?.socialLinks?.facebook,
-                twitter: (!profile_details?.socialLinks?.twitter || profile_details?.socialLinks?.twitter === 'undefined') ? '' : profile_details?.socialLinks?.twitter
+                phone: profileDetails?.phoneNumber?.substring(2),
+                email: profileDetails?.email,
+                instagram: (!profileDetails?.socialLinks?.instagram || profileDetails?.socialLinks?.instagram === 'undefined') ? '' : profileDetails?.socialLinks?.instagram,
+                facebook: (!profileDetails?.socialLinks?.facebook || profileDetails?.socialLinks?.facebook === 'undefined') ? '' : profileDetails?.socialLinks?.facebook,
+                twitter: (!profileDetails?.socialLinks?.twitter || profileDetails?.socialLinks?.twitter === 'undefined') ? '' : profileDetails?.socialLinks?.twitter
             })
         }
-    }, [profile_details])
+    }, [profileDetails])
 
 
     console.log('profile', values.profile)

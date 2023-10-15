@@ -108,10 +108,11 @@ const Listings = ({ setPage, page }) => {
                         {listings?.map((property) => {
                             return <Col span={6} key={property._id}>
                                 <PropertyCard
+                                    id={property._id}
                                     image={`${import.meta.env.VITE_API_URL}${property.images[0]}`}
                                     price={property.price}
                                     date={moment(property.date).format("Do MMM, YYYY")}
-                                    time={property.startTime}
+                                    time={moment(property.startTime).format('h.mmA')}
                                     address={`${property.location?.address}, ${property.location?.city}, ${property.location?.country}`}
                                     isSold={property.isSold}
                                     isLikeable={true}

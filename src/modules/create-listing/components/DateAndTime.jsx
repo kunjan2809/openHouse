@@ -69,7 +69,8 @@ const DateAndTime = ({ handleNext, handlePrev }) => {
                             />
                             {touched.date && errors.date && <span className='error'>{errors.date}</span>}
                         </Col>
-                        <Col span={24}>
+                        {/* <Col span={12}></Col> */}
+                        <Col span={12}>
                             <label>{add_listing.steps.step4.fields.time}</label>
                             <TimePicker.RangePicker
                                 name="time"
