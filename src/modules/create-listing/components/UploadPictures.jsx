@@ -45,10 +45,15 @@ const UploadPictures = ({ handlePrev }) => {
             setError('Please upload images')
             return
         }
+        
         let { listingData } = store.getState().createListing
         let { S0, S1, S2, S3 } = listingData
         let payload = {
-            ...S0, ...S1, ...S2, ...S3, fileList
+            ...S0,
+            ...S1,
+            ...S2,
+            ...S3,
+            fileList
         }
         console.log('payload_success', S0, S1, S2, S3, payload)
         // dispatch(createListing(payload, successCallback))

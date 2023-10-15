@@ -41,8 +41,8 @@ const add_listing = {
             title: "UPLOAD PICTURES"
         }
     },
-    prev_btn: "PREVIOUS",
-    next_btn: "SAVE & NEXT",
+    prev_btn: "Previous",
+    next_btn: "Next",
     submit_btn: "Submit"
 }
 

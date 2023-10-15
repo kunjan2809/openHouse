@@ -49,7 +49,6 @@ const DateAndTime = ({ handleNext, handlePrev }) => {
         }
     }, [listingData])
 
-    console.log('dayjs() :>> ', dayjs('Sat Oct 14 2023 13:46:47 GMT+0530 (India Standard Time)'));
 
     return (
         <div className="date-and-time-form">
