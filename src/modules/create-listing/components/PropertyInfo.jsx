@@ -167,7 +167,6 @@ const PropertyInfo = ({ handleNext }) => {
                 area: values.area,
                 description: values.description
             }
-            console.log('payload', data)
             dispatch(storeStepData('S0', data))
             handleNext()
         }
@@ -179,6 +178,7 @@ const PropertyInfo = ({ handleNext }) => {
         if (listingData?.S0) {
             setValues(listingData?.S0)
         }
+        window.scrollTo({ top: 0, behavior: 'smooth' })
     }, [listingData])
 
 

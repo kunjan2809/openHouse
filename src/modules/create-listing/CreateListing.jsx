@@ -97,9 +97,6 @@ const CreateListing = () => {
             setCurrent(current + 1)
     }
 
-    const handleChangeStep = (value) => {
-        setCurrent(value);
-    }
 
     return (
         <>
@@ -111,7 +108,6 @@ const CreateListing = () => {
                         progressDot={customDot}
                         items={STEPS}
                         current={current}
-                        onChange={handleChangeStep}
                     />
                 </div>
 

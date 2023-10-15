@@ -34,7 +34,6 @@ const DateAndTime = ({ handleNext, handlePrev }) => {
                 date: values.date,
                 time: values.time,
             }
-            console.log('data', data)
             dispatch(storeStepData('S3', data))
             handleNext()
         }
@@ -47,6 +46,7 @@ const DateAndTime = ({ handleNext, handlePrev }) => {
         if (listingData?.S3) {
             setValues(listingData?.S3)
         }
+        window.scrollTo({ top: 0, behavior: 'smooth' })
     }, [listingData])
 
 

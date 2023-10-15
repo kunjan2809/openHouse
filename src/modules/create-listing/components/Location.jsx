@@ -56,7 +56,6 @@ const Location = ({ handleNext, handlePrev }) => {
                 city: values.city,
                 zip: values.zip
             }
-            console.log('data', data)
             dispatch(storeStepData('S1', data))
             handleNext()
         }
@@ -68,6 +67,7 @@ const Location = ({ handleNext, handlePrev }) => {
         if (listingData?.S1) {
             setValues(listingData?.S1)
         }
+        window.scrollTo({ top: 0, behavior: 'smooth' })
     }, [listingData])
 
 

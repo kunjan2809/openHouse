@@ -40,8 +40,8 @@ const App = () => {
               <Route path="/blog" element={<Layout><Blog /></Layout>} />
               <Route path="/blog/:id" element={<Layout><BlogDetails /></Layout>} />
 
-              <Route path="/create-listing" element={<Layout><CreateListing /></Layout>} />
-              <Route path="/listing-success" element={<Layout><ListingSuccess /></Layout>} />
+              <Route path="/create-listing" element={<AuthRoute><Layout><CreateListing /></Layout></AuthRoute>} />
+              <Route path="/listing-success" element={<AuthRoute><Layout><ListingSuccess /></Layout></AuthRoute>} />
               <Route path="/property/:id" element={<Layout><PropertyDetails /></Layout>} />
 
               <Route path="/about" element={<Layout><About /></Layout>} />

@@ -12,7 +12,7 @@ const initialState = {
         bedroom: 'any',
         sort: 'any',
         page: '',
-        pageSize: 1
+        pageSize: 12
     }
 }
 

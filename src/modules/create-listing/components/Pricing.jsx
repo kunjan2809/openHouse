@@ -33,7 +33,6 @@ const Pricing = ({ handleNext, handlePrev }) => {
                 currency: values.currency,
                 price: values.price,
             }
-            console.log('data', data)
             dispatch(storeStepData('S2', data))
             handleNext()
         }
@@ -45,6 +44,7 @@ const Pricing = ({ handleNext, handlePrev }) => {
         if (listingData?.S2) {
             setValues(listingData?.S2)
         }
+        window.scrollTo({ top: 0, behavior: 'smooth' })
     }, [listingData])
 
 

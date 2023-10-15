@@ -1,7 +1,7 @@
 import { PlusOutlined, CloseOutlined } from "@ant-design/icons";
 import { Button, Col, Image, Row } from "antd"
 import PropTypes from "prop-types"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { add_listing } from "../constant/string";
 import { useDispatch } from "react-redux";
 import { createListing } from "../store/actions/createListing";
@@ -27,7 +27,9 @@ const UploadPictures = ({ handlePrev }) => {
     const handleFileChange = (e) => {
         const files = e.target.files;
         if (files && files.length > 0) {
-            setError(null)
+            if ((fileList.length + files.length) >= 6) {
+                setError(null)
+            }
 
             const remainingSlots = 12 - fileList.length;
             const newFiles = Array.from(files).slice(0, remainingSlots);
@@ -42,9 +44,8 @@ const UploadPictures = ({ handlePrev }) => {
     };
 
     const handleSubmitListing = () => {
-        console.log('fileList.length :>> ', fileList.length);
-        if (fileList.length <= 0) {
-            setError('Please upload images')
+        if (fileList.length < 6) {
+            setError('Please upload at least 6 images')
             return
         }
 
@@ -62,9 +63,12 @@ const UploadPictures = ({ handlePrev }) => {
             propertyImg: fileList
         }
         delete payload.time
-        console.log('payload_success', payload)
         dispatch(createListing(payload, successCallback))
     }
+
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+    }, [])
 
     return (
         <>
@@ -89,7 +93,7 @@ const UploadPictures = ({ handlePrev }) => {
                                             multiple
                                         />
                                     </div>
-                                    {error && <span className="error">{error}</span>}
+                                    {error && <><span className="error">{error}</span> <br /></>}
                                 </>
                                 }
                                 <br />
@@ -97,7 +101,7 @@ const UploadPictures = ({ handlePrev }) => {
                                 <Image.PreviewGroup>
                                     <Row className="img-group" gutter={[0, 10]}>
                                         {fileList?.map((img, index) => {
-                                            return <>
+                                            return (
                                                 <Col span={4} key={index}>
                                                     <div className="image-container">
                                                         <Image className="preview-img" src={URL.createObjectURL(img)} />
@@ -109,7 +113,7 @@ const UploadPictures = ({ handlePrev }) => {
                                                         ></Button>
                                                     </div>
                                                 </Col>
-                                            </>
+                                            )
                                         })}
                                     </Row>
                                 </Image.PreviewGroup>

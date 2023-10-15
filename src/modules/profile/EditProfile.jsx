@@ -100,8 +100,6 @@ const EditProfile = () => {
     }, [profileDetails])
 
 
-    console.log('profile', values.profile)
-
     return (
         <>
             <div className="edit-profile-container">

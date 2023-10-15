@@ -21,7 +21,7 @@ import floor from './assets/svgs/floor.svg'
 import basement from './assets/svgs/basement.svg'
 import area from './assets/svgs/area.svg'
 import car_parking from './assets/svgs/car_parking.svg'
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import PropertyCard from '../../common/components/card/PropertyCard';
 import Carousel from 'react-multi-carousel';
 import PropTypes from "prop-types"
@@ -44,6 +44,8 @@ const PropertyDetails = () => {
 
   const dispatch = useDispatch()
   const { propertyDetails } = useSelector((state) => state.propertyDetails)
+  const imgArr = propertyDetails?.images ?? []
+  console.log('imgArr :>> ', imgArr);
 
   const [isOpenDesc, setIsOpenDesc] = useState(false)
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -85,7 +87,9 @@ const PropertyDetails = () => {
             <Row className="property-images" gutter={10}>
               <Col span={16} className='outer-col'>
                 <div className="property-main-image-container">
-                  <Image src={imgArr[0]} className="property-main-image" />
+                  <Image
+                    src={import.meta.env.VITE_API_URL + imgArr[0]}
+                    className="property-main-image" />
                 </div>
               </Col>
               <Col span={8} className='outer-col'>
@@ -93,18 +97,24 @@ const PropertyDetails = () => {
                   {imgArr?.map((img, index, arr) => {
                     if (index !== 0) {
                       if (index === 6 && arr.length >= 7) {
-                        return <>
+                        return <React.Fragment key={index}>
                           <Col span={12} className='last-image'>
                             <div className='last-image-preview'>+{arr.length - 6}</div>
-                            <Image className="property-side-image" src={img} key={index} />
+                            <Image
+                              className="property-side-image"
+                              src={import.meta.env.VITE_API_URL + img}
+                              key={index} />
                           </Col>
-                        </>
+                        </React.Fragment>
                       } else {
-                        return <>
+                        return <React.Fragment key={index}>
                           <Col span={12}>
-                            <Image className="property-side-image" src={img} key={index} />
+                            <Image
+                              className="property-side-image"
+                              src={import.meta.env.VITE_API_URL + img}
+                              key={index} />
                           </Col>
-                        </>
+                        </React.Fragment>
                       }
                     } else {
                       return ''
@@ -157,7 +167,6 @@ const PropertyDetails = () => {
                   <div className={`description ${isOpenDesc ? 'open' : ''}`}>
                     <p>{propertyDetails.description}</p>
                   </div>
-                  {console.log('propertyDetails?.description?.length', propertyDetails?.description?.length)}
                   {propertyDetails?.description?.length > 1200 ? <span className="view-more-btn" onClick={() => setIsOpenDesc(!isOpenDesc)}>{!isOpenDesc ? property_details.description.more : property_details.description.less}</span> : null}
                 </div>
               </div>

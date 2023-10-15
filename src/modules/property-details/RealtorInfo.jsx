@@ -6,15 +6,15 @@ import mail_svg from "../../common/assets/svgs/email.svg"
 import instagram from "../../common/assets/svgs/instagram.svg"
 import facebook from "../../common/assets/svgs/facebook.svg"
 import twitter from "../../common/assets/svgs/twitter.svg"
-import profile_img from '../profile/assets/images/profile-img.png'
-import { Modal } from 'antd'
+import error_img from '../../common/assets/images/error.png'
+
+import { Avatar, Modal } from 'antd'
+import { UserOutlined } from "@ant-design/icons"
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getRealtorInfo } from "./store/actions/propertyDetails";
 
 const RealtorInfo = ({ id, isModalOpen, handleCancel }) => {
-    console.log('id', id)
-
     const dispatch = useDispatch()
     const { realtorInfo } = useSelector((state) => state.propertyDetails)
 
@@ -31,10 +31,27 @@ const RealtorInfo = ({ id, isModalOpen, handleCancel }) => {
                 className='contact-seller-modal'
                 footer={null}
             >
-                <div className="user-profile-wrapper">
+                <div className="user-profile-wrapper-modal">
                     <div className="user-details-wrapper">
                         <div className='user-details'>
-                            <img src={profile_img} alt="" className="user-profile" />
+                            <div>
+                                {
+                                    realtorInfo?.profilePicture ? <img
+                                        src={import.meta.env.VITE_API_URL + realtorInfo?.profilePicture}
+                                        alt=""
+                                        className="user-profile"
+                                        onError={({ currentTarget }) => {
+                                            currentTarget.onerror = null;
+                                            currentTarget.src = error_img;
+                                        }}
+                                    /> :
+                                        <Avatar
+                                            icon={<UserOutlined />}
+                                            size={100}
+                                            className="user-profile"
+                                        />
+                                }
+                            </div>
                             <div className="profile-description">
                                 <h4>{`${realtorInfo?.firstName} ${realtorInfo?.lastName}`}</h4>
                                 <span>{realtorInfo?.description}</span>
@@ -63,7 +80,7 @@ const RealtorInfo = ({ id, isModalOpen, handleCancel }) => {
 }
 
 RealtorInfo.propTypes = {
-    id: PropTypes.number,
+    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     isModalOpen: PropTypes.bool,
     handleCancel: PropTypes.func
 }

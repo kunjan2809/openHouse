@@ -20,7 +20,7 @@ const PropertyType = (props) => {
 PropertyType.propTypes = {
     svg: PropTypes.any,
     title: PropTypes.string,
-    info: PropTypes.string
+    info: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 }
 
 export default PropertyType

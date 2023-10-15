@@ -1,8 +1,14 @@
+import { useEffect } from 'react'
 import TICK from '../../common/assets/svgs/rightTick.svg'
 import './assets/scss/listingSuccess.scss'
 import { thank_you } from './constant/string'
 
-const listingSuccess = () => {
+const ListingSuccess = () => {
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }, [])
+
   return (
     <>
       <div className="listing-success">
@@ -14,4 +20,4 @@ const listingSuccess = () => {
   )
 }
 
-export default listingSuccess
+export default ListingSuccess

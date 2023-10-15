@@ -44,7 +44,8 @@ const Profile = () => {
                                 {profileImg ?
                                     <img
                                         src={`${import.meta.env.VITE_API_URL}${profileDetails?.profilePicture}`}
-                                        alt="" className="user-profile"
+                                        alt="" 
+                                        className="user-profile"
                                         onError={({ currentTarget }) => {
                                             currentTarget.onerror = null;
                                             currentTarget.src = error_img;
@@ -52,7 +53,7 @@ const Profile = () => {
                                     /> :
                                     <Avatar
                                         icon={<UserOutlined />}
-                                        size={100}
+                                        size={150}
                                         className="user-profile" />}
                                 <div className="profile-description">
                                     <h4>{`${profileDetails?.firstName} ${profileDetails?.lastName}`}</h4>
@@ -102,9 +103,9 @@ const Profile = () => {
                                     })
                                 }
                             </Row>
-                            <div className="view">
+                            {/* <div className="view">
                                 {own_properties.length > 6 && <Button className="view-btn">{profile.listings.view}</Button>}
-                            </div>
+                            </div> */}
                         </div>
 
                     </Col>
