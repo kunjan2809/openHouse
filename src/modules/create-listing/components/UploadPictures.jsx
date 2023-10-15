@@ -3,18 +3,24 @@ import { Button, Col, Image, Row } from "antd"
 import PropTypes from "prop-types"
 import { useState } from "react";
 import { add_listing } from "../constant/string";
+import { useDispatch } from "react-redux";
+import { createListing } from "../store/actions/createListing";
+import { useNavigate } from "react-router-dom";
+import { store } from "../../../store/store";
 
 
 const UploadPictures = ({ handlePrev }) => {
 
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+
     const [fileList, setFileList] = useState([]);
     const [error, setError] = useState(null);
 
-    const handleDelete = (index) => {
-        const updatedFileList = [...fileList];
-        updatedFileList.splice(index, 1);
-        setFileList(updatedFileList);
-    };
+    //==> Success and error callbacks <==
+    const successCallback = () => {
+        // navigate('/listing-success')
+    }
 
     const handleFileChange = (e) => {
         const files = e.target.files;
@@ -27,12 +33,25 @@ const UploadPictures = ({ handlePrev }) => {
         }
     };
 
+    const handleDelete = (index) => {
+        const updatedFileList = [...fileList];
+        updatedFileList.splice(index, 1);
+        setFileList(updatedFileList);
+    };
+
     const handleSubmitListing = () => {
         console.log('fileList.length :>> ', fileList.length);
         if (fileList.length <= 0) {
             setError('Please upload images')
             return
         }
+        let { listingData } = store.getState().createListing
+        let { S0, S1, S2, S3 } = listingData
+        let payload = {
+            ...S0, ...S1, ...S2, ...S3, fileList
+        }
+        console.log('payload_success', S0, S1, S2, S3, payload)
+        // dispatch(createListing(payload, successCallback))
     }
 
     return (

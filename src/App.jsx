@@ -41,7 +41,7 @@ const App = () => {
               <Route path="/blog/:id" element={<Layout><BlogDetails /></Layout>} />
 
               <Route path="/create-listing" element={<Layout><CreateListing /></Layout>} />
-              <Route path="/create-listing/submit" element={<Layout><ListingSuccess /></Layout>} />
+              <Route path="/listing-success" element={<Layout><ListingSuccess /></Layout>} />
               <Route path="/property/:id" element={<Layout><PropertyDetails /></Layout>} />
 
               <Route path="/about" element={<Layout><About /></Layout>} />

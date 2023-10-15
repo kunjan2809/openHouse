@@ -93,7 +93,7 @@ const Profile = () => {
                                                 price={property.price}
                                                 date={property.date}
                                                 time={property.startTime}
-                                                address={`${property.address?.address}, ${property.address?.city}, ${property.address?.country}`}
+                                                address={`${property.location?.address}, ${property.location?.city}, ${property.location?.country}`}
                                                 isSold={property.isSold}
                                             />
                                         </Col>
