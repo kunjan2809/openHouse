@@ -7,18 +7,65 @@ import { useDispatch, useSelector } from "react-redux";
 import { storeStepData } from "../store/actions/createListing";
 import { useEffect } from "react";
 
-const OPTIONS = [
+const COUNTRIES = [
     {
-        value: 'house',
-        label: 'House'
+        value: 'canada',
+        label: 'Canada'
+    }
+]
+
+const STATES = [
+    {
+        value: 'ontario',
+        label: 'Ontario'
     },
     {
-        value: 'apartment',
-        label: 'Apartment'
+        value: 'alberta',
+        label: 'Alberta'
     },
     {
-        value: 'guest_house',
-        label: 'Guest House'
+        value: 'saskatchewan',
+        label: 'Saskatchewan'
+    },
+    {
+        value: 'manitoba',
+        label: 'Manitoba'
+    },
+    {
+        value: 'british_columbia',
+        label: 'British Columbia'
+    },
+    {
+        value: 'nova_scotia',
+        label: 'Nova Scotia'
+    },
+    {
+        value: 'new_brunswick',
+        label: 'New Brunswick'
+    },
+    {
+        value: 'newfoundland_and_labrador',
+        label: 'Newfoundland and Labrador'
+    },
+    {
+        value: 'prince_edward_island',
+        label: 'Prince Edward Island'
+    },
+    {
+        value: 'quebec',
+        label: 'Quebec'
+    },
+    {
+        value: 'northwest_territories',
+        label: 'Northwest Territories'
+    },
+    {
+        value: 'nunavut',
+        label: 'Nunavut'
+    },
+    {
+        value: 'yukon',
+        label: 'Yukon'
     }
 ]
 
@@ -38,7 +85,7 @@ const Location = ({ handleNext, handlePrev }) => {
     })
 
     const initialValues = {
-        country: null,
+        country: 'canada',
         state: null,
         address: '',
         city: '',
@@ -83,7 +130,7 @@ const Location = ({ handleNext, handlePrev }) => {
                             <Select
                                 popupClassName="step-select-opt"
                                 placeholder='Select country'
-                                options={OPTIONS}
+                                options={COUNTRIES}
                                 onChange={(value) => setFieldValue('country', value)}
                                 onBlur={handleBlur}
                                 value={values.country}
@@ -95,7 +142,7 @@ const Location = ({ handleNext, handlePrev }) => {
                             <Select
                                 popupClassName="step-select-opt"
                                 placeholder='Select state'
-                                options={OPTIONS}
+                                options={STATES}
                                 onChange={(value) => setFieldValue('state', value)}
                                 onBlur={handleBlur}
                                 value={values.state}

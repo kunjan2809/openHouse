@@ -9,7 +9,13 @@ import * as Yup from 'yup';
 import { signUp } from "./store/actions/auth";
 import { useState } from "react";
 
-const { Option } = Select;
+const COUNTRYCODES = [
+    {
+        value: '+1',
+        label: '+1'
+    }
+]
+
 
 const Signup = () => {
 
@@ -143,12 +149,11 @@ const Signup = () => {
                                                     defaultValue="+1"
                                                     className="select-country-code"
                                                     popupClassName="country-code-selector"
+                                                    options={COUNTRYCODES}
                                                     onChange={(value) => setFieldValue('country_code', value)}
                                                     onBlur={handleBlur}
                                                     value={values.country_code}
-                                                >
-                                                    <Option value="+1">+1</Option>
-                                                </Select>
+                                                />
                                             }
                                             onChange={handleChange}
                                             onBlur={handleBlur}

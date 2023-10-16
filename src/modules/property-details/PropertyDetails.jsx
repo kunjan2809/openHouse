@@ -7,12 +7,12 @@ import { property_details } from './constant/string';
 
 import cardImg2 from '../../common/assets/images/property.png'
 
-import ThumbImg from './assets/images/thumb.png'
-import property2 from './assets/images/property-details-2.png'
-import property3 from './assets/images/property-details-3.png'
-import property4 from './assets/images/property-details-4.png'
-import property5 from './assets/images/property-details-5.png'
-import property6 from './assets/images/property-details-5.png'
+// import ThumbImg from './assets/images/thumb.png'
+// import property2 from './assets/images/property-details-2.png'
+// import property3 from './assets/images/property-details-3.png'
+// import property4 from './assets/images/property-details-4.png'
+// import property5 from './assets/images/property-details-5.png'
+// import property6 from './assets/images/property-details-5.png'
 
 import house_type from './assets/svgs/house_type.svg'
 import bedroom from './assets/svgs/bedroom.svg'
@@ -31,7 +31,7 @@ import { getPropertyDetails } from './store/actions/propertyDetails';
 import { useParams } from 'react-router-dom';
 
 
-const imgArr = [ThumbImg, property2, property3, property4, property5, property6, property3, property4, property5]
+// const imgArr = [ThumbImg, property2, property3, property4, property5, property6, property3, property4, property5]
 
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
 AnyReactComponent.propTypes = {
