@@ -44,7 +44,6 @@ const Pricing = ({ handleNext, handlePrev }) => {
         if (listingData?.S2) {
             setValues(listingData?.S2)
         }
-        window.scrollTo({ top: 0, behavior: 'smooth' })
     }, [listingData])
 
 

@@ -6,6 +6,7 @@ import 'react-multi-carousel/lib/styles.css';
 import { property_details } from './constant/string';
 
 import cardImg2 from '../../common/assets/images/property.png'
+import default_home from '../../common/assets/images/default-home.png'
 
 // import ThumbImg from './assets/images/thumb.png'
 // import property2 from './assets/images/property-details-2.png'
@@ -29,6 +30,7 @@ import RealtorInfo from './RealtorInfo';
 import { useDispatch, useSelector } from 'react-redux';
 import { getPropertyDetails } from './store/actions/propertyDetails';
 import { useParams } from 'react-router-dom';
+import { propertyType } from '../../common/constant/enums';
 
 
 // const imgArr = [ThumbImg, property2, property3, property4, property5, property6, property3, property4, property5]
@@ -49,6 +51,11 @@ const PropertyDetails = () => {
 
   const [isOpenDesc, setIsOpenDesc] = useState(false)
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [mainImageSource, setMainImageSource] = useState(import.meta.env.VITE_API_URL + imgArr[0]);
+
+  const handleImageError = () => {
+    setMainImageSource(default_home);
+  };
 
   //Map properties
   const defaultProps = {
@@ -88,8 +95,10 @@ const PropertyDetails = () => {
               <Col span={16} className='outer-col'>
                 <div className="property-main-image-container">
                   <Image
-                    src={import.meta.env.VITE_API_URL + imgArr[0]}
-                    className="property-main-image" />
+                    src={mainImageSource}
+                    className="property-main-image"
+                    onError={handleImageError}
+                  />
                 </div>
               </Col>
               <Col span={8} className='outer-col'>
@@ -103,7 +112,9 @@ const PropertyDetails = () => {
                             <Image
                               className="property-side-image"
                               src={import.meta.env.VITE_API_URL + img}
-                              key={index} />
+                              key={index}
+                              onError={handleImageError}
+                            />
                           </Col>
                         </React.Fragment>
                       } else {
@@ -112,6 +123,7 @@ const PropertyDetails = () => {
                             <Image
                               className="property-side-image"
                               src={import.meta.env.VITE_API_URL + img}
+                              onError={handleImageError}
                               key={index} />
                           </Col>
                         </React.Fragment>
@@ -134,7 +146,7 @@ const PropertyDetails = () => {
         <div className="property-details">
           <Row gutter={[20, 35]}>
             <Col span={6}>
-              <PropertyType svg={house_type} title={property_details.details.type} info={propertyDetails.type} />
+              <PropertyType svg={house_type} title={property_details.details.type} info={propertyType[propertyDetails.type]} />
             </Col>
             <Col span={6}>
               <PropertyType svg={bedroom} title={property_details.details.bed} info={propertyDetails.bedroom} />

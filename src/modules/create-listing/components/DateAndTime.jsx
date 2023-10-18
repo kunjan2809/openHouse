@@ -46,7 +46,6 @@ const DateAndTime = ({ handleNext, handlePrev }) => {
         if (listingData?.S3) {
             setValues(listingData?.S3)
         }
-        window.scrollTo({ top: 0, behavior: 'smooth' })
     }, [listingData])
 
 

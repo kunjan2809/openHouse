@@ -4,16 +4,19 @@ import Features from './components/Features';
 import ListProperty from './components/ListProperty';
 import Listings from './components/Listings';
 import { useState } from 'react';
+import { useScrollToTop } from '../../common/hooks/general';
 
 const Home = () => {
 
     const [page, setPage] = useState(1)
+    useScrollToTop()
+
 
     return (
         <>
             <div className="home-page-container">
-                <Header setPage={setPage}/>
-                <Listings setPage={setPage} page={page}/>
+                <Header setPage={setPage} />
+                <Listings setPage={setPage} page={page} />
                 <Features />
                 <ListProperty />
             </div>

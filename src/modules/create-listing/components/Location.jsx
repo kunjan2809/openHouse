@@ -6,68 +6,8 @@ import * as Yup from 'yup';
 import { useDispatch, useSelector } from "react-redux";
 import { storeStepData } from "../store/actions/createListing";
 import { useEffect } from "react";
+import { COUNTRIES, STATES } from "../constant/options";
 
-const COUNTRIES = [
-    {
-        value: 'canada',
-        label: 'Canada'
-    }
-]
-
-const STATES = [
-    {
-        value: 'ontario',
-        label: 'Ontario'
-    },
-    {
-        value: 'alberta',
-        label: 'Alberta'
-    },
-    {
-        value: 'saskatchewan',
-        label: 'Saskatchewan'
-    },
-    {
-        value: 'manitoba',
-        label: 'Manitoba'
-    },
-    {
-        value: 'british_columbia',
-        label: 'British Columbia'
-    },
-    {
-        value: 'nova_scotia',
-        label: 'Nova Scotia'
-    },
-    {
-        value: 'new_brunswick',
-        label: 'New Brunswick'
-    },
-    {
-        value: 'newfoundland_and_labrador',
-        label: 'Newfoundland and Labrador'
-    },
-    {
-        value: 'prince_edward_island',
-        label: 'Prince Edward Island'
-    },
-    {
-        value: 'quebec',
-        label: 'Quebec'
-    },
-    {
-        value: 'northwest_territories',
-        label: 'Northwest Territories'
-    },
-    {
-        value: 'nunavut',
-        label: 'Nunavut'
-    },
-    {
-        value: 'yukon',
-        label: 'Yukon'
-    }
-]
 
 const Location = ({ handleNext, handlePrev }) => {
 
@@ -114,7 +54,6 @@ const Location = ({ handleNext, handlePrev }) => {
         if (listingData?.S1) {
             setValues(listingData?.S1)
         }
-        window.scrollTo({ top: 0, behavior: 'smooth' })
     }, [listingData])
 
 

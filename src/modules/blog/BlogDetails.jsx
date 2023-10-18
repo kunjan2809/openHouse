@@ -4,8 +4,12 @@ import profileIMG from './assets/images/avatar-demo-2.png'
 import homeIMG from './assets/images/blog-thumb.png'
 import './assets/scss/blogdetails.scss'
 import { blog_details } from './constant/string'
+import { useScrollToTop } from '../../common/hooks/general'
 
 const BlogDetails = () => {
+
+    useScrollToTop()
+
     return (
         <>
             <div className="blog-details-wrapper">
@@ -18,7 +22,7 @@ const BlogDetails = () => {
                     <div className="line-div"></div>
                 </div>
                 <div className="blog-content-wrapper">
-                <div className="profile-card">
+                    <div className="profile-card">
                         <img src={profileIMG} alt="" />
                         <div className="profile-data">
                             <h4>Alina Sarkov</h4>

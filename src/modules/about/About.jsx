@@ -1,7 +1,11 @@
 import { about } from "./constant/string"
 import './assets/scss/about.scss'
+import { useScrollToTop } from "../../common/hooks/general"
 
 const About = () => {
+
+  useScrollToTop()
+
   return (
     <>
     <div className="about-container">

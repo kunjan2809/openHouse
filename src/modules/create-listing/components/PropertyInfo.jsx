@@ -6,124 +6,9 @@ import * as Yup from 'yup';
 import { useDispatch, useSelector } from "react-redux";
 import { storeStepData } from "../store/actions/createListing";
 import { useEffect } from "react";
+import { BATHROOMS, BEDROOMS, FLOORS, PARKING, PROPERTYTYPE } from '../constant/options'
 
 const { TextArea } = Input;
-
-const PROPERTYTYPE = [
-    {
-        value: 'house',
-        label: 'House'
-    },
-    {
-        value: 'apartment',
-        label: 'Apartment'
-    },
-    {
-        value: 'guest_house',
-        label: 'Guest House'
-    }
-]
-
-const BEDROOMS = [
-    {
-        value: 1,
-        label: '1'
-    },
-    {
-        value: 2,
-        label: '2'
-    },
-    {
-        value: 3,
-        label: '3'
-    },
-    {
-        value: 4,
-        label: '4'
-    },
-    {
-        value: 5,
-        label: '5'
-    },
-    {
-        value: 6,
-        label: '6'
-    },
-    {
-        value: 7,
-        label: '7'
-    }
-]
-
-const BATHROOMS = [
-    {
-        value: 1,
-        label: '1'
-    },
-    {
-        value: 2,
-        label: '2'
-    },
-    {
-        value: 3,
-        label: '3'
-    },
-    {
-        value: 4,
-        label: '4'
-    },
-    {
-        value: 5,
-        label: '5'
-    },
-    {
-        value: 6,
-        label: '6'
-    },
-    {
-        value: 7,
-        label: '7'
-    }
-]
-
-const FLOORS = [
-    {
-        value: 1,
-        label: '1'
-    },
-    {
-        value: 2,
-        label: '2'
-    },
-    {
-        value: 3,
-        label: '3'
-    },
-    {
-        value: 4,
-        label: '4'
-    }
-]
-
-const PARKING = [
-    {
-        value: 1,
-        label: '1'
-    },
-    {
-        value: 2,
-        label: '2'
-    },
-    {
-        value: 3,
-        label: '3'
-    },
-    {
-        value: 4,
-        label: '4'
-    }
-]
-
 
 const PropertyInfo = ({ handleNext }) => {
 
@@ -178,7 +63,6 @@ const PropertyInfo = ({ handleNext }) => {
         if (listingData?.S0) {
             setValues(listingData?.S0)
         }
-        window.scrollTo({ top: 0, behavior: 'smooth' })
     }, [listingData])
 
 

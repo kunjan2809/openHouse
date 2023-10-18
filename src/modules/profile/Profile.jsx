@@ -17,11 +17,14 @@ import { getProfile } from "./store/actions/profile"
 import { UserOutlined } from "@ant-design/icons"
 import { getOwnProperties } from "./store/actions/properties"
 import moment from "moment"
+import { useScrollToTop } from "../../common/hooks/general"
 
 const Profile = () => {
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
+    useScrollToTop()
+
 
     const { profileDetails } = useSelector((state) => state.profile)
     const profileImg = profileDetails?.profilePicture
@@ -44,7 +47,7 @@ const Profile = () => {
                                 {profileImg ?
                                     <img
                                         src={`${import.meta.env.VITE_API_URL}${profileDetails?.profilePicture}`}
-                                        alt="" 
+                                        alt=""
                                         className="user-profile"
                                         onError={({ currentTarget }) => {
                                             currentTarget.onerror = null;
