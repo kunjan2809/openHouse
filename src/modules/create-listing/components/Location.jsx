@@ -5,14 +5,17 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch, useSelector } from "react-redux";
 import { storeStepData } from "../store/actions/createListing";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { COUNTRIES, STATES } from "../constant/options";
+import axios from "axios";
 
 
 const Location = ({ handleNext, handlePrev }) => {
 
     const dispatch = useDispatch()
     const { listingData } = useSelector((state) => state.createListing)
+
+    const [latLng, setLatLng] = useState({});
 
 
     //==> Yup-formik validation <==
@@ -25,7 +28,7 @@ const Location = ({ handleNext, handlePrev }) => {
     })
 
     const initialValues = {
-        country: 'canada',
+        country: 'Canada',
         state: null,
         address: '',
         city: '',
@@ -35,14 +38,25 @@ const Location = ({ handleNext, handlePrev }) => {
     const formik = useFormik({
         initialValues: initialValues,
         validationSchema: formSchema,
-        onSubmit: (values) => {
+        onSubmit: async (values) => {
+            try {
+                const response = await axios.get(`https://nominatim.openstreetmap.org/search?format=json&q=${values?.address}, ${values?.city}, ${values?.state}, ${values?.country}`);
+                if (response.data.length > 0) {
+                    const { lat, lon } = response.data[0];
+                    setLatLng({ lat, lon });
+                }
+            } catch (error) {
+                console.error('Error fetching data: ', error);
+            }
             let data = {
                 country: values.country,
                 state: values.state,
                 address: values.address,
                 city: values.city,
-                zip: values.zip
+                zip: values.zip,
+                latLng
             }
+            console.log('data', data)
             dispatch(storeStepData('S1', data))
             handleNext()
         }

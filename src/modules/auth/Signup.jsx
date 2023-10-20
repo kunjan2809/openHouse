@@ -3,11 +3,11 @@ import AuthScreen from "../../common/components/auth/authScreen"
 import { Link, useNavigate } from "react-router-dom"
 import { signup } from "./constant/string";
 import OtpScreen from "./components/OtpScreen";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { signUp } from "./store/actions/auth";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const COUNTRYCODES = [
     {
@@ -21,6 +21,7 @@ const Signup = () => {
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
+    const { userToken } = useSelector((state) => state.auth)
 
     const [isOtpScreen, setIsOtpScreen] = useState(false)
     const [messageApi, contextHolder] = message.useMessage();
@@ -87,6 +88,9 @@ const Signup = () => {
 
     const { values, handleChange, handleBlur, touched, errors, submitForm, setFieldValue } = formik
 
+    useEffect(() => {
+        userToken && navigate('/profile')
+    }, [])
 
     return (
         <>

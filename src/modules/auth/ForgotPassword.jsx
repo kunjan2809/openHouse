@@ -1,17 +1,20 @@
 import { Button, Input, message } from "antd"
 import AuthScreen from "../../common/components/auth/authScreen"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import TICK from '../../common/assets/svgs/rightTick.svg'
 import { forgot_password } from "./constant/string"
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { useDispatch } from "react-redux"
-import { useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { useEffect, useState } from "react"
 import { forgotPassword } from "./store/actions/auth"
 
 const ForgotPassword = () => {
 
+    const navigate = useNavigate()
     const dispatch = useDispatch()
+    const { userToken } = useSelector((state) => state.auth)
+
     const [successComponent, setSuccessComponent] = useState(false)
     const [messageApi, contextHolder] = message.useMessage();
 
@@ -52,6 +55,9 @@ const ForgotPassword = () => {
 
     const { values, handleChange, handleBlur, touched, errors, submitForm } = formik
 
+    useEffect(() => {
+        userToken && navigate('/profile')
+    }, [])
 
     return (
         <>

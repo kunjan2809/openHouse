@@ -24,4 +24,17 @@ body {
   .error{
     color: red;
   }
+
+  .spinner{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+
+    .ant-spin-dot{
+      .ant-spin-dot-item{
+        background-color: #008080;
+      }
+    }
+  }
 }

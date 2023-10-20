@@ -175,3 +175,10 @@ export const STATES = [
     }
 ]
 
+export const CURRENCY = [
+    {
+        value: 'Cad',
+        label: 'Cad'
+    }
+]
+
