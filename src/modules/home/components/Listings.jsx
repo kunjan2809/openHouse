@@ -106,7 +106,7 @@ const Listings = ({ setPage, page }) => {
                 <div className='featured-property-wrapper'>
                     <Row gutter={[16, 24]}>
                         {listings?.map((property) => {
-                            return <Col span={6} key={property._id}>
+                            return <Col xm={24} sm={24} md={12} lg={8} xl={6} key={property._id}>
                                 <PropertyCard
                                     id={property._id}
                                     image={`${import.meta.env.VITE_API_URL}${property.images[0]}`}

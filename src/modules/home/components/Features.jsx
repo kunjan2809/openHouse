@@ -16,20 +16,20 @@ const Features = () => {
                 </div>
 
                 <div className='features-wrapper'>
-                    <Row align="middle" justify="space-evenly">
-                        <Col span={8}>
+                    <Row align="middle" justify="space-evenly" gutter={[0,30]}>
+                        <Col xm={24} sm={24} md={12} lg={8} xl={8}>
                             <Feature
                                 svgPath={dealsSVG}
                                 title='EXCELLENT DEALS'
                             />
                         </Col>
-                        <Col span={8}>
+                        <Col xm={24} sm={24} md={12} lg={8} xl={8}>
                             <Feature
                                 svgPath={hostSVG}
                                 title='FRIENDLY HOST'
                             />
                         </Col>
-                        <Col span={8}>
+                        <Col xm={24} sm={24} md={12} lg={8} xl={8}>
                             <Feature
                                 svgPath={quickSVG}
                                 title='QUICK PROCESS'
