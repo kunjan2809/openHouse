@@ -1,7 +1,7 @@
 import { PlusOutlined, CloseOutlined } from "@ant-design/icons";
 import { Button, Col, Image, Row } from "antd"
 import PropTypes from "prop-types"
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { add_listing } from "../constant/string";
 import { useDispatch } from "react-redux";
 import { createListing } from "../store/actions/createListing";
@@ -60,15 +60,14 @@ const UploadPictures = ({ handlePrev }) => {
             ...S3,
             startTime,
             endTime,
+            lat: S1?.latLng?.lat,
+            lng: S1?.latLng?.lng,
             propertyImg: fileList
         }
         delete payload.time
+        delete payload.latLng
         dispatch(createListing(payload, successCallback))
     }
-
-    useEffect(() => {
-        window.scrollTo({ top: 0, behavior: 'smooth' })
-    }, [])
 
     return (
         <>

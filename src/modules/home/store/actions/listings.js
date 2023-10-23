@@ -8,7 +8,6 @@ export const getLisitngs = (payload) => {
             method: 'POST',
             url: `getProperties`,
             data: payload,
-            isToken: true
         })
         if (response) {
             dispatch({ type: GET_LISTINGS_SUCCESS, payload: response?.data })

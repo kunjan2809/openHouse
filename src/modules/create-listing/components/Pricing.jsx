@@ -1,12 +1,12 @@
 import { Button, Col, Input, Row, Select } from "antd"
 import PropTypes from "prop-types"
-const { Option } = Select;
 import { add_listing } from "../constant/string";
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch, useSelector } from "react-redux";
 import { storeStepData } from "../store/actions/createListing";
 import { useEffect } from "react";
+import { CURRENCY } from "../constant/options";
 
 const Pricing = ({ handleNext, handlePrev }) => {
 
@@ -21,7 +21,7 @@ const Pricing = ({ handleNext, handlePrev }) => {
     })
 
     const initialValues = {
-        currency: 'cad',
+        currency: 'Cad',
         price: null,
     }
 
@@ -44,7 +44,6 @@ const Pricing = ({ handleNext, handlePrev }) => {
         if (listingData?.S2) {
             setValues(listingData?.S2)
         }
-        window.scrollTo({ top: 0, behavior: 'smooth' })
     }, [listingData])
 
 
@@ -64,15 +63,14 @@ const Pricing = ({ handleNext, handlePrev }) => {
                                 placeholder="Price"
                                 addonBefore={
                                     <Select
-                                        defaultValue="cad"
+                                        defaultValue="Cad"
                                         className="select-country-money"
                                         popupClassName="money-filter-select"
+                                        options={CURRENCY}
                                         onChange={(value) => setFieldValue('currency', value)}
                                         onBlur={handleBlur}
                                         value={values.currency}
-                                    >
-                                        <Option value="cad">CAD</Option>
-                                    </Select>
+                                    />
                                 }
                                 onChange={handleChange}
                                 onBlur={handleBlur}

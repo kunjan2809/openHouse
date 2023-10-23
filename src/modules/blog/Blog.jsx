@@ -4,10 +4,14 @@ import { Pagination } from 'antd';
 import BlogCard from '../../common/components/card/BlogCard';
 import cardImg2 from '../../common/assets/images/property-thumb-2.png'
 import { blog } from './constant/string';
+import { useScrollToTop } from '../../common/hooks/general';
 
 const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
 const Blog = () => {
+    
+    useScrollToTop()
+
     return (
         <>
             <div className="blog-page-container">

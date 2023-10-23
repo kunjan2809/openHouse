@@ -4,10 +4,10 @@ import { Link, useNavigate } from "react-router-dom"
 import { login } from "./constant/string"
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { signin } from "./store/actions/auth";
 import OtpScreen from "./components/OtpScreen";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const { Option } = Select;
 
@@ -15,6 +15,7 @@ const Login = () => {
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
+    const { userToken } = useSelector((state) => state.auth)
     const [isMobileVerified, setIsMobileVerified] = useState(true)
     const [messageApi, contextHolder] = message.useMessage();
 
@@ -69,7 +70,9 @@ const Login = () => {
 
     const { values, handleChange, handleBlur, touched, errors, submitForm, setFieldValue, resetForm } = formik
 
-
+    useEffect(() => {
+        userToken && navigate('/profile')
+    }, [])
 
     return (
         <>

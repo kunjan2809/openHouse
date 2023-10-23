@@ -8,7 +8,6 @@ export const getPropertyDetails = (id) => {
         const { response, error } = await apiRequest({
             method: 'GET',
             url: `getPropertyDetails/${id}`,
-            isToken: true
         })
         if (response) {
             dispatch({ type: GET_PROPERTY_DETAILS_SUCCESS, payload: response?.data?.data })
@@ -25,7 +24,6 @@ export const getRealtorInfo = (id) => {
         const { response, error } = await apiRequest({
             method: 'GET',
             url: `getUserDetails/${id}`,
-            isToken: true
         })
         if (response) {
             dispatch({ type: GET_REALTOR_DETAILS_SUCCESS, payload: response?.data?.data })

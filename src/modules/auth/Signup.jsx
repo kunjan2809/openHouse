@@ -3,18 +3,25 @@ import AuthScreen from "../../common/components/auth/authScreen"
 import { Link, useNavigate } from "react-router-dom"
 import { signup } from "./constant/string";
 import OtpScreen from "./components/OtpScreen";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { signUp } from "./store/actions/auth";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-const { Option } = Select;
+const COUNTRYCODES = [
+    {
+        value: '+1',
+        label: '+1'
+    }
+]
+
 
 const Signup = () => {
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
+    const { userToken } = useSelector((state) => state.auth)
 
     const [isOtpScreen, setIsOtpScreen] = useState(false)
     const [messageApi, contextHolder] = message.useMessage();
@@ -81,6 +88,9 @@ const Signup = () => {
 
     const { values, handleChange, handleBlur, touched, errors, submitForm, setFieldValue } = formik
 
+    useEffect(() => {
+        userToken && navigate('/profile')
+    }, [])
 
     return (
         <>
@@ -143,12 +153,11 @@ const Signup = () => {
                                                     defaultValue="+1"
                                                     className="select-country-code"
                                                     popupClassName="country-code-selector"
+                                                    options={COUNTRYCODES}
                                                     onChange={(value) => setFieldValue('country_code', value)}
                                                     onBlur={handleBlur}
                                                     value={values.country_code}
-                                                >
-                                                    <Option value="+1">+1</Option>
-                                                </Select>
+                                                />
                                             }
                                             onChange={handleChange}
                                             onBlur={handleBlur}

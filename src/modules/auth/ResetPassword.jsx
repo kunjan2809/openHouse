@@ -5,8 +5,8 @@ import TICK from '../../common/assets/svgs/rightTick.svg'
 import { reset_password } from "./constant/string"
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { useDispatch } from "react-redux"
-import { useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { useEffect, useState } from "react"
 import { resetPassword } from "./store/actions/auth"
 
 const ResetPassword = () => {
@@ -14,6 +14,7 @@ const ResetPassword = () => {
   const { token } = useParams()
   const navigate = useNavigate()
   const dispatch = useDispatch()
+  const { userToken } = useSelector((state) => state.auth)
 
   const [successComponent, setSuccessComponent] = useState(false)
   const [messageApi, contextHolder] = message.useMessage();
@@ -60,6 +61,10 @@ const ResetPassword = () => {
   })
 
   const { values, handleChange, handleBlur, touched, errors, submitForm } = formik
+
+  useEffect(() => {
+    userToken && navigate('/profile')
+  }, [])
 
 
   return (

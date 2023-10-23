@@ -118,7 +118,7 @@
 
                 .ant-radio-group {
                     display: flex;
-                    
+
                     .ant-radio-wrapper {
                         @include flexPosition();
                         margin-top: 0.1rem;
@@ -133,6 +133,18 @@
                             border-color: $colorLevel6 ;
                         }
                     }
+                }
+
+                .google-map-view {
+                    margin-top: 2rem;
+                    max-height: 500px;
+                    overflow: hidden;
+                    border-radius: 6px;
+                }
+
+                .map-guide {
+                    font-weight: 500;
+                    color: $colorGray
                 }
             }
 

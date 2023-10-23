@@ -11,6 +11,7 @@ import UploadPictures from './components/UploadPictures';
 import PropertyInfo from './components/PropertyInfo';
 import { useState } from 'react';
 import { add_listing } from './constant/string';
+import { useScrollToTop } from '../../common/hooks/general';
 
 // Stepper configurations
 const STATUS = {
@@ -87,6 +88,7 @@ const customDot = (dot, data) => {
 const CreateListing = () => {
 
     const [current, setCurrent] = useState(0);
+    useScrollToTop(current)
 
     const handlePrev = () => {
         if (current !== 0)

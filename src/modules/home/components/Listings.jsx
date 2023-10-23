@@ -1,4 +1,4 @@
-import { Col, Pagination, Row, Select } from 'antd'
+import { Col, Pagination, Row, Select, Spin } from 'antd'
 // import cardImg from '../../../common/assets/images/property.png'
 // import cardImg2 from '../../../common/assets/images/property-thumb-2.png'
 import PropertyCard from '../../../common/components/card/PropertyCard'
@@ -8,36 +8,8 @@ import { getLisitngs, listingFilter } from '../store/actions/listings'
 import moment from 'moment'
 import { useEffect } from 'react'
 import PropTypes from "prop-types";
+import { BEDROOM_OPTIONS, PRICE_OPTIONS, PROPERTY_TYPE_OPTIONS, SORTING_OPTIONS } from '../constant/options'
 
-const PROPERTY_TYPE_OPTIONS = [
-    { value: 'any', label: 'Any Type' },
-    { value: 'house', label: 'House' },
-    { value: 'apartment', label: 'Apartment' },
-    { value: 'guest_house', label: 'Guest House' },
-    { value: 'hotel', label: 'Hotel' },
-]
-
-const PRICE_OPTIONS = [
-    { value: 'any', label: 'Any Price' },
-    { value: '<300000', label: '<300000' },
-    { value: '<500000', label: '<500000' },
-    { value: '<700000', label: '<700000' },
-    { value: '<1000000', label: '<1000000' },
-    { value: '>1000000', label: '>1000000' },
-]
-
-const BEDROOM_OPTIONS = [
-    { value: 'any', label: 'Any Beds' },
-    { value: '1', label: '1' },
-    { value: '2', label: '2' },
-    { value: '3', label: '3' },
-    { value: '4+', label: '4+' },
-]
-
-const SORTING_OPTIONS = [
-    { value: 'any', label: 'Recommended' },
-    { value: 'ascending', label: 'Ascending' },
-]
 
 const Listings = ({ setPage, page }) => {
 
@@ -61,6 +33,7 @@ const Listings = ({ setPage, page }) => {
     return (
         <>
             <div className='featured-home-container'>
+
                 <div className='featured-label'>{home.featured_listings.head_msg}</div>
                 <div className='header-wrapper'>
                     <div className='underlined-heading'>
@@ -103,36 +76,44 @@ const Listings = ({ setPage, page }) => {
                         />
                     </div>
                 </div>
-                <div className='featured-property-wrapper'>
-                    <Row gutter={[16, 24]}>
-                        {listings?.map((property) => {
-                            return <Col xm={24} sm={24} md={12} lg={8} xl={6} key={property._id}>
-                                <PropertyCard
-                                    id={property._id}
-                                    image={`${import.meta.env.VITE_API_URL}${property.images[0]}`}
-                                    price={property.price}
-                                    date={moment(property.date).format("Do MMM, YYYY")}
-                                    time={moment(property.startTime).format('h.mmA')}
-                                    address={`${property.location?.address}, ${property.location?.city}, ${property.location?.country}`}
-                                    isSold={property.isSold}
-                                    isLikeable={true}
-                                    isLiked={false}
+
+                {listings?.length > 0 ? (
+                    <div className='featured-property-wrapper'>
+                        <Row gutter={[16, 24]}>
+                            {listings?.map((property) => {
+                                return <Col span={6} key={property._id}>
+                                    <PropertyCard
+                                        id={property._id}
+                                        image={`${import.meta.env.VITE_API_URL}${property.images[0]}`}
+                                        price={property.price}
+                                        date={moment(property.date).format("Do MMM, YYYY")}
+                                        time={moment(property.startTime).format('h.mmA')}
+                                        address={`${property.location?.address}, ${property.location?.city}, ${property.location?.country}`}
+                                        isSold={property.isSold}
+                                        isLikeable={true}
+                                        isLiked={false}
+                                    />
+                                </Col>
+                            })}
+                        </Row>
+                        <div className='home-pagination'>
+                            {
+                                totalListings > filters?.pageSize && <Pagination
+                                    current={page}
+                                    total={totalListings}
+                                    pageSize={filters?.pageSize}
+                                    showSizeChanger={false}
+                                    onChange={(p) => setPage(p)}
                                 />
-                            </Col>
-                        })}
-                    </Row>
-                    <div className='home-pagination'>
-                        {
-                            totalListings > filters?.pageSize && <Pagination
-                                current={page}
-                                total={totalListings}
-                                pageSize={filters?.pageSize}
-                                showSizeChanger={false}
-                                onChange={(p) => setPage(p)}
-                            />
-                        }
+                            }
+                        </div>
                     </div>
-                </div>
+                )
+                    : (
+                        <div className='spinner'><Spin size="large" /></div>
+                    )
+                }
+
             </div>
         </>
     )

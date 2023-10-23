@@ -19,7 +19,9 @@ const RealtorInfo = ({ id, isModalOpen, handleCancel }) => {
     const { realtorInfo } = useSelector((state) => state.propertyDetails)
 
     useEffect(() => {
-        dispatch(getRealtorInfo(id))
+        if (id) {
+            dispatch(getRealtorInfo(id))
+        }
     }, [id])
 
     return (
@@ -68,8 +70,8 @@ const RealtorInfo = ({ id, isModalOpen, handleCancel }) => {
                             <h5>{realtor_details.media}</h5>
                             <div className="icons">
                                 <a href={realtorInfo?.socialLinks?.instagram} target="_blank" rel="noreferrer"><img src={instagram} alt="" /></a>
-                                <a href={realtorInfo?.socialLinks?.instagram} target="_blank" rel="noreferrer"><img src={facebook} alt="" /></a>
-                                <a href={realtorInfo?.socialLinks?.instagram} target="_blank" rel="noreferrer"><img src={twitter} alt="" /></a>
+                                <a href={realtorInfo?.socialLinks?.facebook} target="_blank" rel="noreferrer"><img src={facebook} alt="" /></a>
+                                <a href={realtorInfo?.socialLinks?.twitter} target="_blank" rel="noreferrer"><img src={twitter} alt="" /></a>
                             </div>
                         </div>
                     </div>
