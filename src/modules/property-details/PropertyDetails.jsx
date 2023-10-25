@@ -47,7 +47,7 @@ const PropertyDetails = () => {
   const { id } = useParams()
 
   const dispatch = useDispatch()
-  const { propertyDetails } = useSelector((state) => state.propertyDetails)
+  const { propertyDetails, loading:propertyDetailsLoading } = useSelector((state) => state.propertyDetails)
   const imgArr = propertyDetails?.images ?? []
 
   const [map, setMap] = useState(null)
@@ -106,14 +106,12 @@ const PropertyDetails = () => {
     }
   }, [propertyDetails, map])
 
-  console.log('center', center)
-
 
   return (
     <>
       <div className="property-details-wrapper">
         {
-          imgArr?.length > 0 ?
+          !propertyDetailsLoading ?
             <>
               <h2 className='property-details-heading'>{`${propertyDetails.location?.address}, ${propertyDetails.location?.city}, ${propertyDetails.location?.state} ${propertyDetails.location?.zip}`}</h2>
               <div className="property-images-wrapper">

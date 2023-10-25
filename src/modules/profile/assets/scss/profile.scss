@@ -92,6 +92,30 @@
     .my-listing {
         width: 100%;
 
+        .spinner {
+            height: 100%;
+            width: 100%;
+            min-height: 400px;
+            @include flexPosition();
+        }
+
+        .no-properties-found {
+            min-height: 100%;
+            width: 100%;
+            @include flexPosition();
+
+            .ant-result-icon {
+                svg>g>path:nth-child(11) {
+                    fill: $colorLevel5;
+                }
+            }
+
+            .ant-result-title {
+                color: $colorLevel6;
+                font-weight: 500;
+            }
+        }
+
         .heading {
             @include flexPosition();
             justify-content: space-between;
