@@ -31,6 +31,10 @@
             min-width: 450px;
             width: 50%;
 
+            @media screen and (max-width:450px) {
+                min-width: 350px;
+            }
+
             .header {
 
                 span {

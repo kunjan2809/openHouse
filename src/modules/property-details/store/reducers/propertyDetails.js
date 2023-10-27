@@ -1,10 +1,11 @@
-import { GET_PROPERTY_DETAILS_FAIL, GET_PROPERTY_DETAILS_REQUEST, GET_PROPERTY_DETAILS_SUCCESS, GET_REALTOR_DETAILS_FAIL, GET_REALTOR_DETAILS_REQUEST, GET_REALTOR_DETAILS_SUCCESS } from "../constant"
+import { GET_PROPERTY_DETAILS_FAIL, GET_PROPERTY_DETAILS_REQUEST, GET_PROPERTY_DETAILS_SUCCESS, GET_REALTOR_DETAILS_FAIL, GET_REALTOR_DETAILS_REQUEST, GET_REALTOR_DETAILS_SUCCESS, GET_SIMILAR_PROPERTY_FAIL, GET_SIMILAR_PROPERTY_REQUEST, GET_SIMILAR_PROPERTY_SUCCESS } from "../constant"
 
 
 const initialState = {
     loading: false,
     propertyDetails: {},
-    realtorInfo:{}
+    realtorInfo: {},
+    similarPRoperties: [],
 }
 
 const propertyDetailsReducer = (state = initialState, action) => {
@@ -29,7 +30,7 @@ const propertyDetailsReducer = (state = initialState, action) => {
                 propertyDetails: {}
             }
 
-            //Get realtor info
+        //Get realtor info
         case GET_REALTOR_DETAILS_REQUEST:
             return {
                 ...state,
@@ -46,6 +47,23 @@ const propertyDetailsReducer = (state = initialState, action) => {
                 ...state,
                 loading: false,
                 realtorInfo: {}
+            }
+
+        //Get realtor info
+        case GET_SIMILAR_PROPERTY_REQUEST:
+            return {
+                ...state,
+                similarPRoperties: []
+            }
+        case GET_SIMILAR_PROPERTY_SUCCESS:
+            return {
+                ...state,
+                similarPRoperties: action.payload
+            }
+        case GET_SIMILAR_PROPERTY_FAIL:
+            return {
+                ...state,
+                similarPRoperties: []
             }
 
         //Default

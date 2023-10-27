@@ -35,7 +35,7 @@ const PropertyCard = ({ id, price, date, time, address, image, isSold = false, i
             >
                 <div className="cardContent">
                     <h2 className={isSold ? 'disabled' : ''}>${price}</h2>
-                    <p>{address && address.length > 45 ? `${address.substring(0, 45)}...` : address}</p>
+                    <p title={address ?? ''}>{address && address.length > 45 ? `${address.substring(0, 45)}...` : address}</p>
                     <div className="date-time">
                         <div className="dtc"><img alt='' src={calender} /><span>{date}</span></div>
                         <div className="dtc"><img alt='' src={watch} /><span>{time}</span></div>

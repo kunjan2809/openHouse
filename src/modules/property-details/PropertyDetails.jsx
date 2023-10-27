@@ -28,10 +28,11 @@ import Carousel from 'react-multi-carousel';
 import PropTypes from "prop-types"
 import RealtorInfo from './RealtorInfo';
 import { useDispatch, useSelector } from 'react-redux';
-import { getPropertyDetails } from './store/actions/propertyDetails';
+import { getPropertyDetails, getSimilarProperty } from './store/actions/propertyDetails';
 import { useParams } from 'react-router-dom';
 import { propertyType } from '../../common/constant/enums';
 import { useScrollToTop } from '../../common/hooks/general';
+import moment from 'moment';
 
 
 // const imgArr = [ThumbImg, property2, property3, property4, property5, property6, property3, property4, property5]
@@ -47,7 +48,7 @@ const PropertyDetails = () => {
   const { id } = useParams()
 
   const dispatch = useDispatch()
-  const { propertyDetails, loading:propertyDetailsLoading } = useSelector((state) => state.propertyDetails)
+  const { propertyDetails, loading: propertyDetailsLoading, similarPRoperties } = useSelector((state) => state.propertyDetails)
   const imgArr = propertyDetails?.images ?? []
 
   const [map, setMap] = useState(null)
@@ -93,6 +94,7 @@ const PropertyDetails = () => {
 
   useEffect(() => {
     dispatch(getPropertyDetails(id))
+    dispatch(getSimilarProperty(id))
   }, [id])
 
   useEffect(() => {
@@ -238,135 +240,82 @@ const PropertyDetails = () => {
 
               <div className="similar-open-houses">
                 <h2 className='property-details-heading'>{property_details.similar.title}</h2>
-
-                <div className='carousel'>
-                  <Carousel
-                    additionalTransfrom={0}
-                    arrows
-                    autoPlaySpeed={3000}
-                    centerMode={false}
-                    className="slick-carousel"
-                    containerClass="container"
-                    dotListClass=""
-                    draggable
-                    focusOnSelect={false}
-                    infinite={false}
-                    itemClass=""
-                    keyBoardControl
-                    minimumTouchDrag={80}
-                    pauseOnHover
-                    renderArrowsWhenDisabled={false}
-                    renderButtonGroupOutside={false}
-                    renderDotsOutside={false}
-                    responsive={{
-                      desktop: {
-                        breakpoint: {
-                          max: 3000,
-                          min: 1024
+                {
+                  similarPRoperties && similarPRoperties.length > 0 && <div className='carousel'>
+                    <Carousel
+                      additionalTransfrom={0}
+                      arrows
+                      autoPlaySpeed={3000}
+                      centerMode={false}
+                      className="slick-carousel"
+                      containerClass="container"
+                      dotListClass=""
+                      draggable
+                      focusOnSelect={false}
+                      infinite={false}
+                      itemClass=""
+                      keyBoardControl
+                      minimumTouchDrag={80}
+                      pauseOnHover
+                      renderArrowsWhenDisabled={false}
+                      renderButtonGroupOutside={false}
+                      renderDotsOutside={false}
+                      responsive={{
+                        desktop: {
+                          breakpoint: {
+                            max: 3000,
+                            min: 1024
+                          },
+                          items: 3,
+                          partialVisibilityGutter: 40
                         },
-                        items: 3,
-                        partialVisibilityGutter: 40
-                      },
-                      mobile: {
-                        breakpoint: {
-                          max: 464,
-                          min: 0
+                        mobile: {
+                          breakpoint: {
+                            max: 464,
+                            min: 0
+                          },
+                          items: 1,
+                          partialVisibilityGutter: 30
                         },
-                        items: 1,
-                        partialVisibilityGutter: 30
-                      },
-                      tablet: {
-                        breakpoint: {
-                          max: 1024,
-                          min: 464
-                        },
-                        items: 2,
-                        partialVisibilityGutter: 30
+                        tablet: {
+                          breakpoint: {
+                            max: 1024,
+                            min: 464
+                          },
+                          items: 2,
+                          partialVisibilityGutter: 30
+                        }
+                      }}
+                      rewind={false}
+                      rewindWithAnimation={false}
+                      rtl={false}
+                      shouldResetAutoplay
+                      showDots={false}
+                      sliderClass=""
+                      slidesToSlide={1}
+                      swipeable
+                    >
+                      {
+                        similarPRoperties.map((propertyData, index) => {
+                          return (
+                            <div className='card-wrapper' key={index} >
+                              <PropertyCard
+                                image={`${import.meta.env.VITE_API_URL}${propertyData.images[0]}`}
+                                price={propertyData.price}
+                                date={moment(propertyData.date).format("Do MMM, YYYY")}
+                                time={moment(propertyData.date).format('h:mm A')}
+                                address={`${propertyData.location?.address}, ${propertyData.location?.city}, ${propertyData.location?.state}, ${propertyData.location?.country}`}
+                                isSold={false}
+                                isLikeable={false}
+                                isLiked={false}
+                              />
+                            </div>
+                          )
+                        })
                       }
-                    }}
-                    rewind={false}
-                    rewindWithAnimation={false}
-                    rtl={false}
-                    shouldResetAutoplay
-                    showDots={false}
-                    sliderClass=""
-                    slidesToSlide={1}
-                    swipeable
-                  >
-                    <div className='card-wrapper'>
-                      <PropertyCard
-                        image={cardImg2}
-                        price='3,75,000'
-                        date='15th Feb’2023'
-                        time='10:30 p.m.'
-                        address='603, Borinson street, Texas, USA'
-                        isSold={false}
-                        isLikeable={false}
-                        isLiked={false}
-                      />
-                    </div>
-                    <div className='card-wrapper'>
-                      <PropertyCard
-                        image={cardImg2}
-                        price='3,75,000'
-                        date='15th Feb’2023'
-                        time='10:30 p.m.'
-                        address='603, Borinson street, Texas, USA'
-                        isSold={false}
-                        isLikeable={false}
-                        isLiked={false}
-                      />
-                    </div>
-                    <div className='card-wrapper'>
-                      <PropertyCard
-                        image={cardImg2}
-                        price='3,75,000'
-                        date='15th Feb’2023'
-                        time='10:30 p.m.'
-                        address='603, Borinson street, Texas, USA'
-                        isSold={false}
-                        isLikeable={false}
-                        isLiked={false}
-                      />
-                    </div>
-                    <div className='card-wrapper'>
-                      <PropertyCard
-                        image={cardImg2}
-                        price='3,75,000'
-                        date='15th Feb’2023'
-                        time='10:30 p.m.'
-                        address='603, Borinson street, Texas, USA'
-                        isSold={false}
-                        isLikeable={false}
-                        isLiked={false}
-                      />
-                    </div>
-                    <div className='card-wrapper'>
-                      <PropertyCard
-                        image={cardImg2}
-                        price='3,75,000'
-                        date='15th Feb’2023'
-                        time='10:30 p.m.'
-                        address='603, Borinson street, Texas, USA'
-                        isSold={false}
-                        isLikeable={false}
-                        isLiked={false}
-                      />
-                    </div>
-                    <div className='card-wrapper'>
-                      <PropertyCard
-                        image={cardImg2}
-                        price='3,75,000'
-                        date='15th Feb’2023'
-                        time='10:30 p.m.'
-                        address='603, Borinson street, Texas, USA'
-                        isSold={false}
-                        isLikeable={false}
-                        isLiked={false}
-                      />
-                    </div>
-                  </Carousel>
-                </div>
+                    </Carousel>
+                  </div>
+                }
               </div>
             </>
             : <div className='spinner'><Spin size="large" /></div>
