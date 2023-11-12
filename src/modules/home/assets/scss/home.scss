@@ -12,6 +12,12 @@
         background-size: cover;
         position: relative;
 
+        @media screen and (max-width:450px) {
+            max-height: 40vh;
+            min-height: 300px;
+            background-position: center;
+        }
+
 
         .header-container-front {
             height: 100%;
@@ -34,11 +40,22 @@
                 font-size: 4rem;
                 font-style: italic;
                 margin: 0.5rem;
+
+                @media screen and (max-width:450px) {
+                    font-size: 1.5rem;
+                    font-style: normal;
+                    font-weight: 500;
+                }
             }
 
             h4 {
                 font-weight: 400;
                 margin: 0.5rem;
+
+                @media screen and (max-width:450px) {
+                    font-size: 0.8rem;
+                    font-weight: 300;
+                }
             }
 
             .search-box {
@@ -82,6 +99,10 @@
         padding: 2rem;
         margin-top: 40px;
 
+        @media screen and (max-width:450px) {
+            padding: 1rem;
+        }
+
         .featured-label {
             color: $colorLevel4;
             text-transform: uppercase;
@@ -99,12 +120,14 @@
 
             .header-filter-container {
                 @include flexPosition();
+                width: 100%;
                 justify-content: space-between;
                 gap: 20px;
 
                 @media screen and (max-width:450px) {
-                    margin-top: 2rem;
-                    flex-wrap: wrap;
+                    margin-top: 1.5rem;
+                    overflow: auto;
+                    padding-bottom: 10px;
                 }
 
                 .filter-dropdown {
@@ -138,14 +161,26 @@
             width: 100%;
             margin-top: 3rem;
 
+            @media screen and (max-width:450px) {
+                margin-top: 2rem;
+            }
+
             .ant-row {
                 @include flexPosition();
                 justify-content: flex-start;
+
+                @media screen and (max-width:450px) {
+                    justify-content: center;
+                }
 
                 .ant-col {
                     @include flexPosition();
                     justify-content: center;
                     align-items: center;
+
+                    @media screen and (max-width:450px) {
+                        width: 100%;
+                    }
                 }
             }
 
@@ -194,6 +229,11 @@
         padding: calc(2rem);
         margin-top: 40px;
 
+        @media screen and (max-width:450px) {
+            margin-top: 30px;
+            padding: 1rem;
+        }
+
         .featured-label {
             color: $colorLevel4;
             text-transform: uppercase;
@@ -211,6 +251,7 @@
             @media screen and (max-width:450px) {
                 height: auto;
                 padding: 30px;
+                margin-top: 2rem;
             }
 
             .ant-row {
@@ -266,6 +307,11 @@
         background-size: cover;
         position: relative;
 
+        @media screen and (max-width:450px) {
+            margin-top: 2rem;
+            height: 320px;
+        }
+
         .list-your-property-inner {
             height: 100%;
             width: 100%;
@@ -281,6 +327,7 @@
             background: linear-gradient(to right, rgb(0 0 0 / 68%) 0%, #ffffff00 100%);
             padding-left: 100px;
             box-sizing: border-box;
+            overflow: hidden;
 
             @media screen and (max-width:450px) {
                 padding-left: 0px;
@@ -301,13 +348,22 @@
                     font-weight: 500;
 
                     @media screen and (max-width:450px) {
-                        padding-inline: 50px;
+                        width: 100%;
+                        padding-inline: 30px;
+                        font-size: 2rem;
                         margin: 0px;
                     }
                 }
             }
 
             .list-property-btn-container {
+                display: block;
+                width: 100%;
+
+                @media screen and (max-width:450px) {
+                    padding-left: 60px;
+                }
+
                 .list-property-btn {
                     @include buttonPrimary();
                     height: auto;
@@ -319,11 +375,18 @@
     }
 
     .underlined-heading {
+        width: 100%;
+
         .heading {
             color: $colorLevel10;
             margin-block: 0.3rem;
             font-size: 2.5rem;
             font-weight: 600;
+
+            @media screen and (max-width:450px) {
+                font-size: 1.5rem;
+                font-weight: 300;
+            }
         }
 
         .line {

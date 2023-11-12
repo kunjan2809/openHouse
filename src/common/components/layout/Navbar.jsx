@@ -5,7 +5,7 @@ import './navbar.scss'
 import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { layout } from './constant/string'
 import { useDispatch, useSelector } from 'react-redux'
-import { UserOutlined, LogoutOutlined } from "@ant-design/icons"
+import { UserOutlined, LogoutOutlined, MenuOutlined } from "@ant-design/icons"
 import { Menu } from 'antd';
 import error_img from '../../../common/assets/images/error.png'
 import { useMemo } from 'react'
@@ -66,10 +66,13 @@ const Navbar = () => {
     return (
         <div className="navbar">
             <Row justify="space-between" align="middle" className='navbar-row'>
-                <Col span={12}>
+                <Col xm={24} sm={24} md={6} lg={10} xl={12} className='navbar-logo'>
+                    <div className='open-btn'>
+                        <MenuOutlined />
+                    </div>
                     <Link to='/'><img className='logo' src={logo} alt="" /></Link>
                 </Col>
-                <Col span={12}>
+                <Col xm={24} sm={24} md={18} lg={14} xl={12} className='navigation-menu'>
                     <Row align="middle" justify='end' gutter={2}>
                         <Col span={19}>
                             <ul className='links'>

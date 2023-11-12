@@ -44,8 +44,8 @@ AnyReactComponent.propTypes = {
 
 const PropertyDetails = () => {
 
-  useScrollToTop()
   const { id } = useParams()
+  useScrollToTop(id)
 
   const dispatch = useDispatch()
   const { propertyDetails, loading: propertyDetailsLoading, similarPRoperties } = useSelector((state) => state.propertyDetails)
@@ -300,6 +300,7 @@ const PropertyDetails = () => {
                           return (
                             <div className='card-wrapper' key={index} >
                               <PropertyCard
+                                id={propertyData._id}
                                 image={`${import.meta.env.VITE_API_URL}${propertyData.images[0]}`}
                                 price={propertyData.price}
                                 date={moment(propertyData.date).format("Do MMM, YYYY")}

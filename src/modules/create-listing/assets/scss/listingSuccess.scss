@@ -9,6 +9,10 @@
     background-repeat: repeat;
     background-position: center center;
 
+    @media screen and (max-width:450px) {
+        padding: 20px;
+    }
+
     img {
         height: 70px;
         width: auto;

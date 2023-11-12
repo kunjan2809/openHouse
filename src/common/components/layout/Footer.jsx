@@ -10,14 +10,14 @@ const Footer = () => {
         <div className="page-footer-container">
             <div className="footer-info">
                 <Row gutter={100}>
-                    <Col span={10} className='header'>
+                    <Col xm={24} sm={24} md={24} lg={10} xl={10} className='header'>
                         <h1>{layout.title}</h1>
                         {/* <Link to='/'><img className='logo' src={logo} alt="" /></Link> */}
                         <span>{layout.sub_title}</span>
                     </Col>
-                    <Col span={14}>
-                        <Row gutter={20}>
-                            <Col span={6}>
+                    <Col xm={24} sm={24} md={24} lg={14} xl={14}>
+                        <Row gutter={20} className='links-menu'>
+                            <Col xm={24} sm={24} md={24} lg={6} xl={6}>
                                 <div className="quick_links">
                                     <h3>{layout.links_nav.title}</h3>
                                     <ul>
@@ -28,7 +28,7 @@ const Footer = () => {
                                     </ul>
                                 </div>
                             </Col>
-                            <Col span={6}>
+                            <Col xm={24} sm={24} md={24} lg={6} xl={6}>
                                 <div className="quick_links">
                                     <h3>{layout.links_support.title}</h3>
                                     <ul>
@@ -38,7 +38,7 @@ const Footer = () => {
                                     </ul>
                                 </div>
                             </Col>
-                            <Col span={6}>
+                            <Col xm={24} sm={24} md={24} lg={6} xl={6}>
                                 <div className="quick_links">
                                     <h3>{layout.links_get_in_touch.title}</h3>
                                     <div className="get_in_touch">
