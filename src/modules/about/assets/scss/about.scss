@@ -3,7 +3,11 @@
 
 .about-container {
     padding: 2rem 10rem;
-    
+
+    @media screen and (max-width:450px) {
+        padding: 0.5rem 1.5rem 2rem 1.5rem;
+    }
+
     .title {
         text-align: center;
         color: $colorLevel6;
@@ -11,11 +15,11 @@
         font-size: 2.5rem;
     }
 
-    .description-wrapper{
+    .description-wrapper {
         @include flexPosition();
         flex-direction: column;
 
-        p{
+        p {
             font-weight: 400;
             font-size: 0.9rem;
         }
