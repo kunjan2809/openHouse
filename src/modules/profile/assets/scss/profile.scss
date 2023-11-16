@@ -4,6 +4,14 @@
 .profile-container {
     padding: 2rem;
 
+    @media screen and (max-width:450px) {
+        padding: 1rem;
+
+        .ant-col {
+            width: 100%;
+        }
+    }
+
     .user-profile-wrapper {
         @include flexPosition();
         flex-direction: column;
@@ -12,6 +20,10 @@
         border-radius: 5px;
         min-height: 550px;
         background-color: $colorLevel1;
+
+        @media screen and (max-width:450px) {
+            min-height: 400px;
+        }
 
         .user-details-wrapper {
             @include flexPosition();
@@ -92,6 +104,10 @@
     .my-listing {
         width: 100%;
 
+        @media screen and (max-width:450px) {
+            margin-bottom: 1rem;
+        }
+
         .spinner {
             height: 100%;
             width: 100%;
@@ -105,8 +121,29 @@
             @include flexPosition();
 
             .ant-result-icon {
-                svg>g>path:nth-child(11) {
-                    fill: $colorLevel5;
+                // svg>g>path:nth-child(11) {
+                //     fill: $colorLevel5;
+                // }
+
+                svg {
+                    g>g>path {
+                        fill: $colorLevel1;
+                    }
+
+                    path:nth-child(11) {
+                        fill: $colorLevel6;
+                    }
+
+                    path:nth-child(22) {
+                        fill: $colorLevel6;
+                        stroke: $colorLevel4
+                    }
+
+                    path:nth-child(23),
+                    path:nth-child(24),
+                    path:nth-child(25) {
+                        stroke: $colorLevel4
+                    }
                 }
             }
 
@@ -121,6 +158,10 @@
             justify-content: space-between;
             margin-bottom: 1.5rem;
 
+            @media screen and (max-width:450px) {
+                margin-top: 1.5rem;
+            }
+
             .title {
                 margin: 0;
                 font-weight: 500;
@@ -132,6 +173,10 @@
                 height: auto;
                 padding: 10px 25px;
                 font-weight: 500;
+
+                @media screen and (max-width:450px) {
+                    padding: 8px 15px;
+                }
             }
         }
 

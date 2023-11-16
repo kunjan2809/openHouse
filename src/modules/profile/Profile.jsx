@@ -40,8 +40,8 @@ const Profile = () => {
     return (
         <>
             <div className="profile-container">
-                <Row gutter={30}>
-                    <Col span={6}>
+                <Row gutter={[30, 30]}>
+                    <Col xm={24} sm={24} md={24} lg={6} xl={6}>
                         <div className="user-profile-wrapper">
                             <div className="user-details-wrapper">
                                 {profileImg ?
@@ -81,7 +81,7 @@ const Profile = () => {
                             </div>
                         </div>
                     </Col>
-                    <Col span={18}>
+                    <Col xm={24} sm={24} md={24} lg={18} xl={18}>
                         <div className="my-listing">
                             <div className="heading">
                                 <h1 className="title">{profile.listings.title}</h1>
@@ -95,7 +95,7 @@ const Profile = () => {
                                         {
                                             own_properties.length > 0 ? (<>
                                                 {own_properties?.map((property) => {
-                                                    return <Col span={8} key={property._id}>
+                                                    return <Col xm={24} sm={24} md={12} lg={8} xl={8} key={property._id}>
                                                         <PropertyCard
                                                             id={property._id}
                                                             image={`${import.meta.env.VITE_API_URL}${property.images[0]}`}

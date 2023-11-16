@@ -4,15 +4,25 @@
 .blog-page-container {
     padding-inline: 5rem;
 
+    @media screen and (max-width:450px) {
+        padding-inline: 1rem;
+    }
+
     .blog-header-container {
         max-height: 85vh;
         min-height: 400px;
-        background-image: url('../images/blog-main.png');
+        background-image: url('../images/blog-main-max.png');
         background-repeat: no-repeat;
         background-clip: border-box;
-        background-size: contain;
+        background-size: cover;
+        background-position: center;
         position: relative;
 
+        @media screen and (max-width:450px) {
+            min-height: 300px;
+            width: calc(100% + 2rem);
+            left: -1rem;
+        }
 
         .blog-container-front {
             height: 100%;
@@ -34,6 +44,10 @@
                 font-weight: 500;
                 font-size: 4rem;
                 margin: 0.5rem;
+
+                @media screen and (max-width:450px) {
+                    font-size: 2rem;
+                }
             }
 
             h4 {

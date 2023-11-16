@@ -9,7 +9,7 @@ import { useScrollToTop } from '../../common/hooks/general';
 const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
 const Blog = () => {
-    
+
     useScrollToTop()
 
     return (
@@ -29,7 +29,7 @@ const Blog = () => {
                     <div className='blogs-container'>
                         <Row gutter={[26, 26]}>
                             {arr.map((val, i) => {
-                                return <Col span={8} key={val}>
+                                return <Col xm={24} sm={24} md={12} lg={8} xl={8} key={val}>
                                     {
                                         (i % 2 === 1) ? (
                                             <BlogCard
