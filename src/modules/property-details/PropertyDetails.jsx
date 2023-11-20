@@ -5,9 +5,9 @@ import { GoogleMap, useJsApiLoader, MarkerF } from '@react-google-maps/api';
 import 'react-multi-carousel/lib/styles.css';
 import { property_details } from './constant/string';
 
-import cardImg2 from '../../common/assets/images/property.png'
 import default_home from '../../common/assets/images/default-home.png'
 
+// import cardImg2 from '../../common/assets/images/property.png'
 // import ThumbImg from './assets/images/thumb.png'
 // import property2 from './assets/images/property-details-2.png'
 // import property3 from './assets/images/property-details-3.png'

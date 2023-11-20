@@ -121,9 +121,6 @@
             @include flexPosition();
 
             .ant-result-icon {
-                // svg>g>path:nth-child(11) {
-                //     fill: $colorLevel5;
-                // }
 
                 svg {
                     g>g>path {

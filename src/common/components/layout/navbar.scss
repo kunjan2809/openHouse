@@ -111,11 +111,79 @@
             .navigation-menu {
                 position: absolute;
                 display: none;
+            }
+        }
+    }
 
-                &.open {
-                    display: block;
+    .sidenav-wrapper {
+        margin: 0;
+        padding: 0;
+        display: none;
+        position: fixed;
+        left: 0px;
+        top: 0px;
+        height: 100vh;
+        width: 100vw;
+        z-index: 15;
+        background-color: #121212b3;
+        box-sizing: border-box;
+
+        @media screen and (max-width:450px) {
+            display: block;
+        }
+
+        .sidebar-nav {
+            position: absolute;
+            width: 55%;
+            height: 100%;
+            min-width: 200px;
+            background-color: white;
+            box-sizing: border-box;
+
+            .close-icon {
+                display: flex;
+                padding: 20px;
+                border-bottom: 1px solid $colorLightgrayBorder;
+
+                .ico {
+                    cursor: pointer;
+                    margin-left: auto;
+                    font-size: x-large;
                 }
+            }
 
+            ul.links {
+                list-style-type: none;
+                margin: 0px;
+                padding: 0px;
+                display: flex;
+                flex-direction: column;
+                font-size: large;
+
+                li {
+                    display: block;
+                    padding-block: 10px;
+                    border-bottom: 1px solid $colorLightgrayBorder;
+
+                    &:hover{
+                        background-color: lightgray;
+                    }
+
+                    a {
+                        padding-left: 20px;
+                        display: block;
+                        display: flex;
+                        gap: 10px;
+                        text-decoration: none;
+                        height: 100%;
+                        width: 100%;
+                        color: $colorGray;
+
+                        .anticon {
+                            font-size: large;
+                        }
+                    }
+                }
             }
         }
     }

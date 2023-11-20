@@ -4,6 +4,10 @@
 .property-details-wrapper {
     padding-inline: 5rem;
 
+    @media screen and (max-width:450px) {
+        padding-inline: 1rem;
+    }
+
     .property-details-heading {
         color: $colorGray;
         font-weight: 600;
