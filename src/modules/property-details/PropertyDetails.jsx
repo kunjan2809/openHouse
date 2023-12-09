@@ -7,14 +7,6 @@ import { property_details } from './constant/string';
 
 import default_home from '../../common/assets/images/default-home.png'
 
-// import cardImg2 from '../../common/assets/images/property.png'
-// import ThumbImg from './assets/images/thumb.png'
-// import property2 from './assets/images/property-details-2.png'
-// import property3 from './assets/images/property-details-3.png'
-// import property4 from './assets/images/property-details-4.png'
-// import property5 from './assets/images/property-details-5.png'
-// import property6 from './assets/images/property-details-5.png'
-
 import house_type from './assets/svgs/house_type.svg'
 import bedroom from './assets/svgs/bedroom.svg'
 import bathroom from './assets/svgs/bathroom.svg'
@@ -22,7 +14,7 @@ import floor from './assets/svgs/floor.svg'
 import basement from './assets/svgs/basement.svg'
 import area from './assets/svgs/area.svg'
 import car_parking from './assets/svgs/car_parking.svg'
-import React, { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import PropertyCard from '../../common/components/card/PropertyCard';
 import Carousel from 'react-multi-carousel';
 import PropTypes from "prop-types"
@@ -122,8 +114,8 @@ const PropertyDetails = () => {
                     onChange: (current, prev) => console.log(`current index: ${current}, prev index: ${prev}`),
                   }}
                 >
-                  <Row className="property-images" gutter={10}>
-                    <Col span={16} className='outer-col'>
+                  <Row className="property-images" gutter={[10, 10]}>
+                    <Col xm={24} sm={24} md={24} lg={16} xl={16} className='outer-col'>
                       <div className="property-main-image-container">
                         <Image
                           src={mainImageSource}
@@ -132,32 +124,28 @@ const PropertyDetails = () => {
                         />
                       </div>
                     </Col>
-                    <Col span={8} className='outer-col'>
-                      <Row gutter={[10, 10]}>
+                    <Col xm={24} sm={24} md={24} lg={8} xl={8} className='outer-col'>
+                      <Row gutter={[10, 10]} className='remaining-imgs' >
                         {imgArr?.map((img, index, arr) => {
                           if (index !== 0) {
                             if (index === 6 && arr.length >= 7) {
-                              return <React.Fragment key={index}>
-                                <Col span={12} className='last-image'>
-                                  <div className='last-image-preview'>+{arr.length - 6}</div>
-                                  <Image
-                                    className="property-side-image"
-                                    src={import.meta.env.VITE_API_URL + img}
-                                    key={index}
-                                    onError={handleImageError}
-                                  />
-                                </Col>
-                              </React.Fragment>
+                              return <Col key={index} xm={8} sm={8} md={8} lg={12} xl={12} className='last-image'>
+                                <div className='last-image-preview'>+{arr.length - 6}</div>
+                                <Image
+                                  className="property-side-image"
+                                  src={import.meta.env.VITE_API_URL + img}
+                                  key={index}
+                                  onError={handleImageError}
+                                />
+                              </Col>
                             } else {
-                              return <React.Fragment key={index}>
-                                <Col span={12}>
-                                  <Image
-                                    className="property-side-image"
-                                    src={import.meta.env.VITE_API_URL + img}
-                                    onError={handleImageError}
-                                    key={index} />
-                                </Col>
-                              </React.Fragment>
+                              return <Col key={index} xm={8} sm={8} md={8} lg={12} xl={12}>
+                                <Image
+                                  className="property-side-image"
+                                  src={import.meta.env.VITE_API_URL + img}
+                                  onError={handleImageError}
+                                  key={index} />
+                              </Col>
                             }
                           } else {
                             return ''
@@ -175,26 +163,26 @@ const PropertyDetails = () => {
               </div>
               <p className='sub-header'>{property_details.details.title}</p>
               <div className="property-details">
-                <Row gutter={[20, 35]}>
-                  <Col span={6}>
+                <Row className="property-details-row">
+                  <Col xs={8} sm={8} md={6}>
                     <PropertyType svg={house_type} title={property_details.details.type} info={propertyType[propertyDetails.type]} />
                   </Col>
-                  <Col span={6}>
+                  <Col xs={8} sm={8} md={6}>
                     <PropertyType svg={bedroom} title={property_details.details.bed} info={propertyDetails.bedroom} />
                   </Col>
-                  <Col span={6}>
+                  <Col xs={8} sm={8} md={6}>
                     <PropertyType svg={bathroom} title={property_details.details.bath} info={propertyDetails.bathroom} />
                   </Col>
-                  <Col span={6}>
+                  <Col xs={8} sm={8} md={6}>
                     <PropertyType svg={floor} title={property_details.details.floor} info={propertyDetails.floor} />
                   </Col>
-                  <Col span={6}>
+                  <Col xs={8} sm={8} md={6}>
                     <PropertyType svg={basement} title={property_details.details.basement} info={propertyDetails.basement === true ? 'Yes' : 'No'} />
                   </Col>
-                  <Col span={6}>
+                  <Col xs={8} sm={8} md={6}>
                     <PropertyType svg={area} title={property_details.details.area} info={propertyDetails.area} />
                   </Col>
-                  <Col span={6}>
+                  <Col xs={8} sm={8} md={6}>
                     <PropertyType svg={car_parking} title={property_details.details.parking} info={propertyDetails.parking} />
                   </Col>
                 </Row>

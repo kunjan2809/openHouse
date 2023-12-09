@@ -26,7 +26,7 @@ const Profile = () => {
     useScrollToTop()
 
 
-    const { profileDetails } = useSelector((state) => state.profile)
+    const { profileDetails, loading: profileLoading } = useSelector((state) => state.profile)
     const profileImg = profileDetails?.profilePicture
 
     const { own_properties, loading: propertyLoading } = useSelector((state) => state.ownProperties)
@@ -40,7 +40,7 @@ const Profile = () => {
     return (
         <>
             <div className="profile-container">
-                <Row gutter={[30, 30]}>
+                {!profileLoading && !propertyLoading ? (<><Row gutter={[30, 30]}>
                     <Col xm={24} sm={24} md={24} lg={6} xl={6}>
                         <div className="user-profile-wrapper">
                             <div className="user-details-wrapper">
@@ -90,36 +90,29 @@ const Profile = () => {
                                 </Button>
                             </div>
                             <Row gutter={[16, 24]}>
-                                {
-                                    !propertyLoading ? (<>
-                                        {
-                                            own_properties.length > 0 ? (<>
-                                                {own_properties?.map((property) => {
-                                                    return <Col xm={24} sm={24} md={12} lg={8} xl={8} key={property._id}>
-                                                        <PropertyCard
-                                                            id={property._id}
-                                                            image={`${import.meta.env.VITE_API_URL}${property.images[0]}`}
-                                                            price={property.price}
-                                                            date={moment(property.date).format("Do MMM, YYYY")}
-                                                            time={moment(property.startTime).format('h.mmA')}
-                                                            address={`${property.location?.address}, ${property.location?.city}, ${property.location?.country}`}
-                                                            isSold={property.isSold}
-                                                        />
-                                                    </Col>
-                                                })}
-                                            </>) : (<>
-                                                <div className="no-properties-found">
-                                                    <Result
-                                                        status="404"
-                                                        title="No properties found"
-                                                    />
-                                                </div>
+                                {own_properties.length > 0 ? (<>
+                                    {own_properties?.map((property) => {
+                                        return <Col xm={24} sm={24} md={12} lg={8} xl={8} key={property._id}>
+                                            <PropertyCard
+                                                id={property._id}
+                                                image={`${import.meta.env.VITE_API_URL}${property.images[0]}`}
+                                                price={property.price}
+                                                date={moment(property.date).format("Do MMM, YYYY")}
+                                                time={moment(property.startTime).format('h.mmA')}
+                                                address={`${property.location?.address}, ${property.location?.city}, ${property.location?.country}`}
+                                                isSold={property.isSold}
+                                            />
+                                        </Col>
+                                    })}
+                                </>) : (<>
+                                    <div className="no-properties-found">
+                                        <Result
+                                            status="404"
+                                            title="No properties found"
+                                        />
+                                    </div>
 
-                                            </>)
-                                        }
-                                    </>) : (<>
-                                        <div className='spinner'><Spin size="large" /></div>
-                                    </>)
+                                </>)
                                 }
                             </Row>
                             {/* <div className="view">
@@ -129,6 +122,10 @@ const Profile = () => {
 
                     </Col>
                 </Row>
+                </>) : (<>
+                    <div className='spinner'><Spin size="large" /></div>
+                </>)
+                }
             </div>
         </>
     )

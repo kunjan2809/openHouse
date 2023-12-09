@@ -10,10 +10,14 @@
 
     .property-details-heading {
         color: $colorGray;
-        font-weight: 600;
+        font-weight: 500;
         margin-top: 0px;
         margin-bottom: 10px;
         padding-top: 3rem;
+
+        @media screen and (max-width:450px) {
+            font-size: 1.2rem;
+        }
     }
 
     .property-images-wrapper {
@@ -24,6 +28,12 @@
             height: 600px;
             max-height: 600px;
             overflow: hidden;
+
+            @media screen and (max-width:450px) {
+                overflow: auto;
+                max-height: none;
+                height: max-content;
+            }
 
             .ant-col.outer-col {
                 height: 100%;
@@ -48,12 +58,21 @@
                     }
                 }
 
-                .ant-row {
+                .ant-row.remaining-imgs {
                     height: 100%;
+
+                    @media screen and (max-width:450px) {
+                        height: 50px;
+                    }
 
                     .ant-col {
                         height: 32%;
                         position: relative;
+
+                        @media screen and (max-width:450px) {
+                            height: 100%;
+                            width: 16.6%;
+                        }
 
                         .ant-image {
                             width: 100%;
@@ -119,12 +138,14 @@
 
     .property-details {
         @include flexPosition();
-        justify-content: flex-start;
-        flex-wrap: wrap;
         margin-bottom: 5rem;
+        box-sizing: border-box;
+
+        @media screen and (max-width:450px) {}
 
         .ant-row {
             width: 100%;
+            box-sizing: border-box;
 
             .ant-col {
                 .property-details-item {
