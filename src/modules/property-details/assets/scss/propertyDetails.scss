@@ -4,6 +4,10 @@
 .property-details-wrapper {
     padding-inline: 5rem;
 
+    @media (max-width:1199px) {
+        padding-inline: 1rem;
+    }
+
     @media screen and (max-width:450px) {
         padding-inline: 1rem;
     }
@@ -15,6 +19,14 @@
         margin-bottom: 10px;
         padding-top: 3rem;
 
+        @media (max-width:1199px) {
+            padding-top: 0rem;
+        }
+
+        @media (max-width:991px) {
+            font-size: 22px;
+        }
+
         @media screen and (max-width:450px) {
             font-size: 1.2rem;
         }
@@ -24,12 +36,16 @@
         width: 100%;
         margin-bottom: 3rem;
 
+        @media (max-width:1199px) {
+            margin-bottom: 1rem;
+        }
+
         .property-images {
             height: 600px;
             max-height: 600px;
             overflow: hidden;
 
-            @media screen and (max-width:450px) {
+            @media screen and (max-width:991px) {
                 overflow: auto;
                 max-height: none;
                 height: max-content;
@@ -112,16 +128,24 @@
         display: inline;
         padding: 5px 15px;
         font-size: 0.7rem;
-        border-radius: 50px
+        border-radius: 50px;
     }
 
     .price-tag {
         @include flexPosition();
         justify-content: space-between;
 
+        @media (max-width:991px) {
+            margin-top: 15px;
+        }
+
         h1 {
             color: $colorLevel10;
             margin-block: 5px;
+
+            @media (max-width:991px) {
+                font-size: 25px;
+            }
         }
 
         .contact-button {
@@ -141,6 +165,10 @@
         margin-bottom: 5rem;
         box-sizing: border-box;
 
+        @media (max-width:991px) {
+            margin-bottom: 1rem;
+        }
+
         @media screen and (max-width:450px) {}
 
         .ant-row {
@@ -154,6 +182,7 @@
                     flex-wrap: wrap;
                     justify-content: flex-start;
                     gap: 15px;
+                    margin-bottom: 15px;
 
                     .card-logo {
                         img {
@@ -194,6 +223,10 @@
         .description-text {
             padding-right: 1.5rem;
 
+            @media (max-width:1199px) {
+                padding-right: 0px;
+            }
+
             .description {
                 margin: 0;
                 font-size: 0.8rem;
@@ -201,6 +234,9 @@
                 height: 140px;
                 overflow: hidden;
                 position: relative;
+                border: 1px solid gray;
+                border-radius: 10px;
+                padding: 10px;
 
                 p {
                     margin-top: 0px;
@@ -284,7 +320,7 @@
                     padding-block: 1rem;
 
                     .card-wrapper {
-                        margin-inline: 0.5rem;
+                        // margin-inline: 0.5rem;
                     }
                 }
             }

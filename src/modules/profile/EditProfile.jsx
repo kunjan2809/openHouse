@@ -88,7 +88,7 @@ const EditProfile = () => {
                 first_name: profileDetails?.firstName,
                 last_name: profileDetails?.lastName,
                 profile: `${import.meta.env.VITE_API_URL}${profileDetails?.profilePicture}`,
-                description: (!profileDetails?.description || profileDetails?.description=== 'undefined') ? '' : profileDetails?.description,
+                description: (!profileDetails?.description || profileDetails?.description === 'undefined') ? '' : profileDetails?.description,
                 country_code: '+1',
                 phone: profileDetails?.phoneNumber?.substring(2),
                 email: profileDetails?.email,
@@ -105,13 +105,13 @@ const EditProfile = () => {
             <div className="edit-profile-container">
                 <h1 className="title">{edit_profile.title}</h1>
                 <form>
-                    <Row className="fields-wrapper" >
-                        <Col span={15} className="edit-profile-header">
+                    <Row gutter={[16, 16]} className="fields-wrapper" >
+                        <Col xs={24} sm={24} md={24} lg={24} xl={15} className="edit-profile-header">
                             <h1 className="about-title">{edit_profile.about.title}</h1>
                             <h4>{edit_profile.about.sub_title}</h4>
                         </Col>
 
-                        <Col span={15}>
+                        <Col xl={15} lg={24} md={24} sm={24} xs={24} >
                             <Row gutter={20}>
                                 <Col span={12}>
                                     <label className="input-label">{edit_profile.about.fields.first_name}</label>
@@ -141,24 +141,25 @@ const EditProfile = () => {
                             </Row>
                         </Col>
 
-                        <Col span={15}>
+                        <Col xl={15} lg={24} md={24} sm={24} xs={24}>
+                            <div className="profile-img-box">
+                                {file && <Image className="profile-img" src={URL.createObjectURL(file)} />}
 
-                            {file && <Image className="profile-img" src={URL.createObjectURL(file)} />}
-
-                            <label htmlFor="imageInput" className="input-label">
-                                <div className="custom-button">{edit_profile.about.fields.pic}</div>
-                            </label>
-                            <Input
-                                name="profile"
-                                type="file"
-                                accept="image/*"
-                                id="imageInput"
-                                onChange={handleFileChange}
-                                className="input-img"
-                            />
+                                <label htmlFor="imageInput" className="input-label">
+                                    <div className="custom-button">{edit_profile.about.fields.pic}</div>
+                                </label>
+                                <Input
+                                    name="profile"
+                                    type="file"
+                                    accept="image/*"
+                                    id="imageInput"
+                                    onChange={handleFileChange}
+                                    className="input-img"
+                                />
+                            </div>
                         </Col>
 
-                        <Col span={15}>
+                        <Col xs={24} sm={24} md={24} lg={24} xl={15}>
                             <label className="input-label">{edit_profile.about.fields.description}</label>
                             <TextArea
                                 name="description"
@@ -172,7 +173,7 @@ const EditProfile = () => {
                             {touched.description && errors.description && <span className='error'>{errors.description}</span>}
                         </Col>
 
-                        <Col span={15}>
+                        <Col xl={15} lg={12} md={24} sm={24} xs={24}>
                             <label className="input-label">{edit_profile.about.fields.phone}</label>
                             <Input
                                 disabled
@@ -200,7 +201,7 @@ const EditProfile = () => {
                             {touched.phone && errors.phone && <span className='error'>{errors.phone}</span>}
                         </Col>
 
-                        <Col span={15}>
+                        <Col xl={15} lg={12} md={24} sm={24} xs={24}>
                             <label className="input-label">{edit_profile.about.fields.email}</label>
                             <Input
                                 disabled
@@ -214,12 +215,12 @@ const EditProfile = () => {
                             {touched.email && errors.email && <span className='error'>{errors.email}</span>}
                         </Col>
 
-                        <Col span={15}>
+                        <Col xl={15} lg={24} md={24} sm={24} xs={24}>
                             <h1 className="links-title">{edit_profile.links.title}</h1>
                             <h4>{edit_profile.links.sub_title}</h4>
                         </Col>
 
-                        <Col span={15}>
+                        <Col xl={15} lg={8} md={24} sm={24} xs={24}>
                             <label className="input-label"><img src={instagram} alt="" className="custom-svg" /> {edit_profile.links.fields.instagram}</label>
                             <Input
                                 name="instagram"
@@ -232,7 +233,7 @@ const EditProfile = () => {
                             {touched.instagram && errors.instagram && <span className='error'>{errors.instagram}</span>}
                         </Col>
 
-                        <Col span={15}>
+                        <Col xl={15} lg={8} md={24} sm={24} xs={24}>
                             <label className="input-label"><img src={facebook} alt="" className="custom-svg" /> {edit_profile.links.fields.facebook}</label>
                             <Input
                                 name="facebook"
@@ -245,7 +246,7 @@ const EditProfile = () => {
                             {touched.facebook && errors.facebook && <span className='error'>{errors.facebook}</span>}
                         </Col>
 
-                        <Col span={15}>
+                        <Col xl={15} lg={8} md={24} sm={24} xs={24}>
                             <label className="input-label"><img src={twitter} alt="" className="custom-svg" /> {edit_profile.links.fields.twitter}</label>
                             <Input
                                 name="twitter"

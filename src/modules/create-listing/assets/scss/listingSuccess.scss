@@ -26,5 +26,9 @@
         margin: 3px 0px;
         font-weight: 400;
         font-size: 1.3rem;
+
+        @media (max-width:991px) {
+            font-size: 18px;
+        }
     }
 }

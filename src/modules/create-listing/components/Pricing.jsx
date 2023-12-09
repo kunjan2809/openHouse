@@ -52,9 +52,9 @@ const Pricing = ({ handleNext, handlePrev }) => {
             <h1 className='title'>{add_listing.steps.step3.title}</h1 >
 
             <Row>
-                <Col span={18}>
+                <Col xl={18} lg={24} md={24} sm={24} xm={24}>
                     <Row gutter={20}>
-                        <Col span={12}>
+                        <Col xl={12} lg={12} md={24} sm={24} xm={24}>
                             <label>{add_listing.steps.step3.fields.price}</label>
                             <Input
                                 type="number"
@@ -82,7 +82,7 @@ const Pricing = ({ handleNext, handlePrev }) => {
                         </Col>
                     </Row>
                 </Col>
-                <Col span={6}>
+                <Col xm={24} sm={24} md={24} lg={6} xl={6}>
 
                 </Col>
             </Row>

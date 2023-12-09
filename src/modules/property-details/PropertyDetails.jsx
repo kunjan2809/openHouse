@@ -129,7 +129,7 @@ const PropertyDetails = () => {
                         {imgArr?.map((img, index, arr) => {
                           if (index !== 0) {
                             if (index === 6 && arr.length >= 7) {
-                              return <Col key={index} xm={8} sm={8} md={8} lg={12} xl={12} className='last-image'>
+                              return <Col key={index} xm={8} sm={8} md={4} lg={12} xl={12} className='last-image'>
                                 <div className='last-image-preview'>+{arr.length - 6}</div>
                                 <Image
                                   className="property-side-image"
@@ -139,7 +139,7 @@ const PropertyDetails = () => {
                                 />
                               </Col>
                             } else {
-                              return <Col key={index} xm={8} sm={8} md={8} lg={12} xl={12}>
+                              return <Col key={index} xm={8} sm={8} md={4} lg={12} xl={12}>
                                 <Image
                                   className="property-side-image"
                                   src={import.meta.env.VITE_API_URL + img}
@@ -164,25 +164,25 @@ const PropertyDetails = () => {
               <p className='sub-header'>{property_details.details.title}</p>
               <div className="property-details">
                 <Row className="property-details-row">
-                  <Col xs={8} sm={8} md={6}>
+                  <Col lg={8} xs={12} sm={8} md={8}>
                     <PropertyType svg={house_type} title={property_details.details.type} info={propertyType[propertyDetails.type]} />
                   </Col>
-                  <Col xs={8} sm={8} md={6}>
+                  <Col lg={8} xs={12} sm={8} md={8}>
                     <PropertyType svg={bedroom} title={property_details.details.bed} info={propertyDetails.bedroom} />
                   </Col>
-                  <Col xs={8} sm={8} md={6}>
+                  <Col lg={8} xs={12} sm={8} md={8}>
                     <PropertyType svg={bathroom} title={property_details.details.bath} info={propertyDetails.bathroom} />
                   </Col>
-                  <Col xs={8} sm={8} md={6}>
+                  <Col lg={8} xs={12} sm={8} md={8}>
                     <PropertyType svg={floor} title={property_details.details.floor} info={propertyDetails.floor} />
                   </Col>
-                  <Col xs={8} sm={8} md={6}>
+                  <Col lg={8} xs={12} sm={8} md={8}>
                     <PropertyType svg={basement} title={property_details.details.basement} info={propertyDetails.basement === true ? 'Yes' : 'No'} />
                   </Col>
-                  <Col xs={8} sm={8} md={6}>
+                  <Col lg={8} xs={12} sm={8} md={8}>
                     <PropertyType svg={area} title={property_details.details.area} info={propertyDetails.area} />
                   </Col>
-                  <Col xs={8} sm={8} md={6}>
+                  <Col lg={8} xs={12} sm={8} md={8}>
                     <PropertyType svg={car_parking} title={property_details.details.parking} info={propertyDetails.parking} />
                   </Col>
                 </Row>

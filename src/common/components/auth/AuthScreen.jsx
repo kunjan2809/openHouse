@@ -12,7 +12,7 @@ const AuthScreen = (props) => {
             <Navbar />
             <div className="auth-container">
                 <Row className="container">
-                    <Col lg={12} md={12} sm={0} xs={0}>
+                    <Col lg={12} md={0} sm={0} xs={0} className="login-page-box">
                         <div className="home-img">
                             <img src={HOMEIMG} alt="Home" />
                         </div>

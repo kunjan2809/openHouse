@@ -41,7 +41,7 @@ const Profile = () => {
         <>
             <div className="profile-container">
                 {!profileLoading && !propertyLoading ? (<><Row gutter={[30, 30]}>
-                    <Col xm={24} sm={24} md={24} lg={6} xl={6}>
+                    <Col xm={24} sm={24} md={24} lg={24} xl={6}>
                         <div className="user-profile-wrapper">
                             <div className="user-details-wrapper">
                                 {profileImg ?
@@ -81,7 +81,7 @@ const Profile = () => {
                             </div>
                         </div>
                     </Col>
-                    <Col xm={24} sm={24} md={24} lg={18} xl={18}>
+                    <Col xm={24} sm={24} md={24} lg={24} xl={18}>
                         <div className="my-listing">
                             <div className="heading">
                                 <h1 className="title">{profile.listings.title}</h1>

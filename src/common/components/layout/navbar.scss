@@ -97,7 +97,7 @@
             }
         }
 
-        @media screen and (max-width:450px) {
+        @media screen and (max-width:767px) {
             .navbar-logo {
                 width: 100%;
                 position: relative;
@@ -128,7 +128,7 @@
         background-color: #121212b3;
         box-sizing: border-box;
 
-        @media screen and (max-width:450px) {
+        @media screen and (max-width:767px) {
             display: block;
         }
 
@@ -165,7 +165,7 @@
                     padding-block: 10px;
                     border-bottom: 1px solid $colorLightgrayBorder;
 
-                    &:hover{
+                    &:hover {
                         background-color: lightgray;
                     }
 

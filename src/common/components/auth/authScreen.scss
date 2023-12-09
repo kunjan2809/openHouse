@@ -9,6 +9,16 @@
     .container {
         height: 100%;
 
+        @media (max-width:991px) {
+            justify-content: center;
+        }
+
+        .login-page-box {
+            @media (max-width:991px) {
+                display: none;
+            }
+        }
+
         .home-img {
             overflow: hidden;
             width: 100%;

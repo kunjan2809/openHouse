@@ -4,6 +4,10 @@
 .profile-container {
     padding: 2rem;
 
+    @media (max-width:991px) {
+        padding: 1rem;
+    }
+
     @media screen and (max-width:450px) {
         padding: 1rem;
 
@@ -156,13 +160,17 @@
             margin-bottom: 1.5rem;
 
             @media screen and (max-width:450px) {
-                margin-top: 1.5rem;
+                margin-top: 0rem;
             }
 
             .title {
                 margin: 0;
                 font-weight: 500;
                 color: $colorLevel10;
+
+                @media (max-width:991px) {
+                    font-size: 22px;
+                }
             }
 
             .add-listing-btn {

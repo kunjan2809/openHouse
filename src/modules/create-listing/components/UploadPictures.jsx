@@ -73,10 +73,10 @@ const UploadPictures = ({ handlePrev }) => {
         <>
             <div className="images-form">
                 <h1 className='title'>{add_listing.steps.step5.title}</h1 >
-                <Row>
-                    <Col span={18}>
+                <Row className="upload-img-box">
+                    <Col xl={18} lg={24} md={24} sm={24} xm={24}>
                         <Row gutter={20}>
-                            <Col span={20}>
+                            <Col span={24}>
                                 {fileList?.length < 12 && <>
                                     <div className="custom-upload-box">
                                         <label htmlFor="imageInput" className="custom-upload-label">
@@ -98,20 +98,22 @@ const UploadPictures = ({ handlePrev }) => {
                                 <br />
 
                                 <Image.PreviewGroup>
-                                    <Row className="img-group" gutter={[0, 10]}>
+                                    <Row className="upload-img-box" gutter={[10, 10]}>
                                         {fileList?.map((img, index) => {
                                             return (
-                                                <Col span={4} key={index}>
-                                                    <div className="image-container">
-                                                        <Image className="preview-img" src={URL.createObjectURL(img)} />
-                                                        <Button
-                                                            type="link"
-                                                            icon={<CloseOutlined />}
-                                                            onClick={() => handleDelete(index)}
-                                                            className="delete-button"
-                                                        ></Button>
-                                                    </div>
-                                                </Col>
+                                                <div className="img-group">
+                                                    <Col span={24} key={index}>
+                                                        <div className="image-container">
+                                                            <Image className="preview-img" src={URL.createObjectURL(img)} />
+                                                            <Button
+                                                                type="link"
+                                                                icon={<CloseOutlined />}
+                                                                onClick={() => handleDelete(index)}
+                                                                className="delete-button"
+                                                            ></Button>
+                                                        </div>
+                                                    </Col>
+                                                </div>
                                             )
                                         })}
                                     </Row>
@@ -119,7 +121,7 @@ const UploadPictures = ({ handlePrev }) => {
                             </Col>
                         </Row>
                     </Col>
-                    <Col span={6}></Col>
+                    <Col xm={24} sm={24} md={24} lg={6} xl={6}></Col>
                 </Row>
 
                 <div className='page-ctrl'>

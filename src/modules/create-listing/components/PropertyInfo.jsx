@@ -70,7 +70,7 @@ const PropertyInfo = ({ handleNext }) => {
         <div className="property-details-form">
             <h1 className='title'>{add_listing.steps.step1.title}</h1 >
             <Row>
-                <Col span={18}>
+                <Col xl={18} lg={24} md={24} sm={24} xm={24} >
                     <Row gutter={20}>
                         <Col span={24}>
                             <label>{add_listing.steps.step1.fields.type}</label>
@@ -132,7 +132,7 @@ const PropertyInfo = ({ handleNext }) => {
                             />
                             {touched.parking && errors.parking && <span className='error'>{errors.parking}</span>}
                         </Col>
-                        <Col span={24}>
+                        <Col span={12}>
                             <label>{add_listing.steps.step1.fields.basement}</label>
                             <Radio.Group
                                 name="basement"
@@ -172,7 +172,7 @@ const PropertyInfo = ({ handleNext }) => {
                         </Col>
                     </Row>
                 </Col>
-                <Col span={6}></Col>
+                <Col xm={24} sm={24} md={24} lg={6} xl={6}></Col>
             </Row>
             <div className='page-ctrl next-only'>
                 <Button type="primary" className="btn" onClick={() => submitForm()}>{add_listing.next_btn}</Button>

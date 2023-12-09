@@ -54,7 +54,7 @@ const DateAndTime = ({ handleNext, handlePrev }) => {
             <h1 className='title'>{add_listing.steps.step4.title}</h1 >
 
             <Row>
-                <Col span={18}>
+                <Col xl={12} lg={24} md={24} sm={24} xm={24}>
                     <Row gutter={20}>
                         <Col span={12}>
                             <label>{add_listing.steps.step4.fields.date}</label>
@@ -84,7 +84,7 @@ const DateAndTime = ({ handleNext, handlePrev }) => {
                         </Col>
                     </Row>
                 </Col>
-                <Col span={6}>
+                <Col xm={24} sm={24} md={24} lg={6} xl={6}>
 
                 </Col>
             </Row>

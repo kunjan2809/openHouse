@@ -13,15 +13,46 @@
     padding-top: 3rem;
     background-color: rgb(255 255 255);
 
+    @media (max-width:1199px) {
+        padding: 1.5rem;
+    }
+
+    .upload-img-box {
+        @media (max-width:991px) {
+            justify-content: center;
+        }
+    }
+
     .page-heading {
         margin: 0;
         font-weight: 500;
         color: $colorLevel10;
+
+        @media (max-width:1199px) {
+            font-size: 25px;
+        }
+
+        @media (max-width:991px) {
+            font-size: 22px;
+        }
+
+        @media (max-width:767px) {
+            font-size: 20px;
+        }
     }
 
     .stepper {
         margin-top: 4rem;
         width: 70%;
+
+        @media (max-width:1199px) {
+            margin-top: 2rem;
+            width: auto;
+        }
+
+        @media (max-width:767px) {
+            width: 100%;
+        }
 
         .ant-steps {
             .ant-steps-item {
@@ -32,6 +63,10 @@
                             height: 2px;
                             width: 100%;
                             margin-inline: 0px;
+
+                            @media (max-width:575px) {
+                                display: none;
+                            }
                         }
                     }
 
@@ -90,12 +125,32 @@
         border-radius: 5px;
         padding: 3rem;
 
+        @media (max-width:1199px) {
+            margin-top: 2rem;
+            width: 95%;
+            padding: 1rem;
+        }
+
         .property-form {
             .title {
                 margin: 0px;
                 margin-bottom: 2rem;
                 font-weight: 500;
                 text-transform: uppercase;
+
+                @media (max-width:1199px) {
+                    font-size: 25px;
+                    margin-bottom: 0px;
+                    text-align: center;
+                }
+
+                @media (max-width:991px) {
+                    font-size: 20px;
+                }
+
+                @media (max-width:767px) {
+                    font-size: 18px;
+                }
             }
 
             label {
@@ -184,6 +239,10 @@
             .images-form {
                 width: 90%;
 
+                @media (max-width:1199px) {
+                    width: 100%;
+                }
+
                 .custom-upload-box {
                     @include flexPosition();
                     margin: 0;
@@ -193,6 +252,10 @@
                     border-radius: 8px;
                     text-align: center;
                     cursor: pointer;
+
+                    @media (max-width:991px) {
+                        margin: 10px auto;
+                    }
 
                     .custom-upload-label {
                         @include flexPosition();
